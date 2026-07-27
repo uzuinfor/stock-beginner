@@ -1,5 +1,6 @@
 /* ================================================
    Stock Beginner - Master Script Engine
+   (Live Search & Auto-complete Jump Engine + 100-Day Study + Live News + Memes + Fixed Quiz)
    ================================================ */
 
 // ----------------------------------------------------
@@ -62,6 +63,13 @@ const SLANG_GUIDE_DATA = {
   "slang-impulse": { badge: "🧠 심리 관리", emoji: "🤯", name: "뇌동매매 (FOMO 극복)", eng: "Impulsive Trading & FOMO", category: "sad", quickSummary: "원칙 없이 남의 말이나 급등 차트를 보고 홧김에 따라 사는 위험한 행동.", fullDesc: "나만 부자 못 될 것 같은 소외 공포감(FOMO)으로 급등 꼭대기에서 사버리는 오류.", formula: "💬 대화 예시: \"뇌동매매했다가 최고점에 물렸음 ㅠㅠ\"", usage: "매수 전 3초 동안 기업 재무제표와 손절선을 스스로 점검하세요.", keyTakeaway: "급등 차트 추격 뇌동매매는 고점 물림의 지름길입니다!" }
 };
 
+const MASTER_GUIDE_DATA = {
+  "master-candle": { badge: "차트 기초 마스터", emoji: "🕯️", name: "봉차트(캔들스틱) 완전 정복 마스터 클래스", eng: "Japanese Candlestick Chart Analysis", quickSummary: "18세기 일본 쌀 상인 혼마 무네히사가 개발한 매수/매도 심리의 결집체입니다.", fullDesc: "캔들스틱(봉차트)은 지정된 시간 동안 형성된 [시가, 종가, 고가, 저가] 4가지 핵심 가격을 양초 모양으로 시각화한 차트입니다.", formula: "🔴 양봉 = 상승 마감 / 🔵 음봉 = 하락 마감 / 망치형 = 바닥 반등 신호", usage: "바닥권에서 긴 아랫꼬리 망치형 양봉 발생 시 분할 매수 타점!", keyTakeaway: "몸통 크기는 세력의 의지, 꼬리의 길이는 반발력을 나타냅니다!" },
+  "master-trend": { badge: "추세 분석 마스터", emoji: "📐", name: "추세선 & 지지/저항선 매매 법칙", eng: "Trendline & Support/Resistance Technical Strategy", quickSummary: "주가는 지지선과 저항선 사이에서 파동을 그리며 움직입니다.", fullDesc: "지지선은 바닥 방어선, 저항선은 천장 막힘선입니다. 저항선이 강하게 뚫리면 새로운 지지선으로 역할 반전 됩니다.", formula: "상승 추세선 = 저점 연결 / 하락 추세선 = 고점 연결", usage: "저항선을 거래량이 2~3배 터지며 뚫을 때가 진짜 돌파입니다.", keyTakeaway: "지지선 근처에서 사고 저항선 거래량 돌파 시 탑승하세요!" },
+  "master-ma": { badge: "이평선 마스터", emoji: "📈", name: "이동평균선(이평선) 공식 & 정배열 분석", eng: "Moving Average & Golden Cross Mechanics", quickSummary: "지난 N일 동안의 평균 주가를 연결한 곡선입니다.", fullDesc: "5일(생명선), 20일(세력선), 60일(수급선), 120일(경기선). 정배열은 대세 상승 전형 패턴입니다.", formula: "골든크로스 = 단기선이 장기선을 위로 돌파", usage: "정배열 종목이 20일선까지 조정받을 때가 눌림목 매수 타점!", keyTakeaway: "정배열 종목의 20일선 눌림목을 노리는 것이 최강의 승률 전략입니다!" },
+  "master-value": { badge: "가치투자 마스터", emoji: "💎", name: "워렌 버핏의 가치투자 & ROE/PER/PBR 저평가 발굴법", eng: "Value Investing Framework & ROE Screening", quickSummary: "기업 본질 가치보다 싸게 사서 안전마진을 확보합니다.", fullDesc: "ROE 15% 지속, PER 업종 대비 낮음, PEG < 1.0 저평가 성장주 스크리닝.", formula: "ROE = 순이익 ÷ 자기자본 / PEG = PER ÷ 이익성장률", usage: "실적이 적자 전환하는 밸류에이션 트랩을 유의하세요.", keyTakeaway: "싸다고 무조건 사지 말고 ROE 성장의 지속성을 검증하세요!" }
+};
+
 // ----------------------------------------------------
 // DATA 4: 30문항 풀 퀴즈 데이터셋
 // ----------------------------------------------------
@@ -98,6 +106,100 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (hamburger) hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+  // REAL-TIME SEARCH & AUTOCOMPLETE ENGINE FIX!
+  const heroSearchInput = document.getElementById('heroSearchInput');
+  const heroSearchBtn = document.getElementById('heroSearchBtn');
+  const heroSearchDropdown = document.getElementById('heroSearchDropdown');
+  const tagBtns = document.querySelectorAll('.tag-btn');
+
+  function getAllSearchableItems() {
+    const items = [];
+
+    // 1. Daily concepts
+    DAILY_CONCEPTS_100.forEach(c => {
+      items.push({ title: `Day ${c.day}. ${c.title}`, desc: c.summary, category: "100일 백과사전", data: c });
+    });
+
+    // 2. Master Guides
+    Object.values(MASTER_GUIDE_DATA).forEach(m => {
+      items.push({ title: m.name, desc: m.quickSummary, category: "차트·매매 마스터", data: m });
+    });
+
+    // 3. Slangs
+    Object.values(SLANG_GUIDE_DATA).forEach(s => {
+      items.push({ title: s.name, desc: s.quickSummary, category: "커뮤니티 밈", data: s });
+    });
+
+    return items;
+  }
+
+  function handleLiveSearch(query) {
+    if (!heroSearchDropdown) return;
+    const q = query.trim().toLowerCase();
+
+    if (!q) {
+      heroSearchDropdown.classList.add('hidden');
+      return;
+    }
+
+    const allItems = getAllSearchableItems();
+    const matched = allItems.filter(item => 
+      item.title.toLowerCase().includes(q) || 
+      item.desc.toLowerCase().includes(q) ||
+      item.category.toLowerCase().includes(q)
+    );
+
+    if (matched.length === 0) {
+      heroSearchDropdown.innerHTML = `<div class="search-res-item"><span class="search-res-title">🔍 "${query}" 검색 결과가 없습니다.</span></div>`;
+    } else {
+      heroSearchDropdown.innerHTML = '';
+      matched.slice(0, 8).forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'search-res-item';
+        div.innerHTML = `
+          <div>
+            <div class="search-res-title">${item.title}</div>
+            <div class="search-res-desc">${item.desc.substring(0, 45)}...</div>
+          </div>
+          <span class="search-res-tag">${item.category}</span>
+        `;
+        div.addEventListener('click', () => {
+          heroSearchDropdown.classList.add('hidden');
+          openUniversalModal(item.data);
+        });
+        heroSearchDropdown.appendChild(div);
+      });
+    }
+
+    heroSearchDropdown.classList.remove('hidden');
+  }
+
+  if (heroSearchInput) {
+    heroSearchInput.addEventListener('input', (e) => handleLiveSearch(e.target.value));
+    heroSearchInput.addEventListener('focus', (e) => { if (e.target.value) handleLiveSearch(e.target.value); });
+  }
+
+  if (heroSearchBtn) {
+    heroSearchBtn.addEventListener('click', () => {
+      const q = heroSearchInput.value.trim();
+      if (q) handleLiveSearch(q);
+    });
+  }
+
+  tagBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q = btn.getAttribute('data-search');
+      if (heroSearchInput) heroSearchInput.value = q;
+      handleLiveSearch(q);
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (heroSearchDropdown && !e.target.closest('.hero-search-wrap')) {
+      heroSearchDropdown.classList.add('hidden');
+    }
+  });
 
   // Live News Feed Engine
   const newsGrid = document.getElementById('newsGrid');
@@ -198,7 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!conceptChips) return;
     conceptChips.innerHTML = '';
     DAILY_CONCEPTS_100.forEach((item, idx) => {
-      // Filter by range
       let show = true;
       if (currentDayFilter === '1-20' && (item.day < 1 || item.day > 20)) show = false;
       if (currentDayFilter === '21-40' && (item.day < 21 || item.day > 40)) show = false;
@@ -237,17 +338,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // FIX: When "오늘 공부 완료" is clicked, mark complete and AUTOMATICALLY ADVANCE TO NEXT DAY!
   if (btnToggleLearn) {
     btnToggleLearn.addEventListener('click', () => {
       const currentDay = DAILY_CONCEPTS_100[currentConceptIndex].day;
       learnedSet.add(currentDay);
       localStorage.setItem('stock_beginner_learned_100', JSON.stringify(Array.from(learnedSet)));
 
-      // Render current state
       renderDailyConcept(currentConceptIndex);
 
-      // Smoothly advance to NEXT DAY!
       let nextIdx = currentConceptIndex + 1;
       if (nextIdx >= DAILY_CONCEPTS_100.length) nextIdx = 0;
 
@@ -376,6 +474,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeUniversalModal);
   if (termModalOverlay) termModalOverlay.addEventListener('click', (e) => { if (e.target === termModalOverlay) closeUniversalModal(); });
+
+  // Master Cards Listeners
+  const masterCards = document.querySelectorAll('.clickable-master-card');
+  masterCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-master-id');
+      const dataObj = MASTER_GUIDE_DATA[id];
+      if (dataObj) openUniversalModal(dataObj);
+    });
+  });
 
   // Quiz Engine
   const quizIntroState = document.getElementById('quizIntroState');

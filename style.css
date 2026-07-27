@@ -179,16 +179,18 @@ body {
   margin-bottom: 35px;
 }
 
+/* REAL-TIME AUTOCOMPLETE SEARCH DROPDOWN */
 .hero-search-wrap {
-  margin-bottom: 40px;
+  position: relative;
+  max-width: 650px;
+  margin: 0 auto 40px;
 }
 
 .hero-search-box {
   display: flex;
   align-items: center;
   padding: 6px 8px 6px 20px;
-  max-width: 650px;
-  margin: 0 auto 15px;
+  margin-bottom: 8px;
 }
 
 .hero-search-box input {
@@ -210,6 +212,89 @@ body {
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
+}
+
+.hero-search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  max-height: 380px;
+  overflow-y: auto;
+  text-align: left;
+  padding: 10px 0;
+}
+
+.hero-search-dropdown.hidden { display: none; }
+
+.search-res-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s ease;
+}
+
+.search-res-item:hover {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.search-res-title {
+  font-weight: 700;
+  color: #f1f5f9;
+  font-size: 0.98rem;
+}
+
+.search-res-desc {
+  font-size: 0.83rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.search-res-tag {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.hero-keywords-recommend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.tag-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  padding: 5px 12px;
+  border-radius: 14px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tag-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: #6366f1;
+  color: #fff;
 }
 
 .hero-stats {

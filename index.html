@@ -23,7 +23,7 @@
         <li><a href="#daily" class="nav-link highlight-link">🗓️ 100일 백과사전</a></li>
         <li><a href="#news" class="nav-link highlight-link3">📰 실시간 뉴스</a></li>
         <li><a href="#chart-guide" class="nav-link highlight-purple">📊 차트·매매 마스터</a></li>
-        <li><a href="#slang" class="nav-link highlight-slang">🔥 커뮤니티 밈</a></li>
+        <li><a href="#slang" class="nav-link highlight-slang">🔥 커뮤니티 용어</a></li>
         <li><a href="#terms" class="nav-link">🔍 용어 심화사전</a></li>
         <li><a href="#quiz" class="nav-link highlight-link2">🧩 실력 퀴즈</a></li>
       </ul>
@@ -33,7 +33,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section with Quick Search -->
+  <!-- Hero Section with Live Search & Auto-complete -->
   <section id="hero" class="hero">
     <div class="hero-bg">
       <div class="hero-orb orb-1"></div>
@@ -52,19 +52,24 @@
         차트 보는 법, ROE/PER 가치투자, 돔황챠 밈 용어까지 완벽 수록!
       </p>
 
-      <!-- Hero Search Bar -->
+      <!-- Real-Time Auto-complete Search Box -->
       <div class="hero-search-wrap">
         <div class="hero-search-box glass-card">
           <span class="hero-search-icon">🔍</span>
-          <input type="text" id="heroSearchInput" placeholder="100일 개념, 차트, 매매법, 밈 검색 (예: Day 50, 돔황챠, 양봉, PER, RSI, 양도세)..." autocomplete="off" />
+          <input type="text" id="heroSearchInput" placeholder="단어, 차트, 밈, 일차 검색 (예: PER, 양봉, 돔황챠, Day 50, 양도세)..." autocomplete="off" />
           <button class="hero-search-btn" id="heroSearchBtn">검색</button>
+        </div>
+
+        <!-- Live Search Dropdown Suggestions -->
+        <div class="hero-search-dropdown hidden" id="heroSearchDropdown">
+          <!-- Dynamic Suggestions JS -->
         </div>
 
         <div class="hero-keywords-recommend">
           <span>추천 검색:</span>
           <button class="tag-btn" data-search="Day 100">🎓 Day 100 종합</button>
-          <button class="tag-btn" data-search="봉차트">🕯️ 봉차트 마스터</button>
-          <button class="tag-btn" data-search="가치투자">💎 ROE/PER 발굴법</button>
+          <button class="tag-btn" data-search="양봉">🕯️ 양봉 패턴</button>
+          <button class="tag-btn" data-search="PER">💎 PER/ROE</button>
           <button class="tag-btn" data-search="돔황챠">🔥 돔황챠 밈</button>
           <button class="tag-btn" data-search="양도소득세">💰 미국주식 세금</button>
         </div>
@@ -157,7 +162,7 @@
 
             <div class="daily-action-btns">
               <button class="btn-check-learn" id="btnToggleLearn">
-                <span class="check-icon">✓</span> <span id="btnLearnText">오늘 공부 완료!</span>
+                <span class="check-icon">✓</span> <span id="btnLearnText">오늘 공부 완료하기!</span>
               </button>
               <button class="btn-random-concept" id="btnRandomConcept">
                 🎲 무작위 개념 공부
@@ -189,7 +194,7 @@
       <div class="section-header">
         <div class="section-tag">Live Market News</div>
         <h2 class="section-title">📰 실시간 주요 증시 & 경제 뉴스</h2>
-        <p class="section-sub">국내외 실시간 증시 이슈 및 주요 경제 뉴스를 한눈에 파악하세요!</p>
+        <p class="section-sub">주식 시장의 최신 이슈를 한눈에 파악하세요</p>
       </div>
 
       <div class="news-header-bar">
@@ -439,12 +444,12 @@
     </div>
   </section>
 
-  <!-- NEW SECTION: 🔥 주식 커뮤니티 밈 & 슬랭 사전 (테마 필터 & 더보기 지원) -->
+  <!-- NEW SECTION: 🔥 주식 커뮤니티 밈 & 슬랭 사전 -->
   <section id="slang" class="section">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Community Meme Dictionary</div>
-        <h2 class="section-title">🔥 주식 커뮤니티 밈 & 슬랭 백과사전</h2>
+        <div class="section-tag">Stock Beginner Community Slang</div>
+        <h2 class="section-title">🔥 주식 커뮤니티 밈 & 슬랭 심화 사전</h2>
         <p class="section-sub">카드를 클릭하시면 밈의 유래, 대화 예시, 투자 심리 및 주의점을 팝업으로 볼 수 있어요!</p>
       </div>
 
@@ -558,7 +563,7 @@
     </div>
   </div>
 
-  <!-- Section 5: 주린이 실력 점검 퀴즈 (30문항 풀 작동 엔진) -->
+  <!-- Section 5: 주린이 실력 점검 퀴즈 -->
   <section id="quiz" class="section">
     <div class="container">
       <div class="section-header">
