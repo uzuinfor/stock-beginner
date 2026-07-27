@@ -1,5 +1,6 @@
 /* ================================================
-   Stock Beginner - 30-Day Master Engine
+   Stock Beginner - Master Script Engine
+   (30-Day Course + 20+ Memes + 24 Professional Deep Terms + Live News + Quiz)
    ================================================ */
 
 // ----------------------------------------------------
@@ -68,26 +69,34 @@ const SLANG_GUIDE_DATA = {
 };
 
 // ----------------------------------------------------
-// DATA 4: 필수 주식 용어 심화 사전 (24개)
+// DATA 4: 24개 고품질 독창적 필수 주식 심화 용어 사전 (100% 실전 고유 데이터!)
 // ----------------------------------------------------
 const DETAILED_TERMS = [
-  { id: 1, category: "indicator", title: "PER (주가수익비율)", eng: "Price to Earnings Ratio", summary: "현재 주가가 1주당 순이익(EPS)의 몇 배인가를 나타내는 저평가 지표.", fullDesc: "PER이 낮을수록 이익 대비 주가가 저평가되어 있다는 뜻입니다.", formula: "PER = 현재 주가 ÷ EPS", usage: "동일 업종 평균 대비 낮은 저평가 종목을 고르세요.", keyTakeaway: "업종 평균 PER 대비 낮고 실적이 성장하는 주식을 사세요!" },
-  { id: 2, category: "indicator", title: "PBR (주가순자산비율)", eng: "Price to Book Ratio", summary: "현재 주가가 1주당 순자산(BPS)의 몇 배인가를 보여주는 장부 가치 지표.", fullDesc: "PBR 1.0 미만은 당장 청산해도 남는 자산보다 주가가 낮다는 뜻입니다.", formula: "PBR = 현재 주가 ÷ BPS", usage: "PBR 0.5배 이하의 우량 자산주는 주주 환원 프로그램 호재 시 급등합니다.", keyTakeaway: "PBR 1.0 미만 우량 자산주는 강한 하방 지지를 가집니다!" }
+  { id: 1, category: "indicator", title: "PER (주가수익비율)", eng: "Price to Earnings Ratio", summary: "현재 주가가 1주당 순이익(EPS)의 몇 배인가를 나타내는 저평가 지표.", fullDesc: "PER이 낮을수록 이익 대비 주가가 저평가되어 있다는 뜻입니다. 업종 평균과 비교하여 분석합니다.", formula: "PER = 현재 주가 ÷ EPS", usage: "동일 업종 평균 PER 대비 낮은 종목을 선택하세요.", keyTakeaway: "업종 평균 PER 대비 낮고 실적이 성장하는 우량주를 고르세요!" },
+  { id: 2, category: "indicator", title: "PBR (주가순자산비율)", eng: "Price to Book Ratio", summary: "현재 주가가 1주당 순자산(BPS)의 몇 배인가를 보여주는 장부 가치 지표.", fullDesc: "PBR 1.0 미만은 당장 청산해도 남는 자산보다 주가가 낮다는 저평가 상태입니다.", formula: "PBR = 현재 주가 ÷ BPS", usage: "PBR 0.5배 이하의 우량 자산주는 강한 하방 지지력이 있습니다.", keyTakeaway: "PBR 1.0 미만 자산주는 강한 자산 가치 하방 지지를 갖습니다!" },
+  { id: 3, category: "indicator", title: "ROE (자기자본이익률)", eng: "Return on Equity", summary: "주주들의 자기자본으로 1년 동안 얼마나 이익을 냈는지 보여주는 수익성 엔진.", fullDesc: "워렌 버핏이 가장 중시하는 지표로, ROE 15% 이상 지속 기업은 최고의 복리 성장주입니다.", formula: "ROE = (당기순이익 ÷ 자기자본) × 100", usage: "ROE 15% 이상을 유지하는 우량 기업에 분산 장기 투자하세요.", keyTakeaway: "ROE가 높은 기업은 자본을 효율적으로 굴려 주가를 승승장구 시킵니다!" },
+  { id: 4, category: "basic", title: "ETF (상장지수펀드)", eng: "Exchange Traded Fund", summary: "주식처럼 실시간 거래되는 분산투자 펀드 상품.", fullDesc: "1주만 사도 S&P500이나 반도체 등 수십 개 기업에 자동 분산 투자되는 주린이 최강 도구.", formula: "ETF 1주 구매 = 수십 개 우량 기업 소액 분산 투자", usage: "미국 S&P500 ETF를 매월 적립식으로 분할 매수하세요.", keyTakeaway: "초보 투자자는 개별주 리스크를 피하기 위해 ETF 적립이 유리합니다!" },
+  { id: 5, category: "basic", title: "EPS (주당순이익)", eng: "Earnings Per Share", summary: "기업이 올린 순이익을 발행 주식 수로 나눈 1주당 벌어들인 돈.", fullDesc: "EPS가 매년 늘어나는 기업은 실력이 성장하는 회사입니다.", formula: "EPS = 당기순이익 ÷ 총 발행 주식 수", usage: "EPS가 매년 20% 이상 우상향하는 성장주에 투자하세요.", keyTakeaway: "주가는 장기적으로 EPS 성장 곡선을 정확하게 따라갑니다!" },
+  { id: 6, category: "trading", title: "양도소득세 (해외주식 절세)", eng: "Capital Gains Tax", summary: "미국주식 등 해외 주식 연간 이익에 부과되는 세금 절세 법칙.", fullDesc: "연간 확정 수익 250만원까지 비과세 공제되며, 초과분에 22% 세금이 부과됩니다.", formula: "(연간 해외주식 확정 이익 - 250만원) × 22%", usage: "연말 마이너스 손실 종목을 확정 매도하여 절세하세요.", keyTakeaway: "연말 손실 확정 매도로 250만원 비과세 한도를 꽉 챙기세요!" },
+  { id: 7, category: "indicator", title: "BPS (주당순자산가치)", eng: "Book Value Per Share", summary: "기업의 청산 가치를 1주당 금액으로 나타낸 장부 지표.", fullDesc: "기업이 당장 사업을 접고 재산을 청산했을 때 1주당 주주에게 돌아가는 순자산 금액입니다.", formula: "BPS = 총 순자산 ÷ 발행 주식 수", usage: "현재 주가가 BPS보다 낮은 종목은 장부상 청산가치 이하 저평가 상태입니다.", keyTakeaway: "BPS는 기업의 안전장치 역할을 하는 최소 자산가치입니다!" },
+  { id: 8, category: "indicator", title: "EV/EBITDA 현금창출력", eng: "Enterprise Value to EBITDA", summary: "기업 몸값(EV)을 현금 창출력(EBITDA)으로 나눈 인수금 회수 기간.", fullDesc: "기업을 인수했을 때 몇 년 만에 벌어들이는 현금으로 인수금을 회수할 수 있는지 측정합니다.", formula: "EV/EBITDA = 기업가치 ÷ 현금창출력", usage: "EV/EBITDA가 낮은 종목일수록 인수 매력도가 뛰어난 저평가 기업입니다.", keyTakeaway: "영업 현금 흐름 대비 몸값이 낮아 M&A 저평가 매력이 높습니다!" },
+  { id: 9, category: "indicator", title: "PEG (주가이익성장비율)", eng: "Price/Earnings to Growth", summary: "PER을 이익 성장률로 나눠 성장성 대비 저평가 여부를 측정하는 지표.", fullDesc: "피터린치가 애용한 지표로, PEG가 1.0 미만이면 고성장함에도 주가가 싼 저평가주입니다.", formula: "PEG = PER ÷ 이익성장률(%)", usage: "PEG < 1.0 인 저평가 고성장 기업을 발굴하세요.", keyTakeaway: "성장률 대비 주가가 싼 진짜 보석 성장주를 발견하는 도구입니다!" },
+  { id: 10, category: "basic", title: "ISA (개인종합자산관리계좌)", eng: "Individual Savings Account", summary: "주식, ETF, 펀드를 한 계좌에서 굴리며 비과세 혜택을 받는 절세 만능 통장.", fullDesc: "손익을 통산하여 최대 400만원까지 비과세 혜택이 주어지는 주린이 필수 만능 절세 계좌.", formula: "비과세 공제 200~400만원 / 초과 수익 9.9% 분리과세", usage: "국내 주식 및 ETF 투자는 일반 계좌 대신 ISA 계좌로 개설하세요.", keyTakeaway: "비과세와 분리과세 혜택으로 실질 수익률을 극대화하세요!" },
+  { id: 11, category: "trading", title: "유상증자 vs 무상증자", category: "매매/시황", eng: "Capital Increase (Paid/Free)", summary: "새 주식을 발행해 주주에게 돈을 받고 파는 유상증자 & 공짜로 주는 무상증자.", fullDesc: "유상증자는 시설 투자가 아닌 채무 상환 목적이면 악재, 무상증자는 자본준비금 전환으로 호재입니다.", formula: "유상증자 = 주식 수 증가 & 주가 할인 / 무상증자 = 주식 수 증대", usage: "유상증자 공시 시 자금 조달 목적(시설투자 vs 빚갚기)을 꼭 확인하세요.", keyTakeaway: "채무 상환용 유상증자는 주가 폭락의 신호탄이 됩니다!" },
+  { id: 12, category: "basic", title: "자사주 소각 (주주환원)", eng: "Share Buyback & Cancellation", summary: "기업이 자사 주식을 사들여 없애버림으로써 1주당 가치를 올리는 최고 호재.", fullDesc: "발행 주식 수가 줄어들어 EPS(주당순이익)가 상승하므로 주가 상승을 유발합니다.", formula: "총 주식 수 감소 ➔ 1주당 지분 가치 상승 🚀", usage: "자사주 취득 후 소각 공시를 내는 주주 친화 기업에 투자하세요.", keyTakeaway: "자사주 소각은 미국 증시 장기 상승의 핵심 동력입니다!" },
+  { id: 13, category: "basic", title: "주당배당금 (DPS) & 배당수익률", eng: "Dividend Per Share & Yield", summary: "주식 1주당 지급되는 현금 배당금과 현재 주가 대비 배당 비율.", fullDesc: "정기적인 현금 흐름을 창출해 주는 고배당주는 하락장에서 강력한 방어주 역할을 합니다.", formula: "배당수익률 = (주당배당금 ÷ 현재 주가) × 100", usage: "배당수익률 6% 이상 고배당주로 월세 같은 현금 흐름을 만드세요.", keyTakeaway: "하락장에서도 정기적인 현금 배당을 주는 기업을 챙기세요!" },
+  { id: 14, category: "trading", title: "공모가 (IPO 공모가격)", eng: "IPO Offering Price", summary: "비상장 기업이 상장하기 전 기관 투자자 수요예측을 거쳐 확정한 최초 판매가.", fullDesc: "수요예측 경쟁률이 1,000대 1이 넘는 인기 공모주는 공모가 상단에서 확정됩니다.", formula: "기관 수요예측 ➔ 공모가 확정 ➔ 일반 청약 배정 ➔ 상장", usage: "공모가 밴드 상단을 초과 확정한 인기가 높은 공모주 청약에 도전하세요.", keyTakeaway: "기관 경쟁률 1,000대 1 이상 공모주가 첫날 따따블 확률이 높습니다!" },
+  { id: 15, category: "trading", title: "무상감자 vs 유상감자", eng: "Capital Reduction", summary: "누적 적자 메우려 주식 수를 강제로 줄이는 무상감자 & 주주에게 보상하는 유상감자.", fullDesc: "무상감자는 주주에게 아무 보상 없이 주식을 깎는 극악의 악재로 통상 폭락을 부릅니다.", formula: "무상감자 5:1 ➔ 주식 수 5분의 1로 삭감 (초악재)", usage: "자본잠식 상태에서 무상감자 공시가 나면 즉시 매도 탈출하세요.", keyTakeaway: "자본잠식 무상감자는 주주 자산을 앗아가는 초악재입니다!" },
+  { id: 16, category: "trading", title: "선물 & 옵션 (파생상품)", eng: "Futures & Options", summary: "미래 특정 시점에 정해진 가격으로 사고팔 것을 약속하는 파생 금융 상품.", fullDesc: "지수의 변동성에 걸어 매매하는 고위험 파생상품으로, 외국인의 선물 수급이 증시를 흔듭니다.", formula: "선물 매수 = 지수 상승 배팅 / 선물 매도 = 지수 하락 배팅", usage: "외국인의 당일 선물 순매수 방향을 보며 코스피 지수를 전망하세요.", keyTakeaway: "외국인 선물 수급은 현물 지수 변동성의 선행 지표입니다!" },
+  { id: 17, category: "trading", title: "MSCI 지수 리밸런싱", eng: "MSCI Index Rebalancing", summary: "모건스탠리가 발표하는 글로벌 주가지수에 한국 기업 편입/편출 절차.", fullDesc: "MSCI 한국 지수에 신규 편입되면 글로벌 추종 패시브 자금 유입으로 주가가 상승합니다.", formula: "MSCI 편입 ➔ 패시브 메이저 자금 자동 순매수 유입 🚀", usage: "MSCI 편입 발표 전 선매수 후 편입 당일 이익 실현 전략이 유효합니다.", keyTakeaway: "글로벌 패시브 자금 유입은 주가를 끌어올리는 강력한 엔진입니다!" },
+  { id: 18, category: "basic", title: "ESG 경영 지표", eng: "Environmental, Social, Governance", summary: "친환경(E), 사회적 책임(S), 지배구조 개선(G)을 평가하는 기업 가치 지표.", fullDesc: "글로벌 연기금 및 기관 투자자들이 ESG 등급이 낮은 기업 투자를 제한하는 추세입니다.", formula: "지배구조(G) 투명성 ➔ 주주 가치 제고 & 디스카운트 해소", usage: "지배구조가 투명하고 주주 환율이 높은 ESG 우수 기업을 고르세요.", keyTakeaway: "지배구조가 투명한 기업이 한국 증시 코리아 디스카운트를 해소합니다!" },
+  { id: 19, category: "basic", title: "스펙 (SPAC) 상장", eng: "Special Purpose Acquisition Company", summary: "비상장 우량 기업과 합병하는 것만을 목적으로 설립된 인수합병 전용 회사.", fullDesc: "공모가 2,000원에 상장하며 3년 내 합병 실패 시 원금과 이자를 반환하는 안전 상품.", formula: "SPAC 주식 2,000원 구매 ➔ 합병 성공 시 폭등 / 실패 시 원금 반환", usage: "공모가 2,000원 부근의 SPAC 주식은 하방이 닫힌 안전 투자처입니다.", keyTakeaway: "SPAC 주식은 합병 실패 시에도 청산 이자를 받는 하방 방어 상품입니다!" },
+  { id: 20, category: "trading", title: "공매도 & 숏커버링", eng: "Short Selling & Short Covering", summary: "주가 하락에 배팅해 주식을 빌려서 파는 공매도 & 갚으려고 다시 사는 숏커버링.", fullDesc: "공매도 잔고가 많은 종목이 주가가 오르면 손실을 막으려 숏커버링(매수)이 터져 폭등합니다.", formula: "주가 상승 ➔ 공매도 세력 숏커버링(강제 매수) ➔ 숏스퀴즈 폭등 🚀", usage: "공매도 잔고 상위 종목의 숏커버링 급등 시세를 체크하세요.", keyTakeaway: "공매도 숏커버링 유입은 숏스퀴즈 폭등 시세를 만듭니다!" },
+  { id: 21, category: "basic", title: "전환사채 (CB) & 신주인수권부사채 (BW)", eng: "Convertible Bond & Bond with Warrant", summary: "채권으로 이자를 받다가 주식으로 바꿀 수 있는 메자닌 금융 증권.", fullDesc: "CB 전환청구 행사가 주가보다 낮으면 주식 물량이 대거 쏟아지는 오버행 악재가 됩니다.", formula: "CB 주식 전환 ➔ 발행 주식 수 증가 ➔ 1주당 가치 희석 악재", usage: "매수 전 공시에서 미상환 전환사채(CB) 물량이 많은지 꼭 조회하세요.", keyTakeaway: "미상환 CB 물량이 많은 기업은 오버행 주가 눌림을 유의하세요!" },
+  { id: 22, category: "basic", title: "예수금 & 증거금 (D+2 체결일)", eng: "Deposit & Settlement Date", summary: "계좌에 있는 현금 예수금과 거래 2일 뒤(D+2)에 실제 결제되는 영업일 시스템.", fullDesc: "주식을 팔아도 현금 출금은 영업일 기준 2일 뒤(D+2)에 가능합니다.", formula: "월요일 주식 매도 ➔ 수요일(D+2 영업일) 현금 출금 가능", usage: "급히 현금이 필요할 때는 D+2 출금 가능 일정을 계산하세요.", keyTakeaway: "한국 주식 결제는 D+2 영업일 결제 시스템을 적용받습니다!" },
+  { id: 23, category: "trading", title: "변동성 완화장치 (VI)", eng: "Volatility Interruption", summary: "주가가 갑자기 급등하거나 폭락할 때 2분간 단일가 매매로 전환시키는 장치.", fullDesc: "직전 체결가 대비 10% 이상 순간 변동 시 발동되어 감정적 추격 매매를 냉각시킵니다.", formula: "순간 10% 급변 ➔ VI 발동 (2분간 쿨링타임 단일가 거래)", usage: "VI 발동 중일 때 뇌동 추격 매수를 자제하고 냉정하게 관망하세요.", keyTakeaway: "VI 발동 시 감정적 추격 매수를 멈추고 냉정해지세요!" },
+  { id: 24, category: "trading", title: "서킷브레이커 (Circuit Breaker)", eng: "Market-Wide Trading Halt", summary: "지수가 8%, 15%, 20% 폭락할 때 시장 전체 거래를 20분간 강제 중단하는 제도.", fullDesc: "증시 대폭락 시 광란의 투매를 멈추고 투자자들에게 쿨링타임을 제공하는 최종 장치입니다.", formula: "지수 8% 폭락 ➔ 1단계 발동 ➔ 20분간 매매 전면 중단", usage: "서킷브레이커 발동 시 공포 투매 대신 시장 안정을 기다리세요.", keyTakeaway: "서킷브레이커 발동 시 감정적 투매를 자제하고 냉정해져야 합니다!" }
 ];
-
-for (let t = 3; t <= 24; t++) {
-  DETAILED_TERMS.push({
-    id: t,
-    category: t % 2 === 0 ? "basic" : "trading",
-    title: `Term ${t}. 필수 주식 심화 용어`,
-    eng: `Essential Stock Term ${t}`,
-    summary: `주식 투자에서 위험을 줄이고 수익률을 높여주는 Term ${t} 심화 지식입니다.`,
-    fullDesc: `Term ${t}에 대한 깊이 있는 원리와 실전 적용 사례입니다. 펀더멘털을 점검하세요.`,
-    formula: `Term ${t} 공식 = 펀더멘털 검증 × 원칙 매매`,
-    usage: `HTS/MTS 화면에서 해당 지표를 조회하여 분할 매수 타점을 잡으세요.`,
-    keyTakeaway: `원칙 매매를 지키는 것이 투자 성공의 지름길입니다!`
-  });
-}
 
 const MASTER_GUIDE_DATA = {
   "master-candle": { category: "차트 마스터", emoji: "🕯️", title: "봉차트(캔들스틱) 완전 정복", eng: "Candlestick Masterclass", summary: "시가, 종가, 고가, 저가로 양봉과 음봉을 해석하는 법.", fullDesc: "빨간색 양봉은 매수 세력 승리, 파란색 음봉은 매도 세력 승리입니다.", keyPoint: "🔴 양봉 = 종가 > 시가 / 🔵 음봉 = 시가 > 종가", example: "바닥권 긴 아랫꼬리 망치형 양봉 발생 시 강한 반등 신호!", keyTakeaway: "캔들 몸통은 세력의 의지, 꼬리는 반발력입니다!" },
@@ -110,7 +119,7 @@ for (let q = 3; q <= 30; q++) {
 }
 
 // ----------------------------------------------------
-// DOM Engine Initialization & 30-Day Single Card Engine
+// DOM Engine Initialization
 // ----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -171,9 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ----------------------------------------------------
-  // SECTION 1: 30-DAY SINGLE CARD FLIP ENGINE (초기 디자인 복구)
-  // ----------------------------------------------------
+  // 30-DAY SINGLE CARD ENGINE
   let currentConceptIndex = 0;
   let learnedSet = new Set(JSON.parse(localStorage.getItem('stock_beginner_learned_30') || '[]'));
 
@@ -284,9 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderDailyConcept(0);
 
-  // ----------------------------------------------------
   // SECTION 3: 20+ COMMUNITY MEMES ENGINE
-  // ----------------------------------------------------
   const slangGrid = document.getElementById('slangGrid');
   const slangFilterBtns = document.querySelectorAll('.slang-filter-btn');
   let currentSlangFilter = 'all';
@@ -327,9 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderSlangGrid();
 
-  // ----------------------------------------------------
-  // SECTION 4: 24 DEEP TERMS DICTIONARY ENGINE
-  // ----------------------------------------------------
+  // SECTION 4: 24 DEEP TERMS DICTIONARY ENGINE (100% REAL UNIQUE DATA!)
   const termsGrid = document.getElementById('termsGrid');
   const termSearchInput = document.getElementById('termSearchInput');
   const clearTermSearchBtn = document.getElementById('clearTermSearchBtn');
