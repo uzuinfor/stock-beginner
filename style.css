@@ -1,12 +1,12 @@
 /* ================================================
-   Stock Beginner - Ultimate High-Readability Design System
+   Stock Beginner - 30-Day Single Card Flip Design System
    ================================================ */
 
 :root {
   --bg-dark: #0b0f19;
   --bg-card: rgba(30, 41, 59, 0.5);
   --text-main: #f8fafc;
-  --text-muted: #94a3b8;
+  --text-muted: #cbd5e1;
   --accent-blue: #3b82f6;
   --accent-purple: #8b5cf6;
   --accent-green: #10b981;
@@ -64,7 +64,7 @@ body {
 .nav-hamburger span { display: block; width: 24px; height: 2px; background-color: #fff; border-radius: 2px; }
 
 /* Hero Section */
-.hero { position: relative; min-height: 75vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 50px; }
+.hero { position: relative; min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 50px; }
 .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
 .hero-orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.25; }
 .orb-1 { top: 5%; left: 15%; width: 300px; height: 300px; background: #6366f1; }
@@ -109,55 +109,53 @@ body {
 .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; }
 .section-sub { color: #cbd5e1; font-size: 1.05rem; }
 
-/* 100-DAY INTERACTIVE GRID */
-.daily-progress-card { padding: 25px 30px; margin-bottom: 30px; }
-.progress-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; font-weight: 600; color: #cbd5e1; }
-.progress-bar-bg { width: 220px; height: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 5px; overflow: hidden; }
+/* 30-DAY SINGLE CARD FLIP DESIGN */
+.daily-box { padding: 35px; }
+.daily-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
+.daily-date-badge { font-weight: 700; color: #60a5fa; font-size: 1.05rem; }
+.progress-bar-bg { width: 220px; height: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 5px; overflow: hidden; margin-top: 6px; }
 .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #60a5fa, #10b981); transition: width 0.3s ease; }
 
-.day-filter-menu, .slang-filter-menu, .chart-tab-menu, .terms-filter-menu {
-  display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; justify-content: flex-start; -webkit-overflow-scrolling: touch;
+.daily-card-wrap { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+.daily-nav-btn {
+  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff;
+  width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;
+}
+.daily-nav-btn:hover { background: #6366f1; border-color: transparent; transform: scale(1.08); }
+
+.daily-concept-card {
+  flex: 1; background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 24px; padding: 35px; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.5);
 }
 
-@media (min-width: 768px) {
-  .day-filter-menu, .slang-filter-menu, .chart-tab-menu, .terms-filter-menu { justify-content: center; }
+.concept-day-tag { position: absolute; top: 25px; right: 25px; background: rgba(99, 102, 241, 0.25); color: #a5b4fc; padding: 6px 16px; border-radius: 14px; font-size: 0.9rem; font-weight: 800; }
+.concept-card-icon { font-size: 3rem; margin-bottom: 15px; }
+.concept-card-title { font-size: 1.8rem; font-weight: 900; color: #f1f5f9; margin-bottom: 6px; }
+.concept-card-category { color: #60a5fa; font-weight: 700; font-size: 0.95rem; margin-bottom: 18px; }
+.concept-card-summary { font-size: 1.1rem; color: #f1f5f9; line-height: 1.65; margin-bottom: 25px; }
+
+.concept-card-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+.detail-box { background: rgba(255, 255, 255, 0.05); border-left: 4px solid #6366f1; padding: 16px; border-radius: 12px; font-size: 0.95rem; color: #f1f5f9; }
+.detail-box.example { border-left-color: #f59e0b; }
+.detail-box strong { display: block; color: #60a5fa; margin-bottom: 6px; }
+
+.daily-action-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+.btn-check-learn {
+  background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #66bb6a;
+  padding: 14px 28px; border-radius: 25px; font-weight: 800; font-size: 1.05rem; cursor: pointer; flex: 1;
 }
+.btn-check-learn.learned { background: #10b981; color: #fff; border-color: transparent; }
+.btn-random-concept { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18); color: #cbd5e1; padding: 14px 24px; border-radius: 25px; font-weight: 700; cursor: pointer; }
 
-.day-filter-btn, .slang-filter-btn, .chart-tab-btn, .term-filter-btn {
-  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #cbd5e1; padding: 8px 18px; border-radius: 20px; font-size: 0.88rem; font-weight: 600; cursor: pointer; white-space: nowrap; flex-shrink: 0;
-}
+.concept-list-drawer { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px; margin-top: 10px; }
+.drawer-header { margin-bottom: 15px; font-size: 1rem; color: #cbd5e1; }
+.concept-chips { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; -webkit-overflow-scrolling: touch; }
+.concept-chip { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); color: #cbd5e1; padding: 8px 18px; border-radius: 20px; font-size: 0.88rem; font-weight: 600; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+.concept-chip.active { background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%); color: #fff; font-weight: 800; border-color: transparent; }
+.concept-chip.is-learned { border-color: #10b981; }
 
-.day-filter-btn.active, .slang-filter-btn.active, .chart-tab-btn.active, .term-filter-btn.active {
-  background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%); border-color: transparent; color: #fff; font-weight: 700; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-}
-
-.concepts-grid-100 { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-
-.concept-grid-card {
-  padding: 24px; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; border-radius: 18px;
-}
-
-.concept-grid-card.is-learned { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.08); }
-
-.card-top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.day-num-badge { background: rgba(99, 102, 241, 0.25); color: #a5b4fc; padding: 4px 12px; border-radius: 12px; font-size: 0.82rem; font-weight: 800; }
-.concept-cat-tag { font-size: 0.78rem; color: #60a5fa; font-weight: 600; }
-
-.card-icon-title { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.concept-icon { font-size: 1.8rem; }
-.concept-title { font-size: 1.15rem; font-weight: 800; color: #f1f5f9; }
-.concept-summary-text { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 18px; }
-
-.card-bottom-actions { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; }
-.btn-toggle-learn-card {
-  background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #cbd5e1;
-  padding: 6px 14px; border-radius: 14px; font-size: 0.82rem; font-weight: 700; cursor: pointer;
-}
-.btn-toggle-learn-card.completed { background: #10b981; color: #fff; border-color: transparent; }
-.read-more-link { font-size: 0.82rem; color: #818cf8; font-weight: 700; }
-
-/* Chart Master Visual Cards */
+/* Chart Master & 20+ Slang Grid */
 .chart-tab-content { display: none; }
 .chart-tab-content.active { display: block; }
 .guide-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
@@ -171,7 +169,6 @@ body {
 .candle-box.blue, .trend-line-info.green { background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); color: #60a5fa; }
 .card-click-prompt { font-size: 0.85rem; color: #a5b4fc; font-weight: 700; }
 
-/* 20+ Slang Memes & 24 Deep Terms Grid */
 .slang-grid, .terms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .slang-card, .term-card { padding: 24px; cursor: pointer; border-radius: 18px; }
 .slang-badge, .term-badge { display: inline-block; padding: 4px 10px; border-radius: 10px; font-size: 0.75rem; font-weight: 700; background: rgba(99, 102, 241, 0.2); color: #a5b4fc; margin-bottom: 10px; }
@@ -231,6 +228,11 @@ body {
   .hero-search-box { flex-direction: column; gap: 8px; padding: 10px; }
   .hero-search-btn { width: 100%; }
 
-  .concepts-grid-100, .slang-grid, .terms-grid, .news-grid, .guide-grid-2 { grid-template-columns: 1fr; }
+  .daily-card-wrap { flex-direction: column; }
+  .daily-concept-card { padding: 22px 18px; }
+  .concept-card-title { font-size: 1.4rem; }
+  .concept-card-detail { grid-template-columns: 1fr; }
+
+  .slang-grid, .terms-grid, .news-grid, .guide-grid-2 { grid-template-columns: 1fr; }
   .modal-section-box.grid-2-col { grid-template-columns: 1fr; }
 }

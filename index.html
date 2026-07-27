@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Stock Beginner | 주식 100일 완성 백과사전 & 차트 마스터</title>
-  <meta name="description" content="Stock Beginner! 주식 100일 완성 백과사전, 20개+ 밈 사전, 24개 심화 용어, 차트 마스터 및 30문항 퀴즈" />
+  <title>Stock Beginner | 주식 30일 완성 백과사전 & 차트 마스터</title>
+  <meta name="description" content="Stock Beginner! 30일 완성 주식 백과사전. Day 1 기초부터 Day 30 심리/세금까지 하나씩 넘겨보며 완전 정복!" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -20,7 +20,7 @@
         <span class="logo-text">Stock Beginner</span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#daily" class="nav-link">📚 100일 백과사전</a></li>
+        <li><a href="#daily" class="nav-link">📚 30일 백과사전</a></li>
         <li><a href="#chart-guide" class="nav-link">📊 차트·매매 마스터</a></li>
         <li><a href="#slang" class="nav-link">🔥 커뮤니티 밈 (20개+)</a></li>
         <li><a href="#terms" class="nav-link">🔍 용어 심화사전</a></li>
@@ -41,21 +41,21 @@
       <div class="hero-orb orb-3"></div>
     </div>
     <div class="hero-content">
-      <div class="hero-badge">🌌 Stock Beginner · 완전 초보 전용 마스터 클래스</div>
+      <div class="hero-badge">🌌 Stock Beginner · 주식 30일 완성 마스터 클래스</div>
       <h1 class="hero-title">
         Stock Beginner<br />
-        <span class="gradient-text">주식 100일 완성 백과사전</span>
+        <span class="gradient-text">주식 30일 완성 백과사전</span>
       </h1>
       <p class="hero-desc">
-        어려운 주식 용어와 차트를 한눈에 이해하는 쉬운 백과사전!<br />
-        Day 1 기초부터 20개+ 커뮤니티 밈, 심화 사전, 30문항 퀴즈까지 완벽 수록!
+        Day 1 주식 기초부터 Day 30 세금·FOMO 극복까지 고품질 30개 코스!<br />
+        하나씩 넘겨보며 공부하고 오늘 학습을 완성해보세요.
       </p>
 
       <!-- Real-Time Auto-complete Search Box -->
       <div class="hero-search-wrap">
         <div class="hero-search-box">
           <span class="search-box-icon">🔍</span>
-          <input type="text" id="heroSearchInput" placeholder="단어, 차트, 밈, 일차 검색 (예: PER, 양봉, 돔황챠, Day 5)..." autocomplete="off" />
+          <input type="text" id="heroSearchInput" placeholder="단어, 차트, 밈, 일차 검색 (예: PER, 양봉, 돔황챠, Day 15)..." autocomplete="off" />
           <button class="hero-search-btn" id="heroSearchBtn">검색하기</button>
         </div>
 
@@ -66,14 +66,14 @@
           <button class="tag-btn" data-search="PER">💎 PER/ROE</button>
           <button class="tag-btn" data-search="양봉">🕯️ 양봉 차트</button>
           <button class="tag-btn" data-search="돔황챠">🔥 돔황챠 밈</button>
-          <button class="tag-btn" data-search="시가총액">💰 시가총액</button>
+          <button class="tag-btn" data-search="Day 30">🎓 Day 30 완강</button>
         </div>
       </div>
 
       <div class="hero-stats">
         <div class="stat-item">
-          <span class="stat-num">100</span>일
-          <span class="stat-label">백과사전</span>
+          <span class="stat-num">30</span>일
+          <span class="stat-label">완성 백과사전</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
@@ -94,35 +94,75 @@
     </div>
   </section>
 
-  <!-- Section 1: 100일 완성 백과사전 -->
+  <!-- Section 1: 30일 완성 백과사전 (초기 카드 카루셀 넘기기 디자인) -->
   <section id="daily" class="section section-dark">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Daily Course</div>
-        <h2 class="section-title">📚 Stock Beginner 100일 백과사전</h2>
-        <p class="section-sub">원하는 날짜 카드를 클릭하시면 가시성이 뛰어난 상세 팝업이 바로 나타납니다!</p>
+        <div class="section-tag">30-Day Master Course</div>
+        <h2 class="section-title">📚 Stock Beginner 30일 백과사전</h2>
+        <p class="section-sub">좌우 화살표나 오늘 공부 완료 버튼을 누르며 하나씩 쉽게 넘겨보세요!</p>
       </div>
 
-      <div class="daily-progress-card glass-card">
-        <div class="progress-info">
-          <span>진행 상황: <strong id="learnedCount">0</strong> / 100일 (<span id="learnedPercent">0</span>% 완료)</span>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="learnedProgressBar" style="width: 0%"></div>
+      <div class="daily-box glass-card">
+        <div class="daily-top">
+          <div class="daily-date-badge">
+            <span class="date-icon">📅</span>
+            <span id="dailyDate">DAY-BY-DAY STUDY</span>
+          </div>
+          <div class="daily-progress">
+            <span>학습 완료: <strong id="learnedCount">0</strong> / 30일 (<span id="learnedPercent">0</span>% 완료)</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="learnedProgressBar" style="width: 0%"></div>
+            </div>
           </div>
         </div>
 
-        <div class="day-filter-menu" id="dayFilterMenu">
-          <button class="day-filter-btn active" data-range="all">전체 (1~100일)</button>
-          <button class="day-filter-btn" data-range="1-20">1단계: 기초 (1~20)</button>
-          <button class="day-filter-btn" data-range="21-40">2단계: 재무 (21~40)</button>
-          <button class="day-filter-btn" data-range="41-60">3단계: 차트 (41~60)</button>
-          <button class="day-filter-btn" data-range="61-80">4단계: 매매 (61~80)</button>
-          <button class="day-filter-btn" data-range="81-100">5단계: 해외/세금 (81~100)</button>
-        </div>
-      </div>
+        <!-- Single Card Flip View with Prev / Next Buttons -->
+        <div class="daily-card-wrap">
+          <button class="daily-nav-btn prev" id="prevConceptBtn" title="이전 날짜">◀</button>
+          
+          <div class="daily-concept-card" id="dailyConceptCard">
+            <div class="concept-day-tag" id="conceptDayTag">Day 1</div>
+            <div class="concept-card-icon" id="conceptIcon">🍕</div>
+            <h3 class="concept-card-title" id="conceptTitle">주식과 주주의 정의</h3>
+            <div class="concept-card-category" id="conceptCategory">주식 기초</div>
+            <p class="concept-card-summary" id="conceptSummary">
+              주식은 회사의 소유권을 작게 쪼갠 조각이에요. 주식을 1주라도 사면 회사의 주인이 되어 주주(株主)가 됩니다.
+            </p>
 
-      <div class="concepts-grid-100" id="conceptsGrid100">
-        <!-- 100-Day Interactive Cards loaded via JS -->
+            <div class="concept-card-detail">
+              <div class="detail-box">
+                <strong>📌 핵심 포인트</strong>
+                <p id="conceptKeyPoint">주식 1주 = 기업 지분 소유 = 주주 권리 행사</p>
+              </div>
+              <div class="detail-box example">
+                <strong>💬 실전 예시</strong>
+                <p id="conceptExample">삼성전자 주식 1주를 사면 삼성전자의 사업 성과와 배당금을 누릴 주주가 돼요.</p>
+              </div>
+            </div>
+
+            <div class="daily-action-btns">
+              <button class="btn-check-learn" id="btnToggleLearn">
+                <span class="check-icon">✓</span> <span id="btnLearnText">오늘 공부 완료하기!</span>
+              </button>
+              <button class="btn-random-concept" id="btnRandomConcept">
+                🎲 무작위 개념 공부
+              </button>
+            </div>
+          </div>
+
+          <button class="daily-nav-btn next" id="nextConceptBtn" title="다음 날짜">▶</button>
+        </div>
+
+        <!-- Day Selector Chips Tray -->
+        <div class="concept-list-drawer">
+          <div class="drawer-header">
+            <h4>Stock Beginner 30일 목록 바로가기</h4>
+          </div>
+          <div class="concept-chips" id="conceptChips">
+            <!-- Dynamic 30 Chips loaded via JS -->
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -330,7 +370,6 @@
 
           <div class="quiz-options-grid" id="quizOptionsGrid"></div>
 
-          <!-- Feedback Box starts hidden until option click -->
           <div class="quiz-feedback-box hidden" id="quizFeedbackBox">
             <div class="feedback-status" id="feedbackStatus">⭕ 정답입니다!</div>
             <p class="feedback-explain" id="feedbackExplain">해설 내용</p>
@@ -402,7 +441,7 @@
           <span>🚀</span>
           <span>Stock Beginner</span>
         </div>
-        <p class="footer-copy">© 2026 Stock Beginner · 주식 100일 완성 백과사전 & 실전 가이드</p>
+        <p class="footer-copy">© 2026 Stock Beginner · 주식 30일 완성 백과사전 & 실전 가이드</p>
       </div>
     </div>
   </footer>

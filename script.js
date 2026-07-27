@@ -1,6 +1,5 @@
 /* ================================================
-   Stock Beginner - Master Script Engine
-   (100-Day Grid + 20+ Memes + 24 Deep Terms + Live News + Clean Quiz Engine)
+   Stock Beginner - 30-Day Master Engine
    ================================================ */
 
 // ----------------------------------------------------
@@ -22,108 +21,85 @@ const LIVE_MARKET_NEWS = [
 ];
 
 // ----------------------------------------------------
-// DATA 2: 100일 백과사전 풀 데이터셋 (Day 1 ~ Day 100)
+// DATA 2: 30일 완성 고품질 독창적 주식 백과사전 (Day 1 ~ Day 30)
 // ----------------------------------------------------
-const DAILY_CONCEPTS_100 = [
-  { day: 1, title: "주식과 주주의 정의", category: "기초", icon: "🍕", summary: "주식은 회사의 소유권을 작게 쪼갠 조각이에요. 주식을 1주라도 사면 회사의 주인이 되어 주주(株主)가 됩니다.", keyPoint: "주식 1주 = 기업 지분 소유 = 주주 권리 행사", example: "삼성전자 주식 1주를 사면 삼성전자의 사업 성과와 배당금을 누릴 주주가 돼요." },
-  { day: 2, title: "KOSPI vs KOSDAQ 차이", category: "시장", icon: "🏛️", summary: "KOSPI는 삼성전자, 현대차 같은 대형 전통 우량 기업들의 무대이고, KOSDAQ은 벤처, IT, 바이오 등 성장 기업들의 무대입니다.", keyPoint: "코스피 = 대형 우량주 중심 / 코스닥 = 중소 성장주 중심", example: "안정적인 대형주 투자는 코스피, 고위험 고수익 성장주는 코스닥!" },
-  { day: 3, title: "시가총액 (Market Cap)", category: "지표", icon: "💰", summary: "현재 주가에 총 발행 주식 수를 곱한 기업의 전체 현금 몸값 가격입니다. 주가가 비싸다고 대기업이 아니라 시가총액이 커야 대기업입니다.", keyPoint: "주가 × 발행 주식 수 = 시가총액 (진짜 덩치)", example: "삼성전자는 주가가 7만원대여도 시가총액 400조원 이상으로 한국 1위입니다." },
-  { day: 4, title: "주식 vs 펀드 vs ETF 비교", category: "상품", icon: "📦", summary: "주식은 직접 종목 선택, 펀드는 전문가 위탁, ETF는 펀드를 주식시장에 상장시켜 1주 단위로 사고파는 분산투자 도구입니다.", keyPoint: "ETF = 소액으로 수십 개 기업에 분산투자하는 최적 도구", example: "미국 S&P 500 ETF 1주만 사도 미국 500대 우량 기업에 자동 분산투자 돼요." },
-  { day: 5, title: "기준금리와 주가의 관계", category: "경제", icon: "🏛️", summary: "금리는 돈의 이자율입니다. 금리가 오르면 돈이 은행 예금으로 쏠리고 기업 대출 부담이 커져 주가는 하락 압력을 받습니다.", keyPoint: "금리 인상 ➔ 예금 선호 & 주가 하락 / 금리 인하 ➔ 유동성 공급 & 증시 상승", example: "미국 연준(Fed)이 금리를 인하하면 글로벌 자산 시장에 훈풍이 돕니다." },
-  { day: 6, title: "환율과 외국인 수급", category: "외환", icon: "💱", summary: "원/달러 환율이 오르면 원화 가치가 떨어져 외국인 투자자가 환차손을 피하려 한국 주식을 매도하는 경향이 큽니다.", keyPoint: "환율 상승 ➔ 외국인 매도 우려 / 환율 안정 ➔ 외국인 매수 유입", example: "환율이 급등하면 코스피 지수가 하락 압력을 받기 쉽습니다." },
-  { day: 7, title: "인플레이션과 원자재", category: "경제", icon: "🎈", summary: "화폐 가치가 하락하며 물가가 오르는 현상입니다. 현금만 쥐고 있으면 실질 구매력이 줄어들므로 실물 자산 투자가 필요합니다.", keyPoint: "인플레이션 ➔ 현금 가치 감소 ➔ 우량 자산 투자로 방어", example: "원자재 가격 상승 시 원가 부담이 적은 독점 기업 주식이 강세를 보입니다." },
-  { day: 8, title: "배당금과 배당락", category: "배당", icon: "🎁", summary: "기업이 이익의 일부를 현금으로 주주에게 나누어 주는 금액입니다. 배당받을 권리가 떨어지는 배당락일엔 주가가 조정됩니다.", keyPoint: "배당기준일까지 보유 필요 / 정기적 현금 흐름 창출", example: "연 배당수익률 6% 기업에 1,000만원 투자 시 연 60만원 현금 입금!" },
-  { day: 9, title: "공모주와 IPO 청약", category: "상장", icon: "🔄", summary: "비상장 우량 기업이 증시에 새로 들어올 때 일반인에게 주식을 처음 판매하는 절차입니다.", keyPoint: "상장 전 공모가 청약 ➔ 경쟁률에 따른 주식 배정 ➔ 상장 첫날 거래", example: "인기 공모주는 상장 첫날 공모가 대비 2~4배 오르기도 합니다." },
-  { day: 10, title: "서킷브레이커 & 사이드카", category: "제도", icon: "🔒", summary: "증시가 폭락할 때 시장 충격을 완화하기 위해 거래를 20분간 일시 중단시키는 제도입니다.", keyPoint: "지수 8% 폭락 ➔ 1단계 서킷브레이커 (매매 강제 중단 쿨링타임)", example: "서킷브레이커 발동 시 감정적 매도를 멈추고 냉정해져야 합니다." }
+const DAILY_CONCEPTS_30 = [
+  { day: 1, title: "주식과 주주의 정의", category: "주식 기초", icon: "🍕", summary: "주식은 회사의 소유권을 작게 쪼갠 조각이에요. 주식을 1주라도 사면 회사의 주인이 되어 주주(株主)가 됩니다.", keyPoint: "주식 1주 = 기업 지분 소유 = 주주 권리 행사", example: "삼성전자 주식 1주를 사면 삼성전자의 사업 성과와 배당금을 누릴 주주가 돼요." },
+  { day: 2, title: "KOSPI vs KOSDAQ 차이", category: "시장 구조", icon: "🏛️", summary: "KOSPI는 삼성전자, 현대차 같은 대형 전통 우량 기업들의 무대이고, KOSDAQ은 벤처, IT, 바이오 등 중소/성장 기업들의 무대입니다.", keyPoint: "코스피 = 대형 우량주 중심 / 코스닥 = 중소 성장주 중심", example: "안정적인 대형주 투자는 코스피, 고위험 고수익 성장주는 코스닥!" },
+  { day: 3, title: "시가총액 (Market Cap)", category: "기업 평가", icon: "💰", summary: "현재 주가에 총 발행 주식 수를 곱한 기업의 전체 현금 몸값 가격입니다. 주가가 비싸다고 대기업이 아니라 시가총액이 커야 대기업입니다.", keyPoint: "주가 × 발행 주식 수 = 시가총액 (진짜 덩치)", example: "삼성전자는 주가가 7만원대여도 시가총액 400조원 이상으로 한국 1위입니다." },
+  { day: 4, title: "주식 vs 펀드 vs ETF 비교", category: "투자 상품", icon: "📦", summary: "주식은 직접 종목 선택, 펀드는 전문가 위탁, ETF는 펀드를 주식시장에 상장시켜 1주 단위로 사고파는 분산투자 도구입니다.", keyPoint: "ETF = 소액으로 수십 개 기업에 분산투자하는 최적 도구", example: "미국 S&P 500 ETF 1주만 사도 미국 500대 우량 기업에 자동 분산투자 돼요." },
+  { day: 5, title: "기준금리와 주가의 관계", category: "거시 경제", icon: "🏛️", summary: "금리는 돈의 이자율입니다. 금리가 오르면 돈이 은행 예금으로 쏠리고 기업 대출 부담이 커져 주가는 하락 압력을 받습니다.", keyPoint: "금리 인상 ➔ 예금 선호 & 주가 하락 / 금리 인하 ➔ 유동성 공급 & 증시 상승", example: "미국 연준(Fed)이 금리를 인하하면 글로벌 자산 시장에 훈풍이 돕니다." },
+  { day: 6, title: "환율과 외국인 수급", category: "외환/수급", icon: "💱", summary: "원/달러 환율이 오르면 원화 가치가 떨어져 외국인 투자자가 환차손을 피하려 한국 주식을 매도하는 경향이 큽니다.", keyPoint: "환율 상승 ➔ 외국인 매도 우려 / 환율 안정 ➔ 외국인 매수 유입", example: "환율이 급등하면 코스피 지수가 하락 압력을 받기 쉽습니다." },
+  { day: 7, title: "인플레이션과 원자재", category: "거시 경제", icon: "🎈", summary: "화폐 가치가 하락하며 물가가 오르는 현상입니다. 현금만 쥐고 있으면 실질 구매력이 줄어들므로 실물 자산 투자가 필요합니다.", keyPoint: "인플레이션 ➔ 현금 가치 감소 ➔ 우량 자산 투자로 방어", example: "원자재 가격 상승 시 원가 부담이 적은 독점 기업 주식이 강세를 보입니다." },
+  { day: 8, title: "배당금과 배당락", category: "주주 환원", icon: "🎁", summary: "기업이 이익의 일부를 현금으로 주주에게 나누어 주는 금액입니다. 배당받을 권리가 떨어지는 배당락일엔 주가가 조정됩니다.", keyPoint: "배당기준일까지 보유 필요 / 정기적 현금 흐름 창출", example: "연 배당수익률 6% 기업에 1,000만원 투자 시 연 60만원 현금 입금!" },
+  { day: 9, title: "공모주와 IPO 청약", category: "신규 상장", icon: "🔄", summary: "비상장 우량 기업이 증시에 새로 들어올 때 일반인에게 주식을 처음 판매하는 절차입니다.", keyPoint: "상장 전 공모가 청약 ➔ 경쟁률에 따른 주식 배정 ➔ 상장 첫날 거래", example: "인기 공모주는 상장 첫날 공모가 대비 2~4배 오르기도 합니다." },
+  { day: 10, title: "서킷브레이커 & 사이드카", category: "시장 안전장치", icon: "🔒", summary: "증시가 폭락할 때 시장 충격을 완화하기 위해 거래를 20분간 일시 중단시키는 제도입니다.", keyPoint: "지수 8% 폭락 ➔ 1단계 서킷브레이커 (매매 강제 중단 쿨링타임)", example: "서킷브레이커 발동 시 감정적 매도를 멈추고 냉정해져야 합니다." },
+  { day: 11, title: "PER (주가수익비율) 저평가 발굴법", category: "재무 지표", icon: "💎", summary: "현재 주가가 1주당 순이익(EPS)의 몇 배인가를 뜻하는 저평가 측정 지표.", keyPoint: "PER = 주가 ÷ EPS (업종 평균 대비 낮은 종목이 저평가)", example: "동일 업종 평균 PER이 15배인데 현재 7배라면 저평가 매수 기회!" },
+  { day: 12, title: "PBR (주가순자산비율) 자산 가치", category: "재무 지표", icon: "🏢", summary: "현재 주가가 1주당 순자산(BPS)의 몇 배인가를 보여주는 장부 가치 지표.", keyPoint: "PBR 1.0 미만 = 당장 청산해도 남는 자산보다 주가가 낮음", example: "PBR 0.5배 이하의 우량 자산주는 주주 환원 호재 시 급등합니다." },
+  { day: 13, title: "ROE (자기자본이익률) 버핏의 가치투자", category: "수익성 지표", icon: "👑", summary: "주주들의 돈(자기자본)으로 1년 동안 얼마나 이익을 냈는지 보여주는 수익성 엔진.", keyPoint: "ROE 15% 이상 지속 = 버핏이 가장 선호하는 우량 복리 성장에너지", example: "ROE 15%를 유지하는 기업에 분산 장기 투자하세요." },
+  { day: 14, title: "EPS (주당순이익) 실적 성장의 법칙", category: "재무 지표", icon: "📈", summary: "1주당 얼마의 순이익을 벌어들였는가를 보여주는 실적 지표.", keyPoint: "주가는 장기적으로 EPS 성장 곡선을 정확히 따라갑니다.", example: "EPS가 매년 20% 이상 우상향하는 실적주를 고르세요." },
+  { day: 15, title: "EV/EBITDA 영업 현금흐름", category: "기업 평가", icon: "⚙️", summary: "기업 몸값(EV)을 현금 창출력(EBITDA)으로 나눈 인수 가치 지표.", keyPoint: "몇 년 만에 기업 인수금을 회수할 수 있는가를 측정", example: "EV/EBITDA가 낮은 기업은 M&A 저평가 매력도가 높습니다." },
+  { day: 16, title: "양봉 vs 음봉 캔들스틱 원리", category: "차트 기초", icon: "🕯️", summary: "빨간색 양봉은 매수 세력 승리, 파란색 음봉은 매도 세력 승리입니다.", keyPoint: "🔴 양봉 = 종가 > 시가 / 🔵 음봉 = 시가 > 종가", example: "장대양봉 거래량 터진 날은 세력 진입 타점!" },
+  { day: 17, title: "망치형 & 십자선(Doji) 캔들 패턴", category: "차트 패턴", icon: "🔨", summary: "바닥권에서 아랫꼬리가 긴 망치형이나 Doji 발생 시 추세 전환 신호.", keyPoint: "아랫꼬리 = 매도세를 강하게 밀어올린 팽팽한 반발력", example: "바닥권 망치형 캔들 완성 후 분할 매수로 접근하세요." },
+  { day: 18, title: "이동평균선 (5·20·60·120일) 정배열", category: "이평선 매매", icon: "📈", summary: "단기·중기·장기 평균선이 순서대로 정렬되는 대세 상승 전형 패턴.", keyPoint: "5일(생명선), 20일(세력선), 60일(수급선), 120일(경기선)", example: "정배열 종목의 20일선 눌림목에서 분할 매수하세요." },
+  { day: 19, title: "골든크로스 vs 데드크로스", category: "기술적 분석", icon: "🚦", summary: "단기선이 장기선을 위로 돌파하면 골든크로스, 아래로 뚫으면 데드크로스.", keyPoint: "거래량이 실린 크로스가 진성 시그널입니다.", example: "20일선 골든크로스 발생 시 상승 탄력이 강해집니다." },
+  { day: 20, title: "지지선과 저항선 매매 법칙", category: "추세 분석", icon: "📐", summary: "바닥 방어 지지선과 천장 막힘 저항선의 역할 반전 원리.", keyPoint: "저항선이 거래량으로 돌파되면 새로운 지지선으로 변신", example: "지지선 근처 매수, 저항선 대량 거래량 돌파 시 탑승하세요." },
+  { day: 21, title: "W자 이중 바닥 vs M자 헤드앤숄더", category: "차트 패턴", icon: "🔺", summary: "W자는 바닥 2번 찍고 반등, M자는 고점 머리 형성 후 하락 전환.", keyPoint: "W자 목라인(Neckline) 돌파 시 강력한 상승 타점", example: "M자 헤드앤숄더 패턴 완성 시 과감한 손절 대응!" },
+  { day: 22, title: "거래량과 주가의 선행 관계", category: "수급 분석", icon: "🔊", summary: "거래량은 주가에 선행합니다. 주가 돌파 시 거래량이 터져야 진짜입니다.", keyPoint: "거래량 없는 돌파 = 속임수(Fakeout) 파동 주의", example: "평소 거래량의 3배 이상 터지는 거래량 돌파를 노리세요." },
+  { day: 23, title: "RSI (상대강도지수) 과매수/과매도", category: "보조 지표", icon: "📉", summary: "주가의 과열 상태를 0~100 수치로 측정하는 보조지표.", keyPoint: "RSI 70 이상 = 과매수(매도 타이밍) / 30 이하 = 과매도(매수 타점)", example: "RSI 30 이하 과매도 구간에서 반등 신호를 잡으세요." },
+  { day: 24, title: "볼린저 밴드 스퀴즈 & 상하한선", category: "보조 지표", icon: "🎯", summary: "주가 변동성 범위(표준편차)를 밴드로 나타낸 지표.", keyPoint: "밴드 폭이 수축(스퀴즈)된 후 뚫리는 방향으로 강하게 분출", example: "볼린저 밴드 스퀴즈 후 상한선 돌파 시 시세 분출!" },
+  { day: 25, title: "지정가 vs 시장가 주문 차이", category: "매매 실전", icon: "🛒", summary: "내가 가격을 지정하는 지정가와 즉시 체결되는 시장가 주문.", keyPoint: "급등주 매수 시 지정가 주문으로 슬리피지(손실) 방지", example: "안정적인 분할 매수엔 지정가 주문이 필수입니다." },
+  { day: 26, title: "매매 체결 3대 원칙", category: "매매 제도", icon: "⚙️", summary: "가격 우선 ➔ 시간 우선 ➔ 수량 우선 순서로 체결되는 메커니즘.", keyPoint: "동시호가 장 시작 전 높은 매수가가 1순위 체결", example: "아침 9시 상한가 주문 시 시간 우선 순위를 고려하세요." },
+  { day: 27, title: "분할 매수 & 손절선 (Stop-Loss)", category: "리스크 관리", icon: "🛡️", summary: "한 번에 다 사지 않는 분할 매수와 계좌를 지키는 손절선 준수.", keyPoint: "매수 전 -5% 손절선을 미리 정하고 반드시 실행", example: "-5% 손절선을 지켜야 원금 청산 위험을 막습니다." },
+  { day: 28, title: "서학개미 미국 주식 (S&P500·Big7)", category: "해외 주식", icon: "🇺🇸", summary: "글로벌 1등 기업 엔비디아, 애플, 테슬라 및 S&P500 ETF 투자.", keyPoint: "세계 1등 우량주 분산 투자로 장기 복리 효과 창출", example: "미국 S&P 500 ETF에 매월 일정액을 적립하세요." },
+  { day: 29, title: "해외 주식 양도소득세 250만원 절세", category: "세금 절세", icon: "💰", summary: "미국 주식 연간 확정 수익 250만원 비과세 공제 혜택 활용법.", keyPoint: "연말 마이너스 손실 종목을 손절 매도하여 양도세 상계 절세", example: "연말에 손실 종목 매도 후 재매수하여 절세하세요." },
+  { day: 30, title: "뇌동매매와 FOMO 극복 (성공 투자)", category: "투자 심리", icon: "🧠", summary: "소외 공포감(FOMO)을 극복하고 원칙 매매로 승리하는 마인드셋.", keyPoint: "남의 급등 종목을 부러워 말고 나만의 원칙을 지키는 투자자 되기", example: "Day 30 완강 완료! 이제 당당히 성투의 길로 나아가세요!" }
 ];
-
-for (let d = 11; d <= 100; d++) {
-  DAILY_CONCEPTS_100.push({
-    day: d,
-    title: `Day ${d}. 주식 실전 백과사전 코스`,
-    category: d <= 20 ? "기초" : d <= 40 ? "재무" : d <= 60 ? "차트" : d <= 80 ? "매매" : "해외/세금",
-    icon: d % 2 === 0 ? "📈" : "💡",
-    summary: `Day ${d} 코스입니다. 투자 위험을 관리하고 성공적인 수익률을 올리기 위한 원칙을 다룹니다.`,
-    keyPoint: `Day ${d} 핵심 ➔ 원칙 매매 & 펀더멘털 검증`,
-    example: `Day ${d} 실전 예시를 통해 분할 매수와 손절 원칙을 적용해보세요.`
-  });
-}
 
 // ----------------------------------------------------
 // DATA 3: 🔥 커뮤니티 밈 풀 데이터셋 (20개 이상!)
 // ----------------------------------------------------
 const SLANG_GUIDE_DATA = {
-  "slang-domhwangcha": { badge: "🔥 대표 밈", emoji: "🏃‍♂️💨", name: "돔황챠 (도망쳐!)", eng: "Run Away!", category: "popular", quickSummary: "악재가 터지거나 주가가 폭락할 때 즉시 매도하고 탈출하라는 유머 표현.", fullDesc: "디시인사이드 주식갤러리에서 '도망쳐!'를 재치 있게 비틀어 부른 밈입니다.", formula: "💬 예시: \"어닝쇼크 떴다!! 모두 돔황챠!! 🏃‍♂️💨\"", usage: "악재가 터졌을 때 손절 원칙을 지키는 결단력이 필요합니다.", keyTakeaway: "악재 발생 시 빠른 손절 결단력이 계좌를 지킵니다!" },
-  "slang-sangkit": { badge: "🚀 상승 기원", emoji: "🔺", name: "상킷 (상킷리스트)", eng: "Praying for Upper Limit", category: "trading", quickSummary: "오늘 내 종목이 +30% 상한가에 가길 간절히 비는 표현.", fullDesc: "상한가 +30%와 버킷리스트를 합성한 주린이 표현입니다.", formula: "💬 예시: \"오늘 호가창 좋다! 가자 상킷!! 🚀\"", usage: "상한가 추격 매수는 다음 날 폭락 손실 위험이 큽니다.", keyTakeaway: "상한가 추격 매수를 자제하고 눌림목을 노리세요!" },
-  "slang-hakit": { badge: "🔻 하락 통곡", emoji: "📉", name: "하킷 (하한가 통곡)", eng: "Lamenting Lower Limit", category: "sad", quickSummary: "주가가 -30% 하한가로 고꾸라져 절망하는 표현.", fullDesc: "하한가 진입 시 매도 물량이 쌓여 팔고 싶어도 팔지 못하는 위험이 생깁니다.", formula: "💬 예시: \"유상증자 찌라시 떴다고? 하킷 ㅠㅠ\"", usage: "부실 동전주는 연쇄 하한가 위험이 높으니 피하세요.", keyTakeaway: "부실 동전주는 하한가 잠김 위험이 매우 큽니다!" },
-  "slang-floor": { badge: "🏢 층수 비유", emoji: "🏢", name: "N층 (70층, 80층 주민)", eng: "Floor Level", category: "trading", quickSummary: "매수한 평균 단가(평단가)를 아파트 층수로 비유한 표현.", fullDesc: "70,000원에 매수했으면 70층 주민입니다.", formula: "💬 예시: \"80층 주민인데 아래층 공기 어떠냐...\"", usage: "-50% 손실 복구에는 +100% 상승이 필요함을 명심하세요.", keyTakeaway: "-50% 손실은 +100%가 올라야 비로소 원금이 됩니다!" },
-  "slang-rescue": { badge: "🚑 본전 탈출", emoji: "🚑", name: "구조대 (구조대 도착)", eng: "Rescue Team", category: "popular", quickSummary: "오랫동안 마이너스였다가 주가가 반등하여 매수가에 도달함.", fullDesc: "장기 물림을 버텨내고 본전 매수가까지 올라오는 기쁜 순간입니다.", formula: "💬 예시: \"80층 구조대 드디어 진입했다!! 🚑\"", usage: "과거 평단가 자리는 본전 매물이 쏟아지므로 강력한 저항선이 됩니다.", keyTakeaway: "본전 매도 물량이 쏟아지는 자리가 저항선이 됩니다!" },
-  "slang-jonber": { badge: "🗿 장기 보유", emoji: "🗿", name: "존버 (무지성 vs 가치 존버)", eng: "Holding Firmly", category: "trading", quickSummary: "주가가 하락해도 팔지 않고 끝까지 버티는 행위.", fullDesc: "공부 없이 물려서 방치하는 '무지성 존버'와 기업 가치를 보고 버티는 '가치 존버'의 차이.", formula: "💬 예시: \"손절은 없다. 10년 뒤에 보자!\"", usage: "적자 부실기업 무지성 존버는 거대한 기회비용 손실입니다.", keyTakeaway: "이유 있는 가치 존버는 약이 되지만 무지성 존버는 독입니다!" },
-  "slang-water": { badge: "💸 추가 매수", emoji: "🌊", name: "물타기 vs 불타기", eng: "Averaging Down/Up", category: "trading", quickSummary: "하락 시 평단가 낮추는 물타기와 상승 시 이익 늘리는 불타기.", fullDesc: "무계획 물타기는 비중이 커져 위험하므로 지지선 확인 후 분할 매수해야 합니다.", formula: "💬 예시: \"물타기 하다가 내 계좌 수영장 됐다...\"", usage: "추세 상승 시엔 불타기로 이익을 극대화하세요.", keyTakeaway: "물타기는 계획된 지지선에서만 분할로 진행하세요!" },
-  "slang-impulse": { badge: "🧠 심리 관리", emoji: "🤯", name: "뇌동매매 (FOMO 극복)", eng: "Impulsive Trading", category: "sad", quickSummary: "원칙 없이 급등 차트를 보고 홧김에 따라 사버리는 위험한 매매.", fullDesc: "나만 부자 못 될 것 같은 소외 공포감(FOMO)으로 상단 고점에서 물리는 실수.", formula: "💬 예시: \"뇌동매매했다가 최고점에 물렸음 ㅠㅠ\"", usage: "매수 전 3초 동안 기업 재무제표와 손절선을 스스로 점검하세요.", keyTakeaway: "급등 차트 추격 뇌동매매는 고점 물림의 지름길입니다!" },
-  "slang-rice": { badge: "🍚 소액 수익", emoji: "🍚", name: "밥값 매매 (커피값 줍기)", eng: "Small Profit Trading", category: "popular", quickSummary: "소액 단타로 몇 천원~몇 만원 밥값이나 커피값을 벌고 단기 익절하는 매매.", fullDesc: "큰 욕심 없이 소소한 일상 수익을 챙기는 주린이 유머 표현입니다.", formula: "💬 예시: \"오늘 삼전 단타쳐서 치킨 값 2만원 획득! 🍗\"", usage: "작은 이익을 누적하며 매매 자신감을 키우는 데 도움 됩니다.", keyTakeaway: "소액 익절로 원칙 매매 습관을 기르세요!" },
-  "slang-ant": { badge: "🐜 개인 투자자", emoji: "🐜", name: "동학개미 & 서학개미", eng: "Retail Investors", category: "popular", quickSummary: "국내 주식에 투자하는 동학개미와 미국 주식에 투자하는 서학개미.", fullDesc: "2020년 이후 증시 유동성을 이끈 개인 투자자들을 일컫는 대명사입니다.", formula: "💬 예시: \"서학개미들 엔비디아 집중 순매수! 🚀\"", usage: "개인 자금 흐름과 메이저 수급의 방향을 비교해 분석하세요.", keyTakeaway: "개인 매수세만으로는 한계가 있으니 메이저 수급을 확인하세요!" },
-  "slang-seyleok": { badge: "👑 주가 주체", emoji: "👥", name: "세력 (메이저 자금)", eng: "Market Makers", category: "trading", quickSummary: "외국인, 기관, 사모펀드 등 주가를 움직이는 거대 자금 주체.", fullDesc: "개미들이 세력의 의도와 주가 흔들기(개미 털기)를 파악해야 계좌를 지킵니다.", formula: "💬 예시: \"세력 형님들 개미 털기 지독하게 하네...\"", usage: "세력의 수급 입유 확인 후 눌림목에서 동승하세요.", keyTakeaway: "외국인·기관 수급이 유입되는 주도주에 탑승하세요!" },
-  "slang-fire": { badge: "🔥 급등주", emoji: "🚀", name: "떡상 (떡상가자)", eng: "Skyrocketing", category: "popular", quickSummary: "주가가 미친 듯이 수직 상승하며 폭발하는 현상.", fullDesc: "호재 뉴스나 실적 대박으로 주가가 연일 급등할 때 환호하는 표현입니다.", formula: "💬 예시: \"오늘 실적 발표 대박! 가자 떡상!! 🚀\"", usage: "떡상 중인 종목에 추격 매수하면 상투를 잡기 쉽습니다.", keyTakeaway: "급등 중일 때는 눌림목 조정을 기다리세요!" },
-  "slang-blue": { badge: "🔵 하락 통곡", emoji: "📉", name: "떡락 (계좌 파란불)", eng: "Plummeting", category: "sad", quickSummary: "주가가 수직으로 급락하여 계좌가 파란색 마이너스로 물드는 현상.", fullDesc: "한국 증시에서 파란색은 하락, 빨간색은 상승을 의미합니다.", formula: "💬 예시: \"내 계좌 온통 파란불... 떡락했다 ㅠㅠ\"", usage: "떡락 시 원인을 파악하고 구조적 악재면 과감히 손절하세요.", keyTakeaway: "기업 펀더멘털 훼손 시엔 빠른 손절이 답입니다!" },
-  "slang-washing": { badge: "🧹 세력 흔들기", emoji: "🧹", name: "설거지 (설거지 차트)", eng: "Dump Stage", category: "sad", quickSummary: "세력들이 고점에서 남은 물량을 개미들에게 다 넘기고 탈출하는 단계.", fullDesc: "호재 찌라시를 뿌리며 주가를 살짝 띄운 뒤 개미에게 물량을 떠넘기는 행위.", formula: "💬 예시: \"거래량 터진 음봉 나왔다. 설거지 차트다 돔황챠!!\"", usage: "고점에서 위꼬리 길게 달린 음봉 거래량이 터지면 설거지 신호입니다.", keyTakeaway: "고점 위꼬리 거래량 폭발 음봉은 설거지 위험 신호입니다!" },
-  "slang-gap": { badge: "⚡ 시세 점프", emoji: "⚡", name: "갭상승 vs 갭하락", eng: "Gap Up/Down", category: "trading", quickSummary: "장 시작 시 전일 종가와 큰 차이로 급등/급하락 출발하는 현상.", fullDesc: "밤사이 미국 증시 호재나 악재로 아침 9시 동시호가에 가격이 훌쩍 뛰는 현상.", formula: "💬 예시: \"미 증시 나스닥 폭등해서 아침 갭상승 출발 확정!\"", usage: "갭 메우기(Gap Fill) 성향이 있으므로 갭 부근 지지 여부를 확인하세요.", keyTakeaway: "갭을 메우는 성질을 고려해 분할 매수로 접근하세요!" },
-  "slang-upper": { badge: "🔺 상한가", emoji: "🔺", name: "따상 & 따따블", eng: "IPO 2x / 4x", category: "popular", quickSummary: "공모주 상장 첫날 공모가의 2배~4배까지 대폭등하는 현상.", fullDesc: "상장 첫날 공모가 대비 최대 400%(따따블) 시세 분출 현상.", formula: "💬 예시: \"오늘 신규 공모주 상장 첫날 따따블 달성!! 🎉\"", usage: "상장 첫날 과도한 변동성 추격 매수는 위험합니다.", keyTakeaway: "공모주 상장 첫날 과열 추격 매수를 주의하세요!" },
-  "slang-dog": { badge: "🐕 잡주 비유", emoji: "🐕", name: "잡주 & 동전주", eng: "Penny Stock", category: "sad", quickSummary: "실적 없이 주가가 1천원 미만이거나 찌라시로 흔들리는 부실기업.", fullDesc: "영업이익 적자가 지속되어 상장폐지나 감자 위험이 높은 주식.", formula: "💬 예시: \"동전 잡주 건드렸다가 상장폐지 찌라시 떴다...\"", usage: "매수 전 반드시 최근 3년 영업이익 적자 여부를 확인하세요.", keyTakeaway: "영업이익 연속 적자 동전주는 쳐다보지도 마세요!" },
-  "slang-cap": { badge: "🧢 고점 물림", emoji: "🧢", name: "상투 잡기 (꼭대기 매수)", eng: "Buying at Peak", category: "sad", quickSummary: "주가 최고점 꼭대기에서 사자마자 폭락을 맞이하는 불운한 상황.", fullDesc: "차트의 최고점에서 매수하여 긴 기간 고통받는 상황입니다.", formula: "💬 예시: \"내가 사니까 바로 상투네... ㅠㅠ\"", usage: "5일 이동평균선과 주가의 이격도가 클 때는 매수를 자제하세요.", keyTakeaway: "이격도가 과도하게 벌어진 급등주는 매수 금물입니다!" },
-  "slang-signal": { badge: "🚦 시그널", emoji: "🚦", name: "골든크로스 & 데드크로스", eng: "Golden/Death Cross", category: "trading", quickSummary: "단기 이평선이 장기 이평선을 뚫고 올라가는 매수 신호 & 내려가는 매도 신호.", fullDesc: "5일선이 20일선을 위로 뚫으면 골든크로스(매수), 아래로 뚫으면 데드크로스(매도).", formula: "💬 예시: \"20일선 골든크로스 발생! 매수 타점이다!\"", usage: "거래량이 실린 크로스 신호가 진성 신호입니다.", keyTakeaway: "거래량이伴隨된 골든크로스는 강력한 매수 타점입니다!" },
-  "slang-box": { badge: "📦 횡보 장세", emoji: "📦", name: "박스피 (박스권 갇힘)", eng: "Box Range", category: "trading", quickSummary: "주가가 일정 상한선과 하한선 박스 안에서만 오르내리는 지루한 상태.", fullDesc: "지수가 2,400~2,600 박스권에 갇혀 답답한 흐름을 보일 때 쓰는 용어.", formula: "💬 예시: \"국장 박스피 갇혀서 미국 주식으로 이민 간다!\"", usage: "박스권 상단 매도, 하단 분할 매수 전략이 유효합니다.", keyTakeaway: "박스권 하단 지지선 매수, 상단 저항선 매도 전략을 활용하세요!" }
+  "slang-domhwangcha": { badge: "🔥 대표 밈", emoji: "🏃‍♂️💨", name: "돔황챠 (도망쳐!)", eng: "Run Away!", category: "popular", quickSummary: "악재가 터지거나 주가가 폭락할 때 즉시 매도하고 탈출하라는 유머 표현.", fullDesc: "디시인사이드 주식갤러리에서 '도망쳐!'를 비틀어 부른 대표 밈.", formula: "💬 예시: \"어닝쇼크 떴다!! 모두 돔황챠!!\"", usage: "악재 발생 시 손절 결단력이 계좌를 지킵니다.", keyTakeaway: "악재 발생 시 빠른 손절 결단력이 답입니다!" },
+  "slang-sangkit": { badge: "🚀 상승 기원", emoji: "🔺", name: "상킷 (상킷리스트)", eng: "Praying for Upper Limit", category: "trading", quickSummary: "오늘 내 종목이 +30% 상한가에 가길 간절히 비는 표현.", fullDesc: "상한가 +30%와 버킷리스트를 합성한 주린이 표현입니다.", formula: "💬 예시: \"가자 삼전 상킷!! 🚀\"", usage: "상한가 추격 매수는 다음 날 폭락 위험이 큽니다.", keyTakeaway: "상한가 추격 매수를 자제하고 눌림목을 노리세요!" },
+  "slang-hakit": { badge: "🔻 하락 통곡", emoji: "📉", name: "하킷 (하한가 통곡)", eng: "Lamenting Lower Limit", category: "sad", quickSummary: "주가가 -30% 하한가로 고꾸라져 절망하는 표현.", fullDesc: "하한가 진입 시 매도 물량이 쌓여 팔지 못하는 위험이 생깁니다.", formula: "💬 예시: \"유상증자 찌라시 떴다 하킷 ㅠㅠ\"", usage: "부실 동전주는 연쇄 하한가 위험이 높으니 피하세요.", keyTakeaway: "부실 동전주는 하한가 잠김 위험이 큽니다!" },
+  "slang-floor": { badge: "🏢 층수 비유", emoji: "🏢", name: "N층 (70층, 80층 주민)", eng: "Floor Level", category: "trading", quickSummary: "매수한 평균 단가(평단가)를 아파트 층수로 비유한 표현.", fullDesc: "70,000원에 매수했으면 70층 주민입니다.", formula: "💬 예시: \"80층 주민인데 바람이 차다...\"", usage: "-50% 손실 복구에는 +100% 상승이 필요합니다.", keyTakeaway: "-50% 손실은 +100%가 올라야 비로소 원금이 됩니다!" },
+  "slang-rescue": { badge: "🚑 본전 탈출", emoji: "🚑", name: "구조대 (구조대 도착)", eng: "Rescue Team", category: "popular", quickSummary: "오랫동안 마이너스였다가 주가가 반등하여 매수가에 도달함.", fullDesc: "장기 물림을 버텨내고 본전 매수가까지 올라오는 순간입니다.", formula: "💬 예시: \"80층 구조대 드디어 진입했다!! 🚑\"", usage: "본전 매도 물량이 쏟아지는 자리가 저항선이 됩니다.", keyTakeaway: "본전 매도 물량이 쏟아지는 자리가 저항선이 됩니다!" }
 };
 
 // ----------------------------------------------------
 // DATA 4: 필수 주식 용어 심화 사전 (24개)
 // ----------------------------------------------------
 const DETAILED_TERMS = [
-  { id: 1, category: "indicator", title: "PER (주가수익비율)", eng: "Price to Earnings Ratio", summary: "현재 주가가 1주당 순이익(EPS)의 몇 배인가를 나타내는 대표 저평가 측정 지표.", fullDesc: "PER이 낮을수록 벌어들이는 이익에 비해 주가가 저평가되어 있다는 뜻입니다. 동일 업종 평균 PER과 비교하여 투자 판단을 내립니다.", formula: "PER = 현재 주가 ÷ 주당순이익 (EPS)", usage: "업종 평균 PER이 15배인데 현재 기업이 7배라면 저평가 매수 기회!", keyTakeaway: "동일 업종 평균 PER 대비 낮고 이익이 성장하는 기업을 고르세요!" },
-  { id: 2, category: "indicator", title: "PBR (주가순자산비율)", eng: "Price to Book Ratio", summary: "현재 주가가 기업의 1주당 순자산(BPS)의 몇 배인가를 나타내는 장부 가치 지표.", fullDesc: "PBR 1.0배 미만은 회사를 당장 청산해도 남는 자산보다 주가가 낮게 거래되는 극심한 저평가 상태입니다.", formula: "PBR = 현재 주가 ÷ 주당순자산 (BPS)", usage: "PBR 0.5배 이하의 우량 자산주는 주주 환원 프로그램 호재 시 급등합니다.", keyTakeaway: "PBR 1.0 미만 우량 자산주는 강한 하방 지지력을 가집니다!" },
-  { id: 3, category: "indicator", title: "ROE (자기자본이익률)", eng: "Return on Equity", summary: "주주들이 맡긴 자기자본으로 1년 동안 얼마나 이익을 냈는지 보여주는 수익성 지표.", fullDesc: "워렌 버핏이 가장 중요하게 생각하는 지표로, ROE 15% 이상을 지속하는 기업은 복리 성장의 엔진을 가진 우량 기업입니다.", formula: "ROE = (당기순이익 ÷ 자기자본) × 100", usage: "ROE가 매년 15% 이상 유지되는 기업에 장기 분산 투자하세요.", keyTakeaway: "ROE가 높은 기업은 번 돈으로 재투자하여 주가 가치를 지속 상승시킵니다!" },
-  { id: 4, category: "basic", title: "ETF (상장지수펀드)", eng: "Exchange Traded Fund", summary: "주식처럼 실시간으로 사고파는 분산투자 펀드 상품.", fullDesc: "S&P500, 반도체, 2차전지 등 지수를 추종하며, 1주만 사도 수십 개 기업에 자동 분산 투자되는 주린이 최고의 안전 상품입니다.", formula: "ETF 1주 구매 = 해당 지수 전체 수십 개 기업 소액 분산 투자", usage: "미국 S&P 500 ETF에 매월 적립식으로 분할 매수하세요.", keyTakeaway: "초보 투자자는 개별주 위험을 피하기 위해 ETF 적립식 투자가 유리합니다!" },
-  { id: 5, category: "basic", title: "EPS (주당순이익)", eng: "Earnings Per Share", summary: "기업이 올린 당기순이익을 총 발행 주식 수로 나눈 1주당 벌어들인 돈.", fullDesc: "EPS가 매년 늘어나는 기업은 실력이 성장하는 기업입니다. 주가는 결국 EPS의 성장을 따라갑니다.", formula: "EPS = 당기순이익 ÷ 총 발행 주식 수", usage: "EPS가 매년 20% 이상 우상향하는 실적 성장주에 투자하세요.", keyTakeaway: "주가는 장기적으로 EPS 성장 곡선을 정확히 추종합니다!" },
-  { id: 6, category: "trading", title: "양도소득세 (미국주식 세금)", eng: "Capital Gains Tax", summary: "해외 주식 투자로 발생한 연간 수익에 부과되는 세금 절세 원칙.", fullDesc: "해외 주식은 연간 250만원까지 비과세 공제되며, 초과 수익에 대해 22% 양도소득세가 부과됩니다.", formula: "(연간 해외주식 확정 수익 - 250만원) × 22%", usage: "연말에 마이너스 손실 종목을 확정 매도하여 절세하세요.", keyTakeaway: "연말 손실 확정 매도로 250만원 비과세 한도를 맞추는 절세 기술을 쓰세요!" }
+  { id: 1, category: "indicator", title: "PER (주가수익비율)", eng: "Price to Earnings Ratio", summary: "현재 주가가 1주당 순이익(EPS)의 몇 배인가를 나타내는 저평가 지표.", fullDesc: "PER이 낮을수록 이익 대비 주가가 저평가되어 있다는 뜻입니다.", formula: "PER = 현재 주가 ÷ EPS", usage: "동일 업종 평균 대비 낮은 저평가 종목을 고르세요.", keyTakeaway: "업종 평균 PER 대비 낮고 실적이 성장하는 주식을 사세요!" },
+  { id: 2, category: "indicator", title: "PBR (주가순자산비율)", eng: "Price to Book Ratio", summary: "현재 주가가 1주당 순자산(BPS)의 몇 배인가를 보여주는 장부 가치 지표.", fullDesc: "PBR 1.0 미만은 당장 청산해도 남는 자산보다 주가가 낮다는 뜻입니다.", formula: "PBR = 현재 주가 ÷ BPS", usage: "PBR 0.5배 이하의 우량 자산주는 주주 환원 프로그램 호재 시 급등합니다.", keyTakeaway: "PBR 1.0 미만 우량 자산주는 강한 하방 지지를 가집니다!" }
 ];
 
-for (let t = 7; t <= 24; t++) {
+for (let t = 3; t <= 24; t++) {
   DETAILED_TERMS.push({
     id: t,
     category: t % 2 === 0 ? "basic" : "trading",
-    title: `Term ${t}. 핵심 주식 심화 용어`,
+    title: `Term ${t}. 필수 주식 심화 용어`,
     eng: `Essential Stock Term ${t}`,
     summary: `주식 투자에서 위험을 줄이고 수익률을 높여주는 Term ${t} 심화 지식입니다.`,
-    fullDesc: `Term ${t}에 대한 깊이 있는 원리와 실전 적용 사례입니다. 펀더멘털을 점검하고 대응 전략을 수립하세요.`,
+    fullDesc: `Term ${t}에 대한 깊이 있는 원리와 실전 적용 사례입니다. 펀더멘털을 점검하세요.`,
     formula: `Term ${t} 공식 = 펀더멘털 검증 × 원칙 매매`,
     usage: `HTS/MTS 화면에서 해당 지표를 조회하여 분할 매수 타점을 잡으세요.`,
     keyTakeaway: `원칙 매매를 지키는 것이 투자 성공의 지름길입니다!`
   });
 }
 
-// ----------------------------------------------------
-// DATA 5: 차트 마스터 데이터
-// ----------------------------------------------------
 const MASTER_GUIDE_DATA = {
-  "master-candle": { category: "차트 마스터", emoji: "🕯️", title: "봉차트(캔들스틱) 완전 정복", eng: "Candlestick Masterclass", summary: "시가, 종가, 고가, 저가로 양봉과 음봉을 해석하는 법.", fullDesc: "빨간색 양봉은 매수 세력이 승리한 상승 마감, 파란색 음봉은 매도 세력이 승리한 하락 마감입니다.", keyPoint: "🔴 양봉 = 종가 > 시가 / 🔵 음봉 = 시가 > 종가", example: "바닥권 긴 아랫꼬리 망치형 양봉 발생 시 강한 반등 신호!", keyTakeaway: "캔들 몸통은 세력의 의지, 꼬리는 반발력입니다!" },
-  "master-trend": { category: "차트 마스터", emoji: "📐", title: "추세선과 지지/저항선 매매법", eng: "Trendline & Support/Resistance", summary: "바닥 지지선과 천장 저항선의 역할 반전 원리.", fullDesc: "주가는 지지선과 저항선 사이에서 움직입니다. 저항선이 대량 거래량으로 뚫리면 새로운 지지선이 됩니다.", keyPoint: "🟢 지지선 = 바닥 방어 / 🔴 저항선 = 천장 막힘", example: "저항선을 3배 거래량으로 돌파할 때가 진성 돌파 타점!", keyTakeaway: "지지선 근처 매수, 저항선 거래량 돌파 시 동승하세요!" },
-  "master-ma": { category: "차트 마스터", emoji: "📈", title: "이동평균선 공식 & 정배열", eng: "Moving Average Strategy", summary: "5일, 20일, 60일, 120일 이평선 정배열 눌림목 매매.", fullDesc: "정배열 곡선은 상승 추세를 의미합니다. 20일 세력선 눌림목에서 분할 매수하세요.", keyPoint: "골든크로스 = 단기선이 장기선을 위로 돌파", example: "정배열 종목의 20일선 눌림목이 최강의 승률 타점!", keyTakeaway: "20일 이평선 지지를 확인하며 분할 매수하세요!" },
-  "master-value": { category: "가치투자", emoji: "💎", title: "워렌 버핏 가치투자 & ROE/PER", eng: "Value Investing Framework", summary: "ROE 15% 이상과 PER 저평가주 발굴 공식.", fullDesc: "기업의 본질 가치보다 주가가 낮을 때 사서 안전마진을 확보합니다.", keyPoint: "ROE > 15% & PER < 업종 평균", example: "실적이 매년 늘어나는데 PER이 낮다면 매수 적기!", keyTakeaway: "ROE 성장의 지속성을 반드시 검증하세요!" },
-  "master-order": { category: "매매 노하우", emoji: "🛒", name: "매매 주문 4가지 & 체결 원리", eng: "Order Types & Execution", summary: "지정가 vs 시장가, 동시호가 체결 우선순위.", fullDesc: "가격 우선 ➔ 시간 우선 ➔ 수량 우선 3대 체결 원리.", keyPoint: "지정가 = 원하는 가격 지정 / 시장가 = 즉시 체결", example: "급등 종목은 시장가 대신 지정가로 슬리피지 방지!", keyTakeaway: "체결 원칙을 파악해 불리한 가격 체결을 방지하세요!" }
+  "master-candle": { category: "차트 마스터", emoji: "🕯️", title: "봉차트(캔들스틱) 완전 정복", eng: "Candlestick Masterclass", summary: "시가, 종가, 고가, 저가로 양봉과 음봉을 해석하는 법.", fullDesc: "빨간색 양봉은 매수 세력 승리, 파란색 음봉은 매도 세력 승리입니다.", keyPoint: "🔴 양봉 = 종가 > 시가 / 🔵 음봉 = 시가 > 종가", example: "바닥권 긴 아랫꼬리 망치형 양봉 발생 시 강한 반등 신호!", keyTakeaway: "캔들 몸통은 세력의 의지, 꼬리는 반발력입니다!" },
+  "master-trend": { category: "차트 마스터", emoji: "📐", title: "추세선과 지지/저항선 매매법", eng: "Trendline & Support/Resistance", summary: "바닥 지지선과 천장 저항선의 역할 반전 원리.", fullDesc: "주가는 지지선과 저항선 사이에서 움직입니다.", keyPoint: "🟢 지지선 = 바닥 방어 / 🔴 저항선 = 천장 막힘", example: "저항선을 3배 거래량으로 돌파할 때가 진성 돌파 타점!", keyTakeaway: "지지선 근처 매수, 저항선 거래량 돌파 시 동승하세요!" }
 };
 
-// ----------------------------------------------------
-// DATA 6: 30문항 풀 퀴즈 데이터셋
-// ----------------------------------------------------
 const QUIZ_QUESTIONS_30 = [
   { id: 1, question: "삼성전자 주식을 1주라도 사서 보유하고 있는 사람을 부르는 올바른 명칭은?", options: ["채권자", "주주 (株主)", "원로원", "펀드매니저"], answerIndex: 1, explanation: "주식을 매수한 사람은 그 회사의 일부 지분을 소유한 '주주(株主)'가 됩니다." },
-  { id: 2, question: "주식과 펀드의 장점을 결합하여 실시간으로 사고팔 수 있는 분산투자 상품은?", options: ["ETF (상장지수펀드)", "적금", "파생상품", "어음"], answerIndex: 0, explanation: "ETF는 소액으로도 수십 개 기업에 분산투자 가능한 인기 상품입니다." },
-  { id: 3, question: "주가가 급락할 때 투자자들이 도망치라는 뜻으로 쓰는 유머 밈 용어는?", options: ["상킷", "돔황챠", "존버", "물타기"], answerIndex: 1, explanation: "'돔황챠'는 '도망쳐!'를 재치 있게 비틀어 부르는 주식 밈입니다." },
-  { id: 4, question: "주가가 기업 1년 순이익의 몇 배인가를 뜻하는 저평가 측정 지표는?", options: ["PBR", "PER", "ROE", "KPI"], answerIndex: 1, explanation: "PER(주가수익비율)은 주가를 주당순이익(EPS)으로 나눈 저평가 지표입니다." },
-  { id: 5, question: "대형 우량 기업들이 주로 상장되어 있는 한국의 대표 주가지수는?", options: ["KOSDAQ", "NASDAQ", "KOSPI", "S&P500"], answerIndex: 2, explanation: "KOSPI(코스피)는 한국 대표 대형 기업들이 상장된 주가지수입니다." }
+  { id: 2, question: "주식과 펀드의 장점을 결합하여 실시간으로 사고팔 수 있는 분산투자 상품은?", options: ["ETF (상장지수펀드)", "적금", "파생상품", "어음"], answerIndex: 0, explanation: "ETF는 소액으로도 수십 개 기업에 분산투자 가능한 인기 상품입니다." }
 ];
 
-for (let q = 6; q <= 30; q++) {
+for (let q = 3; q <= 30; q++) {
   QUIZ_QUESTIONS_30.push({
     id: q,
     question: `Stock Beginner Q${q}. 워렌 버핏이 강조한 '투자의 제1칙'은 무엇일까요?`,
@@ -134,7 +110,7 @@ for (let q = 6; q <= 30; q++) {
 }
 
 // ----------------------------------------------------
-// DOM Engine Initialization & Click Isolation
+// DOM Engine Initialization & 30-Day Single Card Engine
 // ----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -169,11 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openUniversalModal(dataObj) {
     if (!dataObj) return;
-
     if (modalCategoryTag) modalCategoryTag.innerText = dataObj.category || dataObj.badge || "Stock Beginner";
     if (modalEmoji) modalEmoji.innerText = dataObj.icon || dataObj.emoji || "💡";
     if (modalTermName) modalTermName.innerText = dataObj.title || dataObj.name || `Day ${dataObj.day}`;
-    if (modalEngName) modalEngName.innerText = dataObj.eng || (dataObj.day ? `100일 코스 Day ${dataObj.day}` : "");
+    if (modalEngName) modalEngName.innerText = dataObj.eng || (dataObj.day ? `30일 코스 Day ${dataObj.day}` : "");
     if (modalQuickSummary) modalQuickSummary.innerText = dataObj.summary || dataObj.quickSummary || "";
     if (modalFullDesc) modalFullDesc.innerText = dataObj.fullDesc || dataObj.summary || "";
     if (modalFormula) modalFormula.innerText = dataObj.keyPoint || dataObj.formula || "";
@@ -197,90 +172,117 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ----------------------------------------------------
-  // SECTION 1: 100-DAY INTERACTIVE CONCEPT GRID
+  // SECTION 1: 30-DAY SINGLE CARD FLIP ENGINE (초기 디자인 복구)
   // ----------------------------------------------------
-  const conceptsGrid100 = document.getElementById('conceptsGrid100');
-  const dayFilterBtns = document.querySelectorAll('.day-filter-btn');
+  let currentConceptIndex = 0;
+  let learnedSet = new Set(JSON.parse(localStorage.getItem('stock_beginner_learned_30') || '[]'));
+
+  const conceptDayTag = document.getElementById('conceptDayTag');
+  const conceptIcon = document.getElementById('conceptIcon');
+  const conceptTitle = document.getElementById('conceptTitle');
+  const conceptCategory = document.getElementById('conceptCategory');
+  const conceptSummary = document.getElementById('conceptSummary');
+  const conceptKeyPoint = document.getElementById('conceptKeyPoint');
+  const conceptExample = document.getElementById('conceptExample');
+  const btnToggleLearn = document.getElementById('btnToggleLearn');
+  const btnLearnText = document.getElementById('btnLearnText');
   const learnedCountEl = document.getElementById('learnedCount');
   const learnedPercentEl = document.getElementById('learnedPercent');
   const learnedProgressBar = document.getElementById('learnedProgressBar');
+  const conceptChips = document.getElementById('conceptChips');
+  const prevConceptBtn = document.getElementById('prevConceptBtn');
+  const nextConceptBtn = document.getElementById('nextConceptBtn');
+  const btnRandomConcept = document.getElementById('btnRandomConcept');
 
-  let currentDayRange = 'all';
-  let learnedSet = new Set(JSON.parse(localStorage.getItem('stock_beginner_learned_100') || '[]'));
+  function renderDailyConcept(index) {
+    if (!DAILY_CONCEPTS_30[index]) return;
+    currentConceptIndex = index;
+    const item = DAILY_CONCEPTS_30[index];
+
+    if (conceptDayTag) conceptDayTag.innerText = `Day ${item.day}`;
+    if (conceptIcon) conceptIcon.innerText = item.icon;
+    if (conceptTitle) conceptTitle.innerText = item.title;
+    if (conceptCategory) conceptCategory.innerText = item.category;
+    if (conceptSummary) conceptSummary.innerText = item.summary;
+    if (conceptKeyPoint) conceptKeyPoint.innerText = item.keyPoint;
+    if (conceptExample) conceptExample.innerText = item.example;
+
+    const isLearned = learnedSet.has(item.day);
+    if (btnToggleLearn && btnLearnText) {
+      if (isLearned) {
+        btnToggleLearn.classList.add('learned');
+        btnLearnText.innerText = "오늘 공부 완료! (다음 코스로 이동) ✓";
+      } else {
+        btnToggleLearn.classList.remove('learned');
+        btnLearnText.innerText = "오늘 공부 완료하기!";
+      }
+    }
+
+    updateProgressUI();
+    renderConceptChips();
+  }
 
   function updateProgressUI() {
     const count = learnedSet.size;
     if (learnedCountEl) learnedCountEl.innerText = count;
-    const pct = Math.round((count / DAILY_CONCEPTS_100.length) * 100);
+    const pct = Math.round((count / DAILY_CONCEPTS_30.length) * 100);
     if (learnedPercentEl) learnedPercentEl.innerText = pct;
     if (learnedProgressBar) learnedProgressBar.style.width = `${pct}%`;
   }
 
-  function render100DayGrid() {
-    if (!conceptsGrid100) return;
-    conceptsGrid100.innerHTML = '';
-
-    DAILY_CONCEPTS_100.forEach((item) => {
-      let show = true;
-      if (currentDayRange === '1-20' && (item.day < 1 || item.day > 20)) show = false;
-      if (currentDayRange === '21-40' && (item.day < 21 || item.day > 40)) show = false;
-      if (currentDayRange === '41-60' && (item.day < 41 || item.day > 60)) show = false;
-      if (currentDayRange === '61-80' && (item.day < 61 || item.day > 80)) show = false;
-      if (currentDayRange === '81-100' && (item.day < 81 || item.day > 100)) show = false;
-
-      if (!show) return;
-
-      const isLearned = learnedSet.has(item.day);
-      const card = document.createElement('div');
-      card.className = `concept-grid-card glass-card ${isLearned ? 'is-learned' : ''}`;
-      
-      card.innerHTML = `
-        <div class="card-top-row">
-          <span class="day-num-badge">Day ${item.day}</span>
-          <span class="concept-cat-tag">${item.category}</span>
-        </div>
-        <div class="card-icon-title">
-          <span class="concept-icon">${item.icon}</span>
-          <h4 class="concept-title">${item.title}</h4>
-        </div>
-        <p class="concept-summary-text">${item.summary.substring(0, 50)}...</p>
-        <div class="card-bottom-actions">
-          <button class="btn-toggle-learn-card ${isLearned ? 'completed' : ''}">
-            ${isLearned ? '완료됨 ✓' : '학습 완료'}
-          </button>
-          <span class="read-more-link">상세 팝업 ➔</span>
-        </div>
-      `;
-
-      card.addEventListener('click', (e) => {
-        if (e.target.closest('.btn-toggle-learn-card')) {
-          e.stopPropagation();
-          if (learnedSet.has(item.day)) learnedSet.delete(item.day);
-          else learnedSet.add(item.day);
-          localStorage.setItem('stock_beginner_learned_100', JSON.stringify(Array.from(learnedSet)));
-          updateProgressUI();
-          render100DayGrid();
-        } else {
-          openUniversalModal(item);
-        }
-      });
-
-      conceptsGrid100.appendChild(card);
+  function renderConceptChips() {
+    if (!conceptChips) return;
+    conceptChips.innerHTML = '';
+    DAILY_CONCEPTS_30.forEach((item, idx) => {
+      const chip = document.createElement('button');
+      chip.className = `concept-chip ${idx === currentConceptIndex ? 'active' : ''} ${learnedSet.has(item.day) ? 'is-learned' : ''}`;
+      chip.innerText = `Day ${item.day}. ${item.title}`;
+      chip.addEventListener('click', () => renderDailyConcept(idx));
+      conceptChips.appendChild(chip);
     });
-
-    updateProgressUI();
   }
 
-  dayFilterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      dayFilterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentDayRange = btn.getAttribute('data-range');
-      render100DayGrid();
-    });
-  });
+  if (btnToggleLearn) {
+    btnToggleLearn.addEventListener('click', () => {
+      const currentDay = DAILY_CONCEPTS_30[currentConceptIndex].day;
+      learnedSet.add(currentDay);
+      localStorage.setItem('stock_beginner_learned_30', JSON.stringify(Array.from(learnedSet)));
 
-  render100DayGrid();
+      renderDailyConcept(currentConceptIndex);
+
+      let nextIdx = currentConceptIndex + 1;
+      if (nextIdx >= DAILY_CONCEPTS_30.length) nextIdx = 0;
+
+      setTimeout(() => {
+        renderDailyConcept(nextIdx);
+      }, 300);
+    });
+  }
+
+  if (prevConceptBtn) {
+    prevConceptBtn.addEventListener('click', () => {
+      let prevIdx = currentConceptIndex - 1;
+      if (prevIdx < 0) prevIdx = DAILY_CONCEPTS_30.length - 1;
+      renderDailyConcept(prevIdx);
+    });
+  }
+
+  if (nextConceptBtn) {
+    nextConceptBtn.addEventListener('click', () => {
+      let nextIdx = currentConceptIndex + 1;
+      if (nextIdx >= DAILY_CONCEPTS_30.length) nextIdx = 0;
+      renderDailyConcept(nextIdx);
+    });
+  }
+
+  if (btnRandomConcept) {
+    btnRandomConcept.addEventListener('click', () => {
+      const randIdx = Math.floor(Math.random() * DAILY_CONCEPTS_30.length);
+      renderDailyConcept(randIdx);
+    });
+  }
+
+  renderDailyConcept(0);
 
   // ----------------------------------------------------
   // SECTION 3: 20+ COMMUNITY MEMES ENGINE
@@ -326,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderSlangGrid();
 
   // ----------------------------------------------------
-  // SECTION 4: 24 DEEP TERMS DICTIONARY ENGINE (FIXED!)
+  // SECTION 4: 24 DEEP TERMS DICTIONARY ENGINE
   // ----------------------------------------------------
   const termsGrid = document.getElementById('termsGrid');
   const termSearchInput = document.getElementById('termSearchInput');
@@ -387,9 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderTermsGrid('');
 
-  // ----------------------------------------------------
   // HERO REAL-TIME SEARCH & AUTOCOMPLETE ENGINE
-  // ----------------------------------------------------
   const heroSearchInput = document.getElementById('heroSearchInput');
   const heroSearchBtn = document.getElementById('heroSearchBtn');
   const heroSearchDropdown = document.getElementById('heroSearchDropdown');
@@ -397,8 +397,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getAllSearchableItems() {
     const items = [];
-    DAILY_CONCEPTS_100.forEach(c => {
-      items.push({ title: `Day ${c.day}. ${c.title}`, desc: c.summary, category: "100일 백과사전", data: c });
+    DAILY_CONCEPTS_30.forEach(c => {
+      items.push({ title: `Day ${c.day}. ${c.title}`, desc: c.summary, category: "30일 백과사전", data: c });
     });
     Object.values(SLANG_GUIDE_DATA).forEach(s => {
       items.push({ title: s.name, desc: s.quickSummary, category: "커뮤니티 밈", data: s });
@@ -479,9 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ----------------------------------------------------
-  // SECTION 5: LIVE NEWS ENGINE
-  // ----------------------------------------------------
+  // LIVE NEWS ENGINE
   const newsGrid = document.getElementById('newsGrid');
   const newsUpdatedTime = document.getElementById('newsUpdatedTime');
   const btnRefreshNews = document.getElementById('btnRefreshNews');
@@ -540,9 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ----------------------------------------------------
-  // SECTION 6: 30-QUIZ ENGINE (CLEAN INITIAL STATE FIX!)
-  // ----------------------------------------------------
+  // QUIZ ENGINE
   const quizIntroState = document.getElementById('quizIntroState');
   const quizPlayState = document.getElementById('quizPlayState');
   const quizResultState = document.getElementById('quizResultState');
@@ -592,7 +588,6 @@ document.addEventListener('DOMContentLoaded', () => {
       quizProgressFill.style.width = `${pct}%`;
     }
 
-    // ENSURE FEEDBACK BOX IS ALWAYS HIDDEN AT START OF QUESTION!
     if (quizFeedbackBox) quizFeedbackBox.classList.add('hidden');
 
     if (quizOptionsGrid) {
