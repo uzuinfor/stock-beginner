@@ -541,10 +541,9 @@ document.addEventListener('DOMContentLoaded', () => {
   renderLiveNews();
   if (btnRefreshNews) btnRefreshNews.addEventListener('click', renderLiveNews);
 
-  // SECTION 2: Master Guide Tabs & Cards (모든 카드가 팝업 가능하도록 바인딩!)
+  // SECTION 2: Master Guide Tabs Switching Engine
   const chartTabBtns = document.querySelectorAll('.chart-tab-btn');
   const chartTabContents = document.querySelectorAll('.chart-tab-content');
-  const clickableCards = document.querySelectorAll('.clickable-card');
 
   chartTabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -557,14 +556,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  clickableCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const type = card.getAttribute('data-type');
-      const id = card.getAttribute('data-id');
-      if (type === 'master' && MASTER_GUIDE_DATA[id]) {
-        openUniversalModal(MASTER_GUIDE_DATA[id]);
-      }
-    });
+  // Universal Click Event Delegation Engine (전역 이벤트 위임으로 모든 카드 팝업 100% 보장!)
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest('.clickable-card');
+    if (!card) return;
+
+    const type = card.getAttribute('data-type');
+    const id = card.getAttribute('data-id');
+    if (type === 'master' && MASTER_GUIDE_DATA[id]) {
+      openUniversalModal(MASTER_GUIDE_DATA[id]);
+    }
   });
 
   // QUIZ ENGINE
