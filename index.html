@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>주린이 아카데미 | 주식 100일 완성 백과사전 & 차트 마스터</title>
-  <meta name="description" content="주식 100일 완성 백과사전! Day 1 기초부터 Day 100 미국주식·세금·심리까지, 차트 분석, ROE/PER 가치투자, 매매 체결원리, 돔황챠 등 커뮤니티 밈 총집합!" />
+  <title>우주인포 | 주식 100일 완성 백과사전 & 차트 마스터</title>
+  <meta name="description" content="우주인포(WOOJU INFO)! 주식 100일 완성 백과사전. Day 1 기초부터 Day 100 미국주식·세금·심리까지, 차트 분석, ROE/PER 가치투자, 매매 체결원리, 돔황챠 등 커뮤니티 밈 총집합!" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -16,8 +16,8 @@
   <nav id="navbar" class="navbar">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
-        <span class="logo-icon">📈</span>
-        <span class="logo-text">주린이 아카데미</span>
+        <span class="logo-icon">🚀</span>
+        <span class="logo-text">우주인포</span>
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#daily" class="nav-link highlight-link">🗓️ 100일 백과사전</a></li>
@@ -42,9 +42,9 @@
       <canvas id="candleCanvas"></canvas>
     </div>
     <div class="hero-content">
-      <div class="hero-badge">📚 주식 100일 완성 종합 백과사전 구축 프로젝트</div>
+      <div class="hero-badge">🌌 우주인포 (WOOJU INFO) - 주식 100일 완성 종합 백과사전</div>
       <h1 class="hero-title">
-        하루 하나씩 배우는<br />
+        우주인포와 함께하는<br />
         <span class="gradient-text">주식 100일 완성 백과사전</span>
       </h1>
       <p class="hero-desc">
@@ -108,8 +108,8 @@
   <section id="daily" class="section section-dark">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">100-Day Encyclopedia</div>
-        <h2 class="section-title">📚 주식 100일 완성 백과사전</h2>
+        <div class="section-tag">Wooju Info 100-Day Encyclopedia</div>
+        <h2 class="section-title">📚 우주인포 주식 100일 완성 백과사전</h2>
         <p class="section-sub">기초부터 실전 차트, 해외주식, 세금, 심리까지 100일 코스</p>
       </div>
 
@@ -166,7 +166,7 @@
         <!-- Concept Selector List & Category Filters -->
         <div class="concept-list-drawer">
           <div class="drawer-header">
-            <h4>100일 백과사전 탐색기 (<span id="conceptListCount">100</span>일 과정)</h4>
+            <h4>우주인포 100일 백과사전 탐색기 (<span id="conceptListCount">100</span>일 과정)</h4>
             <span class="drawer-hint">원하는 일차를 선택해서 학습해보세요!</span>
           </div>
 
@@ -438,7 +438,7 @@
   <section id="slang" class="section">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Stock Community Slang</div>
+        <div class="section-tag">Wooju Info Community Slang</div>
         <h2 class="section-title">🔥 주식 커뮤니티 밈 & 슬랭 심화 사전</h2>
         <p class="section-sub">카드를 클릭하시면 밈의 유래, 대화 예시, 투자 심리 및 주의점을 팝업으로 볼 수 있어요!</p>
       </div>
@@ -546,44 +546,6 @@
     </div>
   </section>
 
-  <!-- Section 4: 대화형 용어 심화 사전 -->
-  <section id="terms" class="section section-dark">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">Chapter 04</div>
-        <h2 class="section-title">🔍 필수 주식 용어 심화 사전</h2>
-        <p class="section-sub">카드를 클릭하시면 상세한 실전 설명과 활용법을 볼 수 있어요!</p>
-      </div>
-
-      <!-- Search Bar -->
-      <div class="search-bar-wrap">
-        <div class="search-input-box glass-card">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="termSearchInput" placeholder="용어명, 약어(PER, PBR, ETF), 내용으로 실시간 검색..." />
-          <button class="clear-search-btn" id="clearSearchBtn" title="지우기">✕</button>
-        </div>
-        <div class="search-count-info" id="searchCountInfo">총 <strong>24</strong>개의 심화 용어가 등록되어 있습니다.</div>
-      </div>
-
-      <div class="terms-filter">
-        <button class="filter-btn active" data-filter="all">전체</button>
-        <button class="filter-btn" data-filter="basic">기초</button>
-        <button class="filter-btn" data-filter="indicator">지표</button>
-        <button class="filter-btn" data-filter="trading">매매</button>
-        <button class="filter-btn" data-filter="economy">경제/시황</button>
-      </div>
-
-      <div class="terms-grid" id="termsGrid">
-        <!-- Dynamic Cards rendered via JS for rich interactive modal popups -->
-      </div>
-
-      <div class="no-search-results hidden" id="noSearchResults">
-        <div class="no-res-icon">🔍</div>
-        <p>검색 결과가 없습니다.<br />다른 단어로 검색해 보세요!</p>
-      </div>
-    </div>
-  </section>
-
   <!-- Universal Interactive Detail Modal Popup for Terms, Slangs & Master Guides -->
   <div class="term-modal-overlay hidden" id="termModalOverlay">
     <div class="term-modal-card glass-card" id="termModalCard">
@@ -623,7 +585,7 @@
         </div>
 
         <div class="modal-section-box tip-box">
-          <h5>📌 주린이를 위한 투자 원포인트 레슨</h5>
+          <h5>📌 우주인포의 투자 원포인트 레슨</h5>
           <p id="modalKeyTakeaway">기업의 몸집을 확인할 때는 주가 대신 '시가총액'을 반드시 확인하세요!</p>
         </div>
       </div>
@@ -640,7 +602,7 @@
     <div class="container">
       <div class="section-header">
         <div class="section-tag">Self Check Quiz</div>
-        <h2 class="section-title">🧩 주린이 실력 점검 퀴즈</h2>
+        <h2 class="section-title">🧩 우주인포 실력 점검 퀴즈</h2>
         <p class="section-sub">배운 내용을 퀴즈로 재미있게 확인해보세요!</p>
       </div>
 
@@ -649,10 +611,10 @@
         <div class="quiz-step-box" id="quizIntroState">
           <div class="quiz-intro-icon">🎯</div>
           <h3>나의 주식 지식 등급은 몇 단계일까?</h3>
-          <p>총 20개 이상의 실전 퀴즈를 풀고 나의 주린이 탈출 점수를 확인해보세요!</p>
+          <p>총 30개의 우주인포 실전 퀴즈를 풀고 나의 탈출 점수를 확인해보세요!</p>
           <div class="quiz-badges-preview">
             <span class="q-badge">🌱 초보 개미</span>
-            <span class="q-badge">🌿 성장하는 주린이</span>
+            <span class="q-badge">🌿 우주인포 수료자</span>
             <span class="q-badge">🌳 주식 고수 개미</span>
           </div>
           <button class="btn-start-quiz" id="btnStartQuiz">퀴즈 시작하기 🚀</button>
@@ -661,7 +623,7 @@
         <!-- Quiz Playing State -->
         <div class="quiz-step-box hidden" id="quizPlayState">
           <div class="quiz-header-bar">
-            <span class="quiz-step-indicator">문제 <strong id="currentQuizNum">1</strong> / <span id="totalQuizNum">20</span></span>
+            <span class="quiz-step-indicator">문제 <strong id="currentQuizNum">1</strong> / <span id="totalQuizNum">30</span></span>
             <div class="quiz-timer-bar">
               <div class="timer-fill" id="quizProgressFill" style="width: 5%;"></div>
             </div>
@@ -688,168 +650,11 @@
           <div class="result-trophy" id="resultTrophy">🏆</div>
           <h3 class="result-score-title">퀴즈 완료!</h3>
           <div class="result-score-num"><span id="resultScore">100</span>점</div>
-          <div class="result-tier-badge" id="resultTier">🌳 주식의 숲을 보는 고수!</div>
+          <div class="result-tier-badge" id="resultTier">🌳 우주인포 전설의 마스터!</div>
           <p class="result-desc" id="resultDesc">기초 지식이 완벽해요! 이제 실제 투자 가이드를 따라 천천히 시작해보세요.</p>
           <div class="result-action-btns">
             <button class="btn-retry-quiz" id="btnRetryQuiz">🔄 퀴즈 다시 풀기</button>
             <a href="#howto" class="btn-goto-howto">🚀 투자 시작하기 가이드</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 6: 주식 시작하는 법 -->
-  <section id="howto" class="section section-dark">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">Chapter 05</div>
-        <h2 class="section-title">주식 시작하는 법</h2>
-        <p class="section-sub">오늘 당장 시작할 수 있어요!</p>
-      </div>
-
-      <div class="howto-timeline">
-        <div class="timeline-item">
-          <div class="timeline-num">01</div>
-          <div class="timeline-content glass-card">
-            <div class="timeline-icon">📱</div>
-            <h3>증권사 앱 선택 & 계좌 개설</h3>
-            <p>키움증권(영웅문), 미래에셋증권(m.Stock), 삼성증권(mPOP) 등에서 앱을 설치하고 비대면 계좌를 개설해요.</p>
-            <div class="timeline-tip">
-              <strong>💡 팁:</strong> 신규 가입 이벤트로 수수료 무료나 사은품을 주는 경우가 많아요!
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-num">02</div>
-          <div class="timeline-content glass-card">
-            <div class="timeline-icon">💳</div>
-            <h3>증거금 입금</h3>
-            <p>개설한 증권 계좌로 투자할 돈을 이체해요. 처음엔 잃어도 아깝지 않을 소액부터 시작하는 걸 추천해요.</p>
-            <div class="timeline-tip">
-              <strong>💡 팁:</strong> 처음엔 10~30만원으로 시작해서 감각을 익혀보세요!
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-num">03</div>
-          <div class="timeline-content glass-card">
-            <div class="timeline-icon">🔍</div>
-            <h3>종목 선택 & 공부</h3>
-            <p>네이버 금융, 카카오페이증권, 증권사 리포트 등을 통해 기업을 분석해요. 평소 즐겨 쓰는 제품의 회사부터 시작해보세요!</p>
-            <div class="timeline-tip">
-              <strong>💡 팁:</strong> "피터 린치의 이기는 투자" - 아는 기업에 투자하라!
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-num">04</div>
-          <div class="timeline-content glass-card">
-            <div class="timeline-icon">🛒</div>
-            <h3>첫 주식 매수!</h3>
-            <p>앱에서 종목 검색 → 현재가 확인 → 수량 입력 → 매수 주문! 처음엔 ETF로 분산 투자하는 걸 추천해요.</p>
-            <div class="timeline-tip">
-              <strong>💡 팁:</strong> 한 번에 몰빵하지 말고 분할매수로 나눠서 사세요!
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-num">05</div>
-          <div class="timeline-content glass-card">
-            <div class="timeline-icon">📚</div>
-            <h3>꾸준히 공부하기</h3>
-            <p>경제 뉴스 읽기, 기업 실적 발표 확인, 투자 서적 읽기 등을 통해 꾸준히 지식을 쌓아가세요!</p>
-            <div class="timeline-tip">
-              <strong>💡 추천 책:</strong> 워렌 버핏의 주주 서한, 현명한 투자자 (벤저민 그레이엄)
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 7: 초보자가 하는 실수 TOP 5 -->
-  <section id="mistakes" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">Chapter 06</div>
-        <h2 class="section-title">초보자가 많이 하는 실수 TOP 5</h2>
-        <p class="section-sub">이것만 피해도 반은 성공!</p>
-      </div>
-
-      <div class="mistakes-grid">
-        <div class="mistake-card glass-card">
-          <div class="mistake-num">01</div>
-          <div class="mistake-icon">🎰</div>
-          <h3>몰빵 투자</h3>
-          <p>전 재산을 하나의 종목에 투자하는 것은 매우 위험해요. 하락하면 버티기 힘들어지고 패닉셀로 이어질 수 있어요.</p>
-          <div class="mistake-solution">
-            <strong>✅ 해결책:</strong> 여러 종목에 분산 투자, ETF 활용
-          </div>
-        </div>
-
-        <div class="mistake-card glass-card">
-          <div class="mistake-num">02</div>
-          <div class="mistake-icon">📰</div>
-          <h3>뉴스/SNS 루머 따라가기</h3>
-          <p>"OO 종목 내일 상한가!" 같은 정보를 믿고 따라 사면 대부분 이미 늦은 경우가 많아요. 주가는 선반영됩니다.</p>
-          <div class="mistake-solution">
-            <strong>✅ 해결책:</strong> 직접 기업 분석, 공식 공시 자료 확인
-          </div>
-        </div>
-
-        <div class="mistake-card glass-card">
-          <div class="mistake-num">03</div>
-          <div class="mistake-icon">😰</div>
-          <h3>공포에 팔고 탐욕에 사기</h3>
-          <p>주가가 떨어지면 겁이 나서 팔고, 오를 때 욕심에 사는 반대 행동. 이렇게 하면 항상 손실이에요.</p>
-          <div class="mistake-solution">
-            <strong>✅ 해결책:</strong> 투자 원칙 세우기, 장기 투자 마인드셋
-          </div>
-        </div>
-
-        <div class="mistake-card glass-card">
-          <div class="mistake-num">04</div>
-          <div class="mistake-icon">💸</div>
-          <h3>생활비로 투자하기</h3>
-          <p>당장 써야 할 돈이나 빚을 내서 투자하면 급락 시 버틸 수 없어요. 심리적으로도 불안정해져요.</p>
-          <div class="mistake-solution">
-            <strong>✅ 해결책:</strong> 반드시 여유자금으로만 투자
-          </div>
-        </div>
-
-        <div class="mistake-card glass-card">
-          <div class="mistake-num">05</div>
-          <div class="mistake-icon">📱</div>
-          <h3>매일 주가 들여다보기</h3>
-          <p>하루에도 수십 번 주가를 확인하면 감정적인 투자를 하게 되고, 일상생활에도 지장을 줘요.</p>
-          <div class="mistake-solution">
-            <strong>✅ 해결책:</strong> 주 1~2회 확인, 장기 관점으로 보기
-          </div>
-        </div>
-      </div>
-
-      <div class="golden-rule glass-card">
-        <div class="golden-icon">👑</div>
-        <div class="golden-content">
-          <h4>투자의 황금 원칙</h4>
-          <div class="quotes-grid">
-            <div class="quote-item">
-              <p>"남들이 탐욕스러울 때 두려워하고,<br />남들이 두려워할 때 탐욕스러워라"</p>
-              <span>— 워렌 버핏</span>
-            </div>
-            <div class="quote-item">
-              <p>"주식시장은 조급한 사람의 돈을<br />인내심 있는 사람에게 이전하는 장치다"</p>
-              <span>— 워렌 버핏</span>
-            </div>
-            <div class="quote-item">
-              <p>"내가 이해하지 못하는 것에는<br />투자하지 않는다"</p>
-              <span>— 피터 린치</span>
-            </div>
           </div>
         </div>
       </div>
@@ -861,14 +666,14 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-logo">
-          <span>📈</span>
-          <span>주린이 아카데미</span>
+          <span>🚀</span>
+          <span>우주인포 (WOOJU INFO)</span>
         </div>
         <p class="footer-disclaimer">
           ⚠️ 본 사이트의 내용은 교육 목적으로 제공되며, 투자 권유가 아닙니다.<br />
           모든 투자의 책임은 본인에게 있으며, 투자 전 충분한 학습과 신중한 판단이 필요합니다.
         </p>
-        <p class="footer-copy">© 2026 주린이 아카데미 · 주식 100일 완성 백과사전 & 차트 마스터</p>
+        <p class="footer-copy">© 2026 우주인포 (WOOJU INFO) · 주식 100일 완성 백과사전</p>
       </div>
     </div>
   </footer>
