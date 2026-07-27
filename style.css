@@ -1,5 +1,5 @@
 /* ================================================
-   Stock Beginner - 30-Day Single Card Flip Design System
+   Stock Beginner - 30-Day Master Engine & Design System
    ================================================ */
 
 :root {
@@ -17,6 +17,11 @@
   margin: 0; padding: 0;
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* CRITICAL DISPLAY ENGINE FIX */
+.hidden {
+  display: none !important;
 }
 
 body {
@@ -85,7 +90,7 @@ body {
 .hero-search-btn { background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%); border: none; color: #fff; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; }
 
 .hero-search-dropdown { position: absolute; top: 105%; left: 0; width: 100%; background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(25px); border: 1px solid rgba(99, 102, 241, 0.4); border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); z-index: 100; max-height: 350px; overflow-y: auto; text-align: left; padding: 8px 0; }
-.hero-search-dropdown.hidden { display: none; }
+
 .search-res-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .search-res-item:hover { background: rgba(99, 102, 241, 0.25); }
 .search-res-title { font-weight: 700; color: #f1f5f9; font-size: 0.98rem; }
@@ -195,8 +200,9 @@ body {
 .news-snippet { font-size: 0.88rem; color: #cbd5e1; margin-bottom: 14px; }
 .news-footer { display: flex; justify-content: space-between; font-size: 0.82rem; color: #94a3b8; }
 
-/* Quiz Section */
+/* Quiz Section Clean Single-State Engine */
 .quiz-container { padding: 35px; text-align: center; }
+.quiz-step-box { text-align: center; }
 .quiz-intro-icon { font-size: 3.5rem; margin-bottom: 15px; }
 .btn-start-quiz, .btn-retry-quiz { background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%); color: #fff; border: none; padding: 14px 30px; border-radius: 25px; font-size: 1.05rem; font-weight: 700; cursor: pointer; }
 .quiz-opt-btn { display: flex; align-items: center; gap: 12px; width: 100%; padding: 16px 20px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; color: #f1f5f9; font-size: 1rem; text-align: left; cursor: pointer; margin-bottom: 12px; }
@@ -207,7 +213,6 @@ body {
 
 /* Universal Modal Popup */
 .term-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(16px); z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 15px; }
-.term-modal-overlay.hidden { display: none; }
 .term-modal-card { width: 100%; max-width: 650px; max-height: 90vh; overflow-y: auto; padding: 30px; position: relative; background: rgba(15, 23, 42, 0.98); border-radius: 24px; border: 1px solid rgba(99, 102, 241, 0.4); box-shadow: 0 25px 60px rgba(0,0,0,0.9); }
 .modal-close-btn { position: absolute; top: 20px; right: 20px; background: transparent; border: none; color: #94a3b8; font-size: 1.6rem; cursor: pointer; }
 .modal-section-box { background: rgba(255, 255, 255, 0.05); padding: 18px; border-radius: 16px; margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.08); }
