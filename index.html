@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>주린이 아카데미 | 주식 100일 완성 백과사전 & 차트 마스터</title>
+  <meta name="description" content="주식 100일 완성 백과사전! Day 1 기초부터 Day 100 미국주식·세금·심리까지, 차트 분석, ROE/PER 가치투자, 매매 체결원리, 돔황챠 등 커뮤니티 밈 총집합!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-icon">📈</span>
+        <span class="logo-text">주린이 아카데미</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#daily" class="nav-link highlight-link">🗓️ 100일 백과사전</a></li>
+        <li><a href="#news" class="nav-link highlight-link3">📰 실시간 뉴스</a></li>
+        <li><a href="#chart-guide" class="nav-link highlight-purple">📊 차트·매매 마스터</a></li>
+        <li><a href="#terms" class="nav-link">🔍 용어 심화사전</a></li>
+        <li><a href="#slang" class="nav-link highlight-slang">🔥 커뮤니티 용어</a></li>
+        <li><a href="#quiz" class="nav-link highlight-link2">🧩 실력 퀴즈</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Quick Search -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <canvas id="candleCanvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">📚 주식 100일 완성 종합 백과사전 구축 프로젝트</div>
+      <h1 class="hero-title">
+        하루 하나씩 배우는<br />
+        <span class="gradient-text">주식 100일 완성 백과사전</span>
+      </h1>
+      <p class="hero-desc">
+        Day 1 주식 기초부터 Day 100 미국주식·세금·투자 심리까지!<br />
+        차트 보는 법, ROE/PER 가치투자, 돔황챠 밈 용어까지 완벽 수록!
+      </p>
+
+      <!-- Hero Search Bar -->
+      <div class="hero-search-wrap">
+        <div class="hero-search-box glass-card">
+          <span class="hero-search-icon">🔍</span>
+          <input type="text" id="heroSearchInput" placeholder="100일 개념, 차트, 매매법, 밈 검색 (예: Day 50, 돔황챠, 양봉, PER, RSI, 양도세)..." autocomplete="off" />
+          <button class="hero-search-btn" id="heroSearchBtn">검색</button>
+        </div>
+        
+        <!-- Live Search Dropdown Suggestions -->
+        <div class="hero-search-dropdown hidden" id="heroSearchDropdown">
+          <!-- Dynamic Suggestions JS -->
+        </div>
+
+        <div class="hero-keywords-recommend">
+          <span>추천 검색:</span>
+          <button class="tag-btn" data-search="Day 100">🎓 Day 100 종합</button>
+          <button class="tag-btn" data-search="봉차트">🕯️ 봉차트 마스터</button>
+          <button class="tag-btn" data-search="가치투자">💎 ROE/PER 발굴법</button>
+          <button class="tag-btn" data-search="돔황챠">🔥 돔황챠 밈</button>
+          <button class="tag-btn" data-search="양도소득세">💰 미국주식 세금</button>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num" data-target="100">0</span>일
+          <span class="stat-label">완성 백과사전</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="30">0</span>개
+          <span class="stat-label">실력 점검 퀴즈</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="50">0</span>개
+          <span class="stat-label">심화 지식 팝업</span>
+        </div>
+      </div>
+
+      <div class="hero-btns">
+        <a href="#daily" class="hero-cta">
+          📚 100일 백과사전 시작하기
+        </a>
+        <a href="#chart-guide" class="hero-cta secondary-cta">
+          📊 차트 & 매매 마스터
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">스크롤해서 둘러보기</div>
+  </section>
+
+  <!-- Section 0: 100일 완성 백과사전 -->
+  <section id="daily" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">100-Day Encyclopedia</div>
+        <h2 class="section-title">📚 주식 100일 완성 백과사전</h2>
+        <p class="section-sub">기초부터 실전 차트, 해외주식, 세금, 심리까지 100일 코스</p>
+      </div>
+
+      <div class="daily-box glass-card">
+        <div class="daily-top">
+          <div class="daily-date-badge">
+            <span class="date-icon">📅</span>
+            <span id="dailyDate">DAY-BY-DAY STUDY</span>
+          </div>
+          <div class="daily-progress">
+            <span>학습 완료: <strong id="learnedCount">0</strong> / <span id="totalConceptsCount">100</span>일</span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="learnedProgressBar" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="daily-card-wrap">
+          <button class="daily-nav-btn prev" id="prevConceptBtn" title="이전 개념">◀</button>
+          
+          <div class="daily-concept-card" id="dailyConceptCard">
+            <div class="concept-day-tag" id="conceptDayTag">Day 1</div>
+            <div class="concept-card-icon" id="conceptIcon">💡</div>
+            <h3 class="concept-card-title" id="conceptTitle">금리와 주가의 관계</h3>
+            <div class="concept-card-category" id="conceptCategory">경제 기초</div>
+            <p class="concept-card-summary" id="conceptSummary">
+              금리가 오르면 주가는 왜 떨어질까요? 금리는 돈의 몸값(이자율)이에요. 금리가 높아지면 사람들은 주식 대신 은행 예금으로 돈을 옮기고, 기업도 대출 이자 부담으로 투자를 줄이게 돼요.
+            </p>
+
+            <div class="concept-card-detail">
+              <div class="detail-box">
+                <strong>📌 핵심 포인트</strong>
+                <p id="conceptKeyPoint">금리 인상 ➔ 예금 자금 이동 & 기업 대출 이자 부담 ➔ 주가 하락 압력</p>
+              </div>
+              <div class="detail-box example">
+                <strong>💬 실전 예시</strong>
+                <p id="conceptExample">미국 연준(Fed)이 기준금리를 대폭 올리면 전 세계 주식시장이 출렁이는 이유가 바로 이것 때문이에요!</p>
+              </div>
+            </div>
+
+            <div class="daily-action-btns">
+              <button class="btn-check-learn" id="btnToggleLearn">
+                <span class="check-icon">✓</span> <span id="btnLearnText">오늘 공부 완료!</span>
+              </button>
+              <button class="btn-random-concept" id="btnRandomConcept">
+                🎲 무작위 개념 공부
+              </button>
+            </div>
+          </div>
+
+          <button class="daily-nav-btn next" id="nextConceptBtn" title="다음 개념">▶</button>
+        </div>
+
+        <!-- Concept Selector List & Category Filters -->
+        <div class="concept-list-drawer">
+          <div class="drawer-header">
+            <h4>100일 백과사전 탐색기 (<span id="conceptListCount">100</span>일 과정)</h4>
+            <span class="drawer-hint">원하는 일차를 선택해서 학습해보세요!</span>
+          </div>
+
+          <div class="concept-chips" id="conceptChips">
+            <!-- Dynamic 100 Chips JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: 외부 실시간 증시/경제 뉴스 -->
+  <section id="news" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Live Market News</div>
+        <h2 class="section-title">📰 실시간 주요 증시 & 경제 뉴스</h2>
+        <p class="section-sub">주식 시장의 최신 이슈를 한눈에 파악하세요</p>
+      </div>
+
+      <div class="news-header-bar">
+        <div class="news-live-indicator">
+          <span class="live-dot"></span>
+          <span>실시간 뉴스 피드</span>
+          <span class="news-updated-time" id="newsUpdatedTime">방금 업데이트</span>
+        </div>
+        <button class="btn-refresh-news" id="btnRefreshNews">
+          🔄 뉴스 새로고침
+        </button>
+      </div>
+
+      <div class="news-grid" id="newsGrid">
+        <!-- Dynamic Live News Items loaded via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW SECTION: 차트 보는법 & 매매 실전 마스터 가이드 -->
+  <section id="chart-guide" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Technical & Fundamental Master</div>
+        <h2 class="section-title">📊 차트 보는 법 & 매매 실전 마스터</h2>
+        <p class="section-sub">각 카드를 클릭하시면 깊이 있는 원리와 매매 전략 팝업이 나타납니다!</p>
+      </div>
+
+      <!-- Tab Buttons for Chart & Trading Guide -->
+      <div class="chart-tab-menu">
+        <button class="chart-tab-btn active" data-tab="tab-chart">🕯️ 봉차트&추세선</button>
+        <button class="chart-tab-btn" data-tab="tab-ma">📈 이동평균선&패턴</button>
+        <button class="chart-tab-btn" data-tab="tab-order">🛒 매매주문&체결원리</button>
+        <button class="chart-tab-btn" data-tab="tab-value">💎 가치투자(ROE/PER)</button>
+        <button class="chart-tab-btn" data-tab="tab-theme">🚀 주도주&수급매매</button>
+      </div>
+
+      <!-- Tab Content 1: 봉차트 & 추세선 -->
+      <div class="chart-tab-content active" id="tab-chart">
+        <div class="guide-grid-2">
+          <div class="guide-card glass-card clickable-master-card" data-master-id="master-candle">
+            <div class="guide-badge">클릭 시 심화설명 🔍</div>
+            <h3>🕯️ 1. 봉차트(캔들스틱) 완전 정복</h3>
+            <p class="guide-desc">18세기 일본 쌀 시장에서 유래된 캔들스틱! 시가·종가·고가·저가로 형성되는 매수/매도 세력의 혈투 현장입니다.</p>
+            <div class="candle-visual-box">
+              <div class="candle-item red-candle">
+                <div class="candle-title">🔴 양봉 (상승)</div>
+                <div class="candle-wick top-wick">고가</div>
+                <div class="candle-body">종가 (상승 마감)<br /><span class="arrow-up">▲</span><br />시가 (시작 가격)</div>
+                <div class="candle-wick bottom-wick">저가</div>
+              </div>
+              <div class="candle-item blue-candle">
+                <div class="candle-title">🔵 음봉 (하락)</div>
+                <div class="candle-wick top-wick">고가</div>
+                <div class="candle-body">시가 (시작 가격)<br /><span class="arrow-down">▼</span><br />종가 (하락 마감)</div>
+                <div class="candle-wick bottom-wick">저가</div>
+              </div>
+            </div>
+            <div class="card-click-prompt">👉 클릭하여 장대양봉, 망치형, 십자선(Doji) 심화 패턴 보기</div>
+          </div>
+
+          <div class="guide-card glass-card clickable-master-card" data-master-id="master-trend">
+            <div class="guide-badge">클릭 시 심화설명 🔍</div>
+            <h3>📐 2. 추세선과 지지선/저항선 매매법</h3>
+            <p class="guide-desc">주가의 흐름을 관통하는 지지선과 저항선! 뚫리면 천장이 바닥이 되는 역할 반전의 법칙을 이해하세요.</p>
+            <div class="trend-explain-box">
+              <div class="trend-item">
+                <strong>🟢 지지선 (Support Line)</strong>
+                <p>주가가 내려올 때 튕겨 올라가는 '바닥 방어선' 역할</p>
+              </div>
+              <div class="trend-item">
+                <strong>🔴 저항선 (Resistance Line)</strong>
+                <p>주가가 올라갈 때 막혀서 부딪히는 '천장 저항선' 역할</p>
+              </div>
+            </div>
+            <div class="card-click-prompt">👉 클릭하여 속임수 돌파(Fakeout) 파악 및 실전 매수점 보기</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content 2: 이동평균선 & 패턴분석 & 보조지표 -->
+      <div class="chart-tab-content" id="tab-ma">
+        <div class="guide-grid-3">
+          <div class="guide-card glass-card clickable-master-card" data-master-id="master-ma">
+            <div class="guide-badge">클릭 시 심화 🔍</div>
+            <h3>📈 이동평균선 (이평선) 공식</h3>
+            <p>5일, 20일, 60일, 120일 평균 주가선! 정배열과 역배열, 골든크로스의 진실.</p>
+            <ul class="ma-list">
+              <li><span class="ma-tag ma5">5일선</span> <strong>단기선:</strong> 일주일 심리선</li>
+              <li><span class="ma-tag ma20">20일선</span> <strong>중기선:</strong> 한 달 세력선</li>
+              <li><span class="ma-tag ma60">60일선</span> <strong>수급선:</strong> 분기 실적선</li>
+              <li><span class="ma-tag ma120">120일선</span> <strong>장기선:</strong> 경기 추세선</li>
+            </ul>
+            <div class="card-click-prompt">👉 클릭하여 골든크로스/데드크로스 실전 매매 전략 보기</div>
+          </div>
+
+          <div class="guide-card glass-card clickable-master-card" data-master-id="master-pattern">
+            <div class="guide-badge">클릭 시 심화 🔍</div>
+            <h3>🔺 차트 패턴 분석 (W자, M자)</h3>
+            <p>이중 바닥(W자), 헤드앤숄더(M자), 삼각 수렴 패턴으로 목표가를 계산합니다.</p>
+            <div class="pattern-items">
+              <div class="pat-box">
+                <strong>이중 바닥 (W자 패턴)</strong>
+                <p>바닥을 두 번 찍고 반등하는 강력한 바닥 확인 신호!</p>
+              </div>
+              <div class="pat-box">
+                <strong>헤드앤숄더 (M자 패턴)</strong>
+                <p>머리와 어깨 모양을 만들며 고점 후 하락 전환 신호!</p>
+              </div>
+            </div>
+            <div class="card-click-prompt">👉 클릭하여 목라인(Neckline) 돌파 매수 공식 보기</div>
+          </div>
+
+          <div class="guide-card glass-card clickable-master-card" data-master-id="master-indicator">
+            <div class="guide-badge">클릭 시 심화 🔍</div>
+            <h3>📊 거래량 & 보조지표 (RSI/MACD)</h3>
+            <p>거래량은 주가의 선행 지표! RSI 70/30 법칙과 볼린저 밴드 스퀴즈 전략.</p>
+            <div class="indicator-item">
+              <strong>🔊 거래량 분석:</strong> 거래량이 터지면서 주가가 뚫어야 진짜 돌파입니다.
+            </div>
+            <div class="indicator-item">
+              <strong>📉 RSI (상대강도지수):</strong> 70 이상 = 과매수, 30 이하 = 과매도.
+            </div>
+            <div class="card-click-prompt">👉 클릭하여 다이버전스(Divergence) 매매법 보기</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content 3: 매매주문 종류 & 체결 원리 -->
+      <div class="chart-tab-content" id="tab-order">
+        <div class="guide-grid-2">
+          <div class="guide-card glass-card clickable-master-card" data-master-id="master-order">
+            <div class="guide-badge">클릭 시 심화 🔍</div>
+            <h3>🛒 매매 주문의 4가지 종류</h3>
+            <ul class="order-type-list">
+              <li>
+                <strong>지정가 vs 시장가 주문</strong>
+                <p>가격 우선 지정가와 체결 보장 시장가의 차이점 및 장단점 분석</p>
+              </li>
+              <li>
+                <strong>조건부 지정가 & 시간외 매매</strong>
+                <p>장전/장후 시간외 종가 매매(08:30, 15:40) 및 시간외 단일가 수수료</p>
+              </li>
+            </ul>
+            <div class="card-click-prompt">👉 클릭하여 슬리피지(Slippage) 방지 주문 팁 보기</div>
+          </div>
+
+          <div class="guide-card glass-card clickable-master-card" data-master-id="master-principles">
+            <div class="guide-badge">클릭 시 심화 🔍</div>
+            <h3>⚙️ 매매 체결의 3대 원칙</h3>
+            <p>가격 우선 ➔ 시간 우선 ➔ 수량 우선! 동시호가(08:30~09:00, 15:20~15:30) 체결 메커니즘.</p>
+            <div class="principles-flow">
+              <div class="principle-step">
+                <span class="p-num">1</span>
+                <div>
+                  <strong>가격 우선:</strong> 높은 매수 / 낮은 매도 우선
+                </div>
+              </div>
+              <div class="principle-step">
+                <span class="p-num">2</span>
+                <div>
+                  <strong>시간 우선:</strong> 1초라도 빠른 주문 접수 우선
+                </div>
+              </div>
+            </div>
+            <div class="card-click-prompt">👉 클릭하여 동시호가 갭상승/갭하락 상하한가 주문 원리 보기</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content 4: 가치투자 & ROE/PER 발굴법 -->
+      <div class="chart-tab-content" id="tab-value">
+        <div class="guide-grid-2">
+          <div class="guide-card glass-card clickable-master-card" data-master-id="master-value">
+            <div class="guide-badge">클릭 시 심화 🔍</div>
+            <h3>💎 워렌 버핏의 가치투자 & ROE/PER 발굴</h3>
+            <p>자기자본이익률(ROE) 15% 지속 기업과 주가수익비율(PER) 저평가주 발굴 3대 공식!</p>
+            <div class="value-formula-card">
+              <h4>🎯 저평가 우량주 고르는 3대 공식</h4>
+              <div class="val-check-item">
+                <span class="val-icon">1️⃣</span>
+                <div>
+                  <strong>ROE 15% 이상 지속:</strong> 듀퐁 분석(DuPont Analysis)으로 이익의 질 확인
+                </div>
+              </div>
+              <div class="val-check-item">
+                <span class="val-icon">2️⃣</span>
+                <div>
+                  <strong>PEG 지표 활용:</strong> PER ÷ 이익성장률 < 1 저평가 성장주
+                </div>
+              </div>
+            </div>
+            <div class="card-click-prompt">👉 클릭하여 밸류에이션 트랩(Valuation Trap) 피하는 법 보기</div>
+          </div>
+
+          <div class="guide-card glass-card clickable-master-card" data-master-id="master-hts">
+            <div class="guide-badge">클릭 시 심화 🔍</div>
+            <h3>📱 HTS/MTS 활용 & 종합주가지수 원리</h3>
+            <p>코스피 지수(1980년 기준=100) 시가총액 산출 공식과 증권사 영웅문 화면번호 꿀팁!</p>
+            <div class="hts-step-list">
+              <div class="hts-step">
+                <strong>종합주가지수 공식:</strong> (현재 시총 ÷ 1980년 1월 4일 기준 시총) × 100
+              </div>
+              <div class="hts-step">
+                <strong>HTS 핵심 화면:</strong> [0101] 주식현재가 / [0600] 종합차트 / [0796] 수급분석
+              </div>
+            </div>
+            <div class="card-click-prompt">👉 클릭하여 시가총액 비중(삼성전자 20% 효과) 원리 보기</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content 5: 주도주 & 테마주 & 외국인기관 수급 -->
+      <div class="chart-tab-content" id="tab-theme">
+        <div class="guide-grid-2">
+          <div class="guide-card glass-card clickable-master-card" data-master-id="master-leading">
+            <div class="guide-badge">클릭 시 심화 🔍</div>
+            <h3>🚀 주도주 vs 테마주 구별법</h3>
+            <p>실적이 수반되는 시대의 대장주(주도주)와 뉴스 이슈로 급등락하는 테마주의 차이점.</p>
+            <div class="vs-theme-box">
+              <div class="vs-side good-side">
+                <h4>🌟 주도주 (Market Leader)</h4>
+                <p>AI 반도체, 2차전지 등 시대적 산업 성장과 실적이 동반되어 1~3년간 상승 추세를 형성</p>
+              </div>
+              <div class="vs-side danger-side">
+                <h4>⚡ 테마주 (Theme Stock)</h4>
+                <p>정치인 테마, 단발성 찌라시로 실적 없이 며칠 만에 폭등 후 폭락하는 위험한 주식</p>
+              </div>
+            </div>
+            <div class="card-click-prompt">👉 클릭하여 테마주 설거지 차트 피하는 구체적 방법 보기</div>
+          </div>
+
+          <div class="guide-card glass-card clickable-master-card" data-master-id="master-supply">
+            <div class="guide-badge">클릭 시 심화 🔍</div>
+            <h3>👥 외국인 & 기관 쌍끌이 수급 매매</h3>
+            <p>거대한 메이저 자금의 이동을 추적하는 수급매매! 외국인 환율 환차손과 기관 연기금 동향.</p>
+            <div class="supply-box">
+              <div class="supply-item">
+                <strong>쌍끌이 순매수 (양매수) 🚀</strong>
+                <p>외국인과 기관이 3일 이상 동시 순매수하는 종목은 강한 주가 상승 탄력을 받음</p>
+              </div>
+            </div>
+            <div class="card-click-prompt">👉 클릭하여 수급 매매 실전 HTS 활용법 보기</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW SECTION: 🔥 주식 커뮤니티 밈 & 슬랭 사전 -->
+  <section id="slang" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Stock Community Slang</div>
+        <h2 class="section-title">🔥 주식 커뮤니티 밈 & 슬랭 심화 사전</h2>
+        <p class="section-sub">카드를 클릭하시면 밈의 유래, 대화 예시, 투자 심리 및 주의점을 팝업으로 볼 수 있어요!</p>
+      </div>
+
+      <div class="slang-grid">
+        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-domhwangcha">
+          <div class="slang-badge hot">🔥 초인기 밈</div>
+          <div class="slang-emoji">🏃‍♂️💨</div>
+          <h3 class="slang-title">돔황챠</h3>
+          <div class="slang-origin">원래 뜻: "도망쳐!"</div>
+          <p class="slang-desc">
+            주가가 대폭락하거나 악재가 터졌을 때 "모두 빨리 주식을 팔고 도망치라"는 유머러스한 밈입니다.
+          </p>
+          <div class="card-click-prompt">👉 클릭하여 유래와 손절 원칙 팝업 보기</div>
+        </div>
+
+        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-sangkit">
+          <div class="slang-badge up">🚀 상승 기원</div>
+          <div class="slang-emoji">🔺</div>
+          <h3 class="slang-title">상킷 (상킷리스트)</h3>
+          <div class="slang-origin">원래 뜻: 상한가(+30%) 기원</div>
+          <p class="slang-desc">
+            내가 보유한 종목이 오늘 +30% 상한가에 가기를 간절히 기도하고 바라는 게시글 표현입니다.
+          </p>
+          <div class="card-click-prompt">👉 클릭하여 상한가 가격제한폭 원리 팝업 보기</div>
+        </div>
+
+        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-hakit">
+          <div class="slang-badge down">🔻 하락 통곡</div>
+          <div class="slang-emoji">📉</div>
+          <h3 class="slang-title">하킷</h3>
+          <div class="slang-origin">원래 뜻: 하한가(-30%) 통곡</div>
+          <p class="slang-desc">
+            주가가 연속 폭락하여 -30% 하한가로 고꾸라지거나 악재가 지속될 때 탄식하며 부르는 소리입니다.
+          </p>
+          <div class="card-click-prompt">👉 클릭하여 하한가 거래 잠김 위험 팝업 보기</div>
+        </div>
+
+        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-floor">
+          <div class="slang-badge">🏢 층수</div>
+          <div class="slang-emoji">🏢</div>
+          <h3 class="slang-title">N층 (70층, 80층)</h3>
+          <div class="slang-origin">원래 뜻: 내 평단가 (매수 가격)</div>
+          <p class="slang-desc">
+            주식을 산 가격을 아파트 층수로 비유한 표현입니다. 삼성전자를 70,000원에 샀다면 "70층 주민"입니다.
+          </p>
+          <div class="card-click-prompt">👉 클릭하여 원금 복구 수치 계산 복습 팝업 보기</div>
+        </div>
+
+        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-rescue">
+          <div class="slang-badge">🚑 구조대</div>
+          <div class="slang-emoji">🚑</div>
+          <h3 class="slang-title">구조대</h3>
+          <div class="slang-origin">원래 뜻: 주가가 내 매수가에 도달함</div>
+          <p class="slang-desc">
+            고점에 물려 오랫동안 마이너스 손실 상태였는데, 주가가 반등하여 내가 산 매수가(층수)까지 올 때 부릅니다.
+          </p>
+          <div class="card-click-prompt">👉 클릭하여 본전 심리 탈출 전략 팝업 보기</div>
+        </div>
+
+        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-jonber">
+          <div class="slang-badge">🧊 존버</div>
+          <div class="slang-emoji">🗿</div>
+          <h3 class="slang-title">존버</h3>
+          <div class="slang-origin">원래 뜻: 끝까지 버티기</div>
+          <p class="slang-desc">
+            주가가 아무리 하락해도 손절하지 않고 계좌를 열어보지 않으며 무조건 장기 보유로 견뎌내는 행위입니다.
+          </p>
+          <div class="card-click-prompt">👉 클릭하여 무지성 존버 vs 가치 존버 차이 팝업 보기</div>
+        </div>
+
+        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-water">
+          <div class="slang-badge">💸 물타기 / 불타기</div>
+          <div class="slang-emoji">🌊</div>
+          <h3 class="slang-title">물타기 / 불타기</h3>
+          <div class="slang-origin">원래 뜻: 추가 매수 전략</div>
+          <p class="slang-desc">
+            주가 하락 시 평단가 낮추는 물타기와 상승 시 이익을 극대화하는 불타기 매매 기법입니다.
+          </p>
+          <div class="card-click-prompt">👉 클릭하여 피라미딩 매매법 팝업 보기</div>
+        </div>
+
+        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-impulse">
+          <div class="slang-badge">🧠 뇌동매매</div>
+          <div class="slang-emoji">🤯</div>
+          <h3 class="slang-title">뇌동매매</h3>
+          <div class="slang-origin">원래 뜻: 홧김에 하는 충동 매매</div>
+          <p class="slang-desc">
+            남들의 말이나 급등하는 차트를 보고 이성적 분석 없이 홧김에 덜컥 따라 사는 위험한 행동입니다.
+          </p>
+          <div class="card-click-prompt">👉 클릭하여 FOMO 극복 심리 가이드 팝업 보기</div>
+        </div>
+
+        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-ttok">
+          <div class="slang-badge">🐂 떡상 / 떡락</div>
+          <div class="slang-emoji">💥</div>
+          <h3 class="slang-title">떡상 / 떡락</h3>
+          <div class="slang-origin">원래 뜻: 대폭등 / 대폭락</div>
+          <p class="slang-desc">
+            주가가 미친 듯이 급등하는 '떡상'과 수직 하락하는 '떡락' 현상입니다.
+          </p>
+          <div class="card-click-prompt">👉 클릭하여 주가 급변동 대응 원칙 팝업 보기</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: 대화형 용어 심화 사전 -->
+  <section id="terms" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Chapter 04</div>
+        <h2 class="section-title">🔍 필수 주식 용어 심화 사전</h2>
+        <p class="section-sub">카드를 클릭하시면 상세한 실전 설명과 활용법을 볼 수 있어요!</p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-bar-wrap">
+        <div class="search-input-box glass-card">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="termSearchInput" placeholder="용어명, 약어(PER, PBR, ETF), 내용으로 실시간 검색..." />
+          <button class="clear-search-btn" id="clearSearchBtn" title="지우기">✕</button>
+        </div>
+        <div class="search-count-info" id="searchCountInfo">총 <strong>24</strong>개의 심화 용어가 등록되어 있습니다.</div>
+      </div>
+
+      <div class="terms-filter">
+        <button class="filter-btn active" data-filter="all">전체</button>
+        <button class="filter-btn" data-filter="basic">기초</button>
+        <button class="filter-btn" data-filter="indicator">지표</button>
+        <button class="filter-btn" data-filter="trading">매매</button>
+        <button class="filter-btn" data-filter="economy">경제/시황</button>
+      </div>
+
+      <div class="terms-grid" id="termsGrid">
+        <!-- Dynamic Cards rendered via JS for rich interactive modal popups -->
+      </div>
+
+      <div class="no-search-results hidden" id="noSearchResults">
+        <div class="no-res-icon">🔍</div>
+        <p>검색 결과가 없습니다.<br />다른 단어로 검색해 보세요!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Universal Interactive Detail Modal Popup for Terms, Slangs & Master Guides -->
+  <div class="term-modal-overlay hidden" id="termModalOverlay">
+    <div class="term-modal-card glass-card" id="termModalCard">
+      <button class="modal-close-btn" id="modalCloseBtn">✕</button>
+      
+      <div class="modal-header-area">
+        <div class="modal-term-badge" id="modalCategoryTag">기초</div>
+        <div class="modal-emoji-title">
+          <span id="modalEmoji">💰</span>
+          <h3 id="modalTermName">시가총액</h3>
+        </div>
+        <div class="modal-eng-name" id="modalEngName">Market Cap (Market Capitalization)</div>
+      </div>
+
+      <div class="modal-body-content">
+        <div class="modal-section-box highlight-box">
+          <h5>💡 한 줄 핵심 요약</h5>
+          <p id="modalQuickSummary">회사의 전체 가치를 돈으로 표현한 총 금액입니다.</p>
+        </div>
+
+        <div class="modal-section-box">
+          <h5>📖 깊이 있는 원리와 전문 지식</h5>
+          <p id="modalFullDesc">
+            시가총액은 현재 주가에 상장된 총 주식 수를 곱한 수치입니다. 주가가 비싸다고 해서 무조건 대기업이 아니며, 주가와 발행 주식 수의 곱인 시가총액을 봐야 그 기업의 진짜 덩치를 알 수 있습니다.
+          </p>
+        </div>
+
+        <div class="modal-section-box grid-2-col">
+          <div class="inner-info-card">
+            <strong>🔑 계산 공식 & 구체적 수치 예시</strong>
+            <p id="modalFormula">주가 × 총 주식 수 = 시가총액<br />예: 7만원 × 59억주 = 약 413조원 (삼성전자)</p>
+          </div>
+          <div class="inner-info-card yellow-border">
+            <strong>🎯 실전 매매 활용 전략 & 주의점</strong>
+            <p id="modalUsage">대형주(시총 3조 이상)는 변동성이 적어 안정적이고, 소형주는 변동성이 커 고위험 고수익 성향을 띱니다.</p>
+          </div>
+        </div>
+
+        <div class="modal-section-box tip-box">
+          <h5>📌 주린이를 위한 투자 원포인트 레슨</h5>
+          <p id="modalKeyTakeaway">기업의 몸집을 확인할 때는 주가 대신 '시가총액'을 반드시 확인하세요!</p>
+        </div>
+      </div>
+
+      <div class="modal-footer-area">
+        <button class="modal-nav-btn" id="modalPrevBtn">◀ 이전 항목</button>
+        <button class="modal-nav-btn primary" id="modalNextBtn">다음 항목 ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: 주린이 실력 점검 퀴즈 (30문항) -->
+  <section id="quiz" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Self Check Quiz</div>
+        <h2 class="section-title">🧩 주린이 실력 점검 퀴즈</h2>
+        <p class="section-sub">배운 내용을 퀴즈로 재미있게 확인해보세요!</p>
+      </div>
+
+      <div class="quiz-container glass-card" id="quizContainer">
+        <!-- Quiz Intro State -->
+        <div class="quiz-step-box" id="quizIntroState">
+          <div class="quiz-intro-icon">🎯</div>
+          <h3>나의 주식 지식 등급은 몇 단계일까?</h3>
+          <p>총 20개 이상의 실전 퀴즈를 풀고 나의 주린이 탈출 점수를 확인해보세요!</p>
+          <div class="quiz-badges-preview">
+            <span class="q-badge">🌱 초보 개미</span>
+            <span class="q-badge">🌿 성장하는 주린이</span>
+            <span class="q-badge">🌳 주식 고수 개미</span>
+          </div>
+          <button class="btn-start-quiz" id="btnStartQuiz">퀴즈 시작하기 🚀</button>
+        </div>
+
+        <!-- Quiz Playing State -->
+        <div class="quiz-step-box hidden" id="quizPlayState">
+          <div class="quiz-header-bar">
+            <span class="quiz-step-indicator">문제 <strong id="currentQuizNum">1</strong> / <span id="totalQuizNum">20</span></span>
+            <div class="quiz-timer-bar">
+              <div class="timer-fill" id="quizProgressFill" style="width: 5%;"></div>
+            </div>
+          </div>
+
+          <div class="quiz-question-box">
+            <span class="quiz-q-tag">Q<span id="quizQId">1</span></span>
+            <h4 id="quizQuestionText">삼성전자 주식 1주를 매수한 사람을 일컫는 말은 무엇일까요?</h4>
+          </div>
+
+          <div class="quiz-options-grid" id="quizOptionsGrid">
+            <!-- Dynamic Options JS -->
+          </div>
+
+          <div class="quiz-feedback-box hidden" id="quizFeedbackBox">
+            <div class="feedback-status" id="feedbackStatus">⭕ 정답입니다!</div>
+            <p class="feedback-explain" id="feedbackExplain">주식을 매수한 사람은 그 회사의 지분을 소유한 '주주(株主)'가 됩니다.</p>
+            <button class="btn-next-quiz" id="btnNextQuiz">다음 문제 ➔</button>
+          </div>
+        </div>
+
+        <!-- Quiz Result State -->
+        <div class="quiz-step-box hidden" id="quizResultState">
+          <div class="result-trophy" id="resultTrophy">🏆</div>
+          <h3 class="result-score-title">퀴즈 완료!</h3>
+          <div class="result-score-num"><span id="resultScore">100</span>점</div>
+          <div class="result-tier-badge" id="resultTier">🌳 주식의 숲을 보는 고수!</div>
+          <p class="result-desc" id="resultDesc">기초 지식이 완벽해요! 이제 실제 투자 가이드를 따라 천천히 시작해보세요.</p>
+          <div class="result-action-btns">
+            <button class="btn-retry-quiz" id="btnRetryQuiz">🔄 퀴즈 다시 풀기</button>
+            <a href="#howto" class="btn-goto-howto">🚀 투자 시작하기 가이드</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: 주식 시작하는 법 -->
+  <section id="howto" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Chapter 05</div>
+        <h2 class="section-title">주식 시작하는 법</h2>
+        <p class="section-sub">오늘 당장 시작할 수 있어요!</p>
+      </div>
+
+      <div class="howto-timeline">
+        <div class="timeline-item">
+          <div class="timeline-num">01</div>
+          <div class="timeline-content glass-card">
+            <div class="timeline-icon">📱</div>
+            <h3>증권사 앱 선택 & 계좌 개설</h3>
+            <p>키움증권(영웅문), 미래에셋증권(m.Stock), 삼성증권(mPOP) 등에서 앱을 설치하고 비대면 계좌를 개설해요.</p>
+            <div class="timeline-tip">
+              <strong>💡 팁:</strong> 신규 가입 이벤트로 수수료 무료나 사은품을 주는 경우가 많아요!
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-num">02</div>
+          <div class="timeline-content glass-card">
+            <div class="timeline-icon">💳</div>
+            <h3>증거금 입금</h3>
+            <p>개설한 증권 계좌로 투자할 돈을 이체해요. 처음엔 잃어도 아깝지 않을 소액부터 시작하는 걸 추천해요.</p>
+            <div class="timeline-tip">
+              <strong>💡 팁:</strong> 처음엔 10~30만원으로 시작해서 감각을 익혀보세요!
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-num">03</div>
+          <div class="timeline-content glass-card">
+            <div class="timeline-icon">🔍</div>
+            <h3>종목 선택 & 공부</h3>
+            <p>네이버 금융, 카카오페이증권, 증권사 리포트 등을 통해 기업을 분석해요. 평소 즐겨 쓰는 제품의 회사부터 시작해보세요!</p>
+            <div class="timeline-tip">
+              <strong>💡 팁:</strong> "피터 린치의 이기는 투자" - 아는 기업에 투자하라!
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-num">04</div>
+          <div class="timeline-content glass-card">
+            <div class="timeline-icon">🛒</div>
+            <h3>첫 주식 매수!</h3>
+            <p>앱에서 종목 검색 → 현재가 확인 → 수량 입력 → 매수 주문! 처음엔 ETF로 분산 투자하는 걸 추천해요.</p>
+            <div class="timeline-tip">
+              <strong>💡 팁:</strong> 한 번에 몰빵하지 말고 분할매수로 나눠서 사세요!
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-num">05</div>
+          <div class="timeline-content glass-card">
+            <div class="timeline-icon">📚</div>
+            <h3>꾸준히 공부하기</h3>
+            <p>경제 뉴스 읽기, 기업 실적 발표 확인, 투자 서적 읽기 등을 통해 꾸준히 지식을 쌓아가세요!</p>
+            <div class="timeline-tip">
+              <strong>💡 추천 책:</strong> 워렌 버핏의 주주 서한, 현명한 투자자 (벤저민 그레이엄)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: 초보자가 하는 실수 TOP 5 -->
+  <section id="mistakes" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Chapter 06</div>
+        <h2 class="section-title">초보자가 많이 하는 실수 TOP 5</h2>
+        <p class="section-sub">이것만 피해도 반은 성공!</p>
+      </div>
+
+      <div class="mistakes-grid">
+        <div class="mistake-card glass-card">
+          <div class="mistake-num">01</div>
+          <div class="mistake-icon">🎰</div>
+          <h3>몰빵 투자</h3>
+          <p>전 재산을 하나의 종목에 투자하는 것은 매우 위험해요. 하락하면 버티기 힘들어지고 패닉셀로 이어질 수 있어요.</p>
+          <div class="mistake-solution">
+            <strong>✅ 해결책:</strong> 여러 종목에 분산 투자, ETF 활용
+          </div>
+        </div>
+
+        <div class="mistake-card glass-card">
+          <div class="mistake-num">02</div>
+          <div class="mistake-icon">📰</div>
+          <h3>뉴스/SNS 루머 따라가기</h3>
+          <p>"OO 종목 내일 상한가!" 같은 정보를 믿고 따라 사면 대부분 이미 늦은 경우가 많아요. 주가는 선반영됩니다.</p>
+          <div class="mistake-solution">
+            <strong>✅ 해결책:</strong> 직접 기업 분석, 공식 공시 자료 확인
+          </div>
+        </div>
+
+        <div class="mistake-card glass-card">
+          <div class="mistake-num">03</div>
+          <div class="mistake-icon">😰</div>
+          <h3>공포에 팔고 탐욕에 사기</h3>
+          <p>주가가 떨어지면 겁이 나서 팔고, 오를 때 욕심에 사는 반대 행동. 이렇게 하면 항상 손실이에요.</p>
+          <div class="mistake-solution">
+            <strong>✅ 해결책:</strong> 투자 원칙 세우기, 장기 투자 마인드셋
+          </div>
+        </div>
+
+        <div class="mistake-card glass-card">
+          <div class="mistake-num">04</div>
+          <div class="mistake-icon">💸</div>
+          <h3>생활비로 투자하기</h3>
+          <p>당장 써야 할 돈이나 빚을 내서 투자하면 급락 시 버틸 수 없어요. 심리적으로도 불안정해져요.</p>
+          <div class="mistake-solution">
+            <strong>✅ 해결책:</strong> 반드시 여유자금으로만 투자
+          </div>
+        </div>
+
+        <div class="mistake-card glass-card">
+          <div class="mistake-num">05</div>
+          <div class="mistake-icon">📱</div>
+          <h3>매일 주가 들여다보기</h3>
+          <p>하루에도 수십 번 주가를 확인하면 감정적인 투자를 하게 되고, 일상생활에도 지장을 줘요.</p>
+          <div class="mistake-solution">
+            <strong>✅ 해결책:</strong> 주 1~2회 확인, 장기 관점으로 보기
+          </div>
+        </div>
+      </div>
+
+      <div class="golden-rule glass-card">
+        <div class="golden-icon">👑</div>
+        <div class="golden-content">
+          <h4>투자의 황금 원칙</h4>
+          <div class="quotes-grid">
+            <div class="quote-item">
+              <p>"남들이 탐욕스러울 때 두려워하고,<br />남들이 두려워할 때 탐욕스러워라"</p>
+              <span>— 워렌 버핏</span>
+            </div>
+            <div class="quote-item">
+              <p>"주식시장은 조급한 사람의 돈을<br />인내심 있는 사람에게 이전하는 장치다"</p>
+              <span>— 워렌 버핏</span>
+            </div>
+            <div class="quote-item">
+              <p>"내가 이해하지 못하는 것에는<br />투자하지 않는다"</p>
+              <span>— 피터 린치</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <span>📈</span>
+          <span>주린이 아카데미</span>
+        </div>
+        <p class="footer-disclaimer">
+          ⚠️ 본 사이트의 내용은 교육 목적으로 제공되며, 투자 권유가 아닙니다.<br />
+          모든 투자의 책임은 본인에게 있으며, 투자 전 충분한 학습과 신중한 판단이 필요합니다.
+        </p>
+        <p class="footer-copy">© 2026 주린이 아카데미 · 주식 100일 완성 백과사전 & 차트 마스터</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="scroll-top" id="scrollTop" title="맨 위로">↑</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
