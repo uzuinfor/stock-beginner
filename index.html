@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Stock Beginner | 주식 100일 완성 백과사전 & 차트 마스터</title>
-  <meta name="description" content="Stock Beginner! 주식 100일 완성 백과사전. Day 1 기초부터 Day 100 미국주식·세금·심리까지!" />
+  <meta name="description" content="Stock Beginner! 주식 100일 완성 백과사전, 20개+ 밈 사전, 24개 심화 용어, 차트 마스터 및 30문항 퀴즈" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Top Navigation Bar -->
   <nav id="navbar" class="navbar">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
@@ -20,11 +20,12 @@
         <span class="logo-text">Stock Beginner</span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#daily" class="nav-link">🗓️ 100일 백과사전</a></li>
-        <li><a href="#news" class="nav-link">📰 실시간 뉴스</a></li>
+        <li><a href="#daily" class="nav-link">📚 100일 백과사전</a></li>
         <li><a href="#chart-guide" class="nav-link">📊 차트·매매 마스터</a></li>
-        <li><a href="#slang" class="nav-link">🔥 커뮤니티 용어</a></li>
-        <li><a href="#quiz" class="nav-link">🧩 실력 퀴즈</a></li>
+        <li><a href="#slang" class="nav-link">🔥 커뮤니티 밈 (20개+)</a></li>
+        <li><a href="#terms" class="nav-link">🔍 용어 심화사전</a></li>
+        <li><a href="#news" class="nav-link">📰 실시간 뉴스</a></li>
+        <li><a href="#quiz" class="nav-link">🧩 30문항 퀴즈</a></li>
       </ul>
       <button class="nav-hamburger" id="hamburger" aria-label="메뉴 열기">
         <span></span><span></span><span></span>
@@ -32,7 +33,7 @@
     </div>
   </nav>
 
-  <!-- Hero Section with Live Search & Auto-complete -->
+  <!-- Hero Header Section with Search -->
   <section id="hero" class="hero">
     <div class="hero-bg">
       <div class="hero-orb orb-1"></div>
@@ -40,49 +41,54 @@
       <div class="hero-orb orb-3"></div>
     </div>
     <div class="hero-content">
-      <div class="hero-badge">🌌 Stock Beginner - 주식 100일 완성 백과사전</div>
+      <div class="hero-badge">🌌 Stock Beginner · 완전 초보 전용 마스터 클래스</div>
       <h1 class="hero-title">
         Stock Beginner<br />
         <span class="gradient-text">주식 100일 완성 백과사전</span>
       </h1>
       <p class="hero-desc">
-        Day 1 주식 기초부터 Day 100 미국주식·세금·투자 심리까지!<br />
-        차트 보는 법, ROE/PER 가치투자, 돔황챠 밈 용어까지 완벽 수록!
+        어려운 주식 용어와 차트를 한눈에 이해하는 쉬운 백과사전!<br />
+        Day 1 기초부터 20개+ 커뮤니티 밈, 심화 사전, 30문항 퀴즈까지 완벽 수록!
       </p>
 
       <!-- Real-Time Auto-complete Search Box -->
       <div class="hero-search-wrap">
         <div class="hero-search-box">
-          <input type="text" id="heroSearchInput" placeholder="단어, 차트, 밈, 일차 검색 (예: PER, 양봉, 돔황챠, Day 50)..." autocomplete="off" />
-          <button class="hero-search-btn" id="heroSearchBtn">검색 🔍</button>
+          <span class="search-box-icon">🔍</span>
+          <input type="text" id="heroSearchInput" placeholder="단어, 차트, 밈, 일차 검색 (예: PER, 양봉, 돔황챠, Day 5)..." autocomplete="off" />
+          <button class="hero-search-btn" id="heroSearchBtn">검색하기</button>
         </div>
 
-        <!-- Live Search Dropdown Suggestions -->
         <div class="hero-search-dropdown hidden" id="heroSearchDropdown"></div>
 
         <div class="hero-keywords-recommend">
-          <span>추천 검색:</span>
-          <button class="tag-btn" data-search="Day 100">🎓 Day 100</button>
-          <button class="tag-btn" data-search="양봉">🕯️ 양봉</button>
+          <span>인기 검색:</span>
           <button class="tag-btn" data-search="PER">💎 PER/ROE</button>
-          <button class="tag-btn" data-search="돔황챠">🔥 돔황챠</button>
+          <button class="tag-btn" data-search="양봉">🕯️ 양봉 차트</button>
+          <button class="tag-btn" data-search="돔황챠">🔥 돔황챠 밈</button>
+          <button class="tag-btn" data-search="시가총액">💰 시가총액</button>
         </div>
       </div>
 
       <div class="hero-stats">
         <div class="stat-item">
           <span class="stat-num">100</span>일
-          <span class="stat-label">완성 백과사전</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-num">30</span>개
-          <span class="stat-label">실력 점검 퀴즈</span>
+          <span class="stat-label">백과사전</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
           <span class="stat-num">20</span>개+
           <span class="stat-label">커뮤니티 밈</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">24</span>개
+          <span class="stat-label">심화 용어</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">30</span>문항
+          <span class="stat-label">실력 퀴즈</span>
         </div>
       </div>
     </div>
@@ -92,15 +98,14 @@
   <section id="daily" class="section section-dark">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Stock Beginner Course</div>
+        <div class="section-tag">Daily Course</div>
         <h2 class="section-title">📚 Stock Beginner 100일 백과사전</h2>
-        <p class="section-sub">원하는 날짜를 클릭하면 상세 개념 설명 팝업이 바로 나타납니다!</p>
+        <p class="section-sub">원하는 날짜 카드를 클릭하시면 가시성이 뛰어난 상세 팝업이 바로 나타납니다!</p>
       </div>
 
-      <!-- 100-Day Progress Bar & Filters -->
       <div class="daily-progress-card glass-card">
         <div class="progress-info">
-          <span>학습 완료: <strong id="learnedCount">0</strong> / 100일 (<span id="learnedPercent">0</span>%)</span>
+          <span>진행 상황: <strong id="learnedCount">0</strong> / 100일 (<span id="learnedPercent">0</span>% 완료)</span>
           <div class="progress-bar-bg">
             <div class="progress-bar-fill" id="learnedProgressBar" style="width: 0%"></div>
           </div>
@@ -116,104 +121,100 @@
         </div>
       </div>
 
-      <!-- Interactive 100-Day Concept Cards Grid -->
       <div class="concepts-grid-100" id="conceptsGrid100">
-        <!-- Dynamic 100 Day Cards Loaded via JS -->
+        <!-- 100-Day Interactive Cards loaded via JS -->
       </div>
     </div>
   </section>
 
-  <!-- Section 2: 실시간 증시 & 경제 뉴스 -->
-  <section id="news" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">Live Market News</div>
-        <h2 class="section-title">📰 실시간 주요 증시 & 경제 뉴스</h2>
-        <p class="section-sub">주식 시장의 최신 이슈를 클릭하여 읽어보세요</p>
-      </div>
-
-      <div class="news-header-bar">
-        <div class="news-live-indicator">
-          <span class="live-dot"></span>
-          <span>실시간 24H 피드</span>
-          <span class="news-updated-time" id="newsUpdatedTime">실시간</span>
-        </div>
-        <button class="btn-refresh-news" id="btnRefreshNews">🔄 새로고침</button>
-      </div>
-
-      <div class="news-grid" id="newsGrid">
-        <!-- Dynamic Live News Items loaded via JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 3: 차트 보는법 & 매매 실전 마스터 가이드 -->
-  <section id="chart-guide" class="section section-dark">
+  <!-- Section 2: 차트 보는법 & 매매 실전 마스터 -->
+  <section id="chart-guide" class="section">
     <div class="container">
       <div class="section-header">
         <div class="section-tag">Technical Master</div>
-        <h2 class="section-title">📊 차트 보는 법 & 매매 마스터</h2>
-        <p class="section-sub">각 항목을 클릭하면 상세한 매매 전략 팝업이 나타납니다!</p>
+        <h2 class="section-title">📊 차트 보는 법 & 실전 매매 마스터</h2>
+        <p class="section-sub">각 항목을 클릭하시면 가시성 높은 매매 원리와 핵심 타점을 확인하실 수 있습니다.</p>
       </div>
 
       <div class="chart-tab-menu">
-        <button class="chart-tab-btn active" data-tab="tab-chart">🕯️ 봉차트&추세선</button>
-        <button class="chart-tab-btn" data-tab="tab-ma">📈 이동평균선&패턴</button>
-        <button class="chart-tab-btn" data-tab="tab-order">🛒 매매주문&체결원리</button>
-        <button class="chart-tab-btn" data-tab="tab-value">💎 가치투자(ROE/PER)</button>
+        <button class="chart-tab-btn active" data-tab="tab-chart">🕯️ 1. 봉차트 & 추세선</button>
+        <button class="chart-tab-btn" data-tab="tab-ma">📈 2. 이동평균선 & 패턴</button>
+        <button class="chart-tab-btn" data-tab="tab-order">🛒 3. 매매주문 & 체결원리</button>
+        <button class="chart-tab-btn" data-tab="tab-value">💎 4. 가치투자 & ROE/PER</button>
       </div>
 
       <div class="chart-tab-content active" id="tab-chart">
         <div class="guide-grid-2">
-          <div class="guide-card glass-card clickable-master-card" data-master-id="master-candle">
-            <div class="guide-badge">클릭 시 상세설명 🔍</div>
-            <h3>🕯️ 1. 봉차트(캔들스틱) 완전 정복</h3>
-            <p class="guide-desc">시가, 종가, 고가, 저가로 형성되는 매수/매도 세력의 혈투 현장입니다.</p>
-            <div class="card-click-prompt">👉 클릭하여 장대양봉, 망치형 심화 설명 보기</div>
+          <div class="guide-card glass-card clickable-card" data-type="master" data-id="master-candle">
+            <div class="card-badge-top">🕯️ 차트 핵심</div>
+            <h3>1. 봉차트(캔들스틱) 완전 정복</h3>
+            <p class="guide-summary">시가, 종가, 고가, 저가로 형성되는 매수/매도 세력의 혈투 현장입니다.</p>
+            <div class="candle-visual-preview">
+              <div class="candle-box red">
+                <strong>🔴 양봉 (상승)</strong>
+                <span>종가 > 시가 (매수 세력 승리)</span>
+              </div>
+              <div class="candle-box blue">
+                <strong>🔵 음봉 (하락)</strong>
+                <span>시가 > 종가 (매도 세력 승리)</span>
+              </div>
+            </div>
+            <div class="card-click-prompt">👉 클릭하여 장대양봉, 망치형, 십자선 심화 전략 보기</div>
           </div>
-          <div class="guide-card glass-card clickable-master-card" data-master-id="master-trend">
-            <div class="guide-badge">클릭 시 상세설명 🔍</div>
-            <h3>📐 2. 추세선과 지지선/저항선 매매법</h3>
-            <p class="guide-desc">바닥 방어 지지선과 천장 저항선 역할 반전의 법칙을 이해하세요.</p>
-            <div class="card-click-prompt">👉 클릭하여 속임수 돌파(Fakeout) 파악하기</div>
+
+          <div class="guide-card glass-card clickable-card" data-type="master" data-id="master-trend">
+            <div class="card-badge-top">📐 추세 분석</div>
+            <h3>2. 추세선과 지지선/저항선 매매법</h3>
+            <p class="guide-summary">바닥 방어 지지선과 천장 저항선 역할 반전의 법칙을 이해하세요.</p>
+            <div class="trend-visual-preview">
+              <div class="trend-line-info green">
+                <strong>🟢 지지선 (Support)</strong>
+                <span>주가가 튕겨 올라가는 바닥 매수선</span>
+              </div>
+              <div class="trend-line-info red">
+                <strong>🔴 저항선 (Resistance)</strong>
+                <span>주가가 막히는 천장 매도선</span>
+              </div>
+            </div>
+            <div class="card-click-prompt">👉 클릭하여 속임수 돌파(Fakeout) 파악법 보기</div>
           </div>
         </div>
       </div>
 
       <div class="chart-tab-content" id="tab-ma">
         <div class="guide-grid-2">
-          <div class="guide-card glass-card clickable-master-card" data-master-id="master-ma">
-            <div class="guide-badge">클릭 시 상세 🔍</div>
-            <h3>📈 이동평균선(이평선) 공식</h3>
-            <p>5일, 20일, 60일, 120일 이평선 정배열과 골든크로스의 진실.</p>
+          <div class="guide-card glass-card clickable-card" data-type="master" data-id="master-ma">
+            <div class="card-badge-top">📈 이평선 공략</div>
+            <h3>이동평균선 공식 & 정배열</h3>
+            <p class="guide-summary">5일(생명선), 20일(세력선), 60일(수급선), 120일(경기선) 정배열 공략법.</p>
             <div class="card-click-prompt">👉 클릭하여 눌림목 타점 보기</div>
           </div>
-          <div class="guide-card glass-card clickable-master-card" data-master-id="master-value">
-            <div class="guide-badge">클릭 시 상세 🔍</div>
-            <h3>💎 워렌 버핏 가치투자 & ROE/PER</h3>
-            <p>ROE 15% 이상 지속 기업과 PER 저평가주 발굴 공식!</p>
-            <div class="card-click-prompt">👉 클릭하여 저평가주 발굴법 보기</div>
+          <div class="guide-card glass-card clickable-card" data-type="master" data-id="master-value">
+            <div class="card-badge-top">💎 가치 발굴</div>
+            <h3>워렌 버핏 가치투자 & ROE/PER</h3>
+            <p class="guide-summary">ROE 15% 이상 지속 기업과 PER 저평가주 발굴 공식!</p>
+            <div class="card-click-prompt">👉 클릭하여 저평가주 스크리닝 보기</div>
           </div>
         </div>
       </div>
 
       <div class="chart-tab-content" id="tab-order">
         <div class="guide-grid-2">
-          <div class="guide-card glass-card clickable-master-card" data-master-id="master-order">
-            <div class="guide-badge">클릭 시 상세 🔍</div>
-            <h3>🛒 매매 주문의 4가지 종류</h3>
-            <p>지정가 vs 시장가, 조건부 지정가 및 장전/장후 시간외 매매</p>
-            <div class="card-click-prompt">👉 클릭하여 슬리피지 방지 팁 보기</div>
+          <div class="guide-card glass-card clickable-card" data-type="master" data-id="master-order">
+            <div class="card-badge-top">🛒 주문 노하우</div>
+            <h3>매매 주문 4가지 & 체결 원리</h3>
+            <p class="guide-summary">지정가 vs 시장가, 시간외 단일가 및 동시호가 체결 우선순위.</p>
+            <div class="card-click-prompt">👉 클릭하여 체결 매커니즘 보기</div>
           </div>
         </div>
       </div>
 
       <div class="chart-tab-content" id="tab-value">
         <div class="guide-grid-2">
-          <div class="guide-card glass-card clickable-master-card" data-master-id="master-value">
-            <div class="guide-badge">클릭 시 상세 🔍</div>
-            <h3>💎 ROE/PER 저평가 발굴 공식</h3>
-            <p>자기자본이익률(ROE)과 주가수익비율(PER)의 시너지 매매법.</p>
+          <div class="guide-card glass-card clickable-card" data-type="master" data-id="master-value">
+            <div class="card-badge-top">💎 ROE/PER 매매</div>
+            <h3>ROE & PER 저평가 매매 공식</h3>
+            <p class="guide-summary">자기자본이익률(ROE)과 주가수익비율(PER)의 시너지 매매법.</p>
             <div class="card-click-prompt">👉 클릭하여 상세 팝업 보기</div>
           </div>
         </div>
@@ -221,88 +222,96 @@
     </div>
   </section>
 
-  <!-- Section 4: 주식 커뮤니티 밈 & 슬랭 사전 -->
-  <section id="slang" class="section">
+  <!-- Section 3: 🔥 주식 커뮤니티 밈 사전 (20개+) -->
+  <section id="slang" class="section section-dark">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Stock Community Memes</div>
-        <h2 class="section-title">🔥 주식 커뮤니티 밈 사전</h2>
-        <p class="section-sub">카드를 클릭하시면 유래와 투자 레슨 팝업이 나타납니다</p>
+        <div class="section-tag">Community Memes (20+)</div>
+        <h2 class="section-title">🔥 주식 커뮤니티 밈 & 유래 사전 (20개+)</h2>
+        <p class="section-sub">원하는 밈 카드를 클릭하시면 유래, 대화 예시, 투자 교훈을 확인하실 수 있습니다!</p>
       </div>
 
       <div class="slang-filter-menu" id="slangFilterMenu">
-        <button class="slang-filter-btn active" data-filter="all">전체 밈</button>
-        <button class="slang-filter-btn" data-filter="popular">🔥 인기 밈</button>
-        <button class="slang-filter-btn" data-filter="trading">💸 매매/수급</button>
-        <button class="slang-filter-btn" data-filter="sad">😭 통곡/리스크</button>
+        <button class="slang-filter-btn active" data-filter="all">전체 (20개+)</button>
+        <button class="slang-filter-btn" data-filter="popular">🔥 대표/유머 밈</button>
+        <button class="slang-filter-btn" data-filter="trading">💸 매매/수급 밈</button>
+        <button class="slang-filter-btn" data-filter="sad">😭 통곡/리스크 밈</button>
       </div>
 
       <div class="slang-grid" id="slangGrid">
-        <!-- Dynamic Slang Cards Loaded via JS -->
+        <!-- 20+ Dynamic Slang Cards Loaded via JS -->
       </div>
     </div>
   </section>
 
-  <!-- Universal Interactive Detail Modal Popup -->
-  <div class="term-modal-overlay hidden" id="termModalOverlay">
-    <div class="term-modal-card glass-card" id="termModalCard">
-      <button class="modal-close-btn" id="modalCloseBtn">✕</button>
-      
-      <div class="modal-header-area">
-        <div class="modal-term-badge" id="modalCategoryTag">Stock Beginner</div>
-        <div class="modal-emoji-title">
-          <span id="modalEmoji">💡</span>
-          <h3 id="modalTermName">주식 개념</h3>
-        </div>
-        <div class="modal-eng-name" id="modalEngName"></div>
+  <!-- Section 4: 🔍 필수 주식 용어 심화 사전 (24개) -->
+  <section id="terms" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Deep Dictionary (24)</div>
+        <h2 class="section-title">🔍 필수 주식 용어 심화 사전 (24개)</h2>
+        <p class="section-sub">용어 카드를 클릭하시면 가시성 높은 한 줄 요약과 실전 활용법이 나타납니다.</p>
       </div>
 
-      <div class="modal-body-content">
-        <div class="modal-section-box highlight-box">
-          <h5>💡 한 줄 핵심 요약</h5>
-          <p id="modalQuickSummary">핵심 요약 내용입니다.</p>
-        </div>
+      <div class="terms-search-bar glass-card">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="termSearchInput" placeholder="용어명(PER, PBR, ETF, 공모주, 환율)으로 검색..." />
+        <button class="clear-search-btn" id="clearTermSearchBtn">지우기 ✕</button>
+      </div>
 
-        <div class="modal-section-box">
-          <h5>📖 원리와 상세 설명</h5>
-          <p id="modalFullDesc">상세 원리 내용입니다.</p>
-        </div>
+      <div class="terms-filter-menu" id="termsFilterMenu">
+        <button class="term-filter-btn active" data-filter="all">전체 (24개)</button>
+        <button class="term-filter-btn" data-filter="basic">기초 용어</button>
+        <button class="term-filter-btn" data-filter="indicator">지표 용어</button>
+        <button class="term-filter-btn" data-filter="trading">매매/시황</button>
+      </div>
 
-        <div class="modal-section-box grid-2-col">
-          <div class="inner-info-card">
-            <strong>🔑 핵심 포인트 & 공식</strong>
-            <p id="modalFormula">공식 및 포인트 내용입니다.</p>
-          </div>
-          <div class="inner-info-card yellow-border">
-            <strong>🎯 실전 예시 & 활용법</strong>
-            <p id="modalUsage">실전 예시 내용입니다.</p>
-          </div>
-        </div>
-
-        <div class="modal-section-box tip-box">
-          <h5>📌 Stock Beginner 투자 레슨</h5>
-          <p id="modalKeyTakeaway">투자의 핵심 원칙입니다.</p>
-        </div>
+      <div class="terms-grid" id="termsGrid">
+        <!-- 24 Dynamic Deep Terms Loaded via JS -->
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Section 5: 주린이 실력 점검 퀴즈 -->
-  <section id="quiz" class="section section-dark">
+  <!-- Section 5: 실시간 주요 증시 & 경제 뉴스 피드 -->
+  <section id="news" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Live News Feed</div>
+        <h2 class="section-title">📰 실시간 주요 증시 & 경제 뉴스</h2>
+        <p class="section-sub">뉴스를 클릭하시면 상세 요약을 읽으실 수 있습니다.</p>
+      </div>
+
+      <div class="news-header-bar">
+        <div class="news-live-indicator">
+          <span class="live-dot"></span>
+          <span>실시간 24H 증시 피드</span>
+          <span class="news-updated-time" id="newsUpdatedTime">실시간</span>
+        </div>
+        <button class="btn-refresh-news" id="btnRefreshNews">🔄 새로고침</button>
+      </div>
+
+      <div class="news-grid" id="newsGrid">
+        <!-- Live News Items Loaded via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: 30문항 실력 점검 퀴즈 -->
+  <section id="quiz" class="section">
     <div class="container">
       <div class="section-header">
         <div class="section-tag">Self Check Quiz</div>
-        <h2 class="section-title">🧩 Stock Beginner 실력 점검 퀴즈</h2>
-        <p class="section-sub">배운 내용을 퀴즈로 재미있게 확인해보세요!</p>
+        <h2 class="section-title">🧩 Stock Beginner 30문항 실력 점검 퀴즈</h2>
+        <p class="section-sub">문제를 풀기 전에는 정답/해설이 보이지 않으며, 클릭 시 정답과 해설이 표시됩니다!</p>
       </div>
 
       <div class="quiz-container glass-card" id="quizContainer">
         <!-- Quiz Intro State -->
         <div class="quiz-step-box" id="quizIntroState">
           <div class="quiz-intro-icon">🎯</div>
-          <h3>나의 주식 지식 등급은 몇 단계일까?</h3>
-          <p>총 30개의 Stock Beginner 실전 퀴즈를 풀고 점수를 확인해보세요!</p>
-          <button class="btn-start-quiz" id="btnStartQuiz">퀴즈 시작하기 🚀</button>
+          <h3>나의 주식 지식 등급은 몇 점일까?</h3>
+          <p>총 30개의 주식 실전 퀴즈를 풀고 마스터 수료증을 획득해보세요!</p>
+          <button class="btn-start-quiz" id="btnStartQuiz">퀴즈 도전하기 🚀</button>
         </div>
 
         <!-- Quiz Playing State -->
@@ -310,7 +319,7 @@
           <div class="quiz-header-bar">
             <span class="quiz-step-indicator">문제 <strong id="currentQuizNum">1</strong> / <span id="totalQuizNum">30</span></span>
             <div class="quiz-timer-bar">
-              <div class="timer-fill" id="quizProgressFill" style="width: 5%;"></div>
+              <div class="timer-fill" id="quizProgressFill" style="width: 3.3%;"></div>
             </div>
           </div>
 
@@ -321,6 +330,7 @@
 
           <div class="quiz-options-grid" id="quizOptionsGrid"></div>
 
+          <!-- Feedback Box starts hidden until option click -->
           <div class="quiz-feedback-box hidden" id="quizFeedbackBox">
             <div class="feedback-status" id="feedbackStatus">⭕ 정답입니다!</div>
             <p class="feedback-explain" id="feedbackExplain">해설 내용</p>
@@ -340,6 +350,50 @@
     </div>
   </section>
 
+  <!-- Universal High-Visibility Detail Modal Popup -->
+  <div class="term-modal-overlay hidden" id="termModalOverlay">
+    <div class="term-modal-card glass-card" id="termModalCard">
+      <button class="modal-close-btn" id="modalCloseBtn">✕</button>
+      
+      <div class="modal-header-area">
+        <span class="modal-term-badge" id="modalCategoryTag">Stock Beginner</span>
+        <div class="modal-emoji-title">
+          <span id="modalEmoji">💡</span>
+          <h3 id="modalTermName">개념 제목</h3>
+        </div>
+        <div class="modal-eng-name" id="modalEngName">Sub Title</div>
+      </div>
+
+      <div class="modal-body-content">
+        <div class="modal-section-box highlight-box">
+          <h5>💡 한 줄 핵심 요약</h5>
+          <p id="modalQuickSummary">핵심 요약 내용입니다.</p>
+        </div>
+
+        <div class="modal-section-box desc-box">
+          <h5>📖 원리와 상세 설명</h5>
+          <p id="modalFullDesc">상세 원리 내용입니다.</p>
+        </div>
+
+        <div class="modal-section-box grid-2-col">
+          <div class="inner-info-card">
+            <strong>🔑 핵심 포인트 & 공식</strong>
+            <p id="modalFormula">공식 내용입니다.</p>
+          </div>
+          <div class="inner-info-card yellow-border">
+            <strong>🎯 실전 예시 & 활용법</strong>
+            <p id="modalUsage">활용법 내용입니다.</p>
+          </div>
+        </div>
+
+        <div class="modal-section-box tip-box">
+          <h5>📌 Stock Beginner 투자 레슨</h5>
+          <p id="modalKeyTakeaway">핵심 투자 교훈입니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -348,7 +402,7 @@
           <span>🚀</span>
           <span>Stock Beginner</span>
         </div>
-        <p class="footer-copy">© 2026 Stock Beginner · 주식 100일 완성 백과사전</p>
+        <p class="footer-copy">© 2026 Stock Beginner · 주식 100일 완성 백과사전 & 실전 가이드</p>
       </div>
     </div>
   </footer>
