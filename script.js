@@ -1,6 +1,6 @@
 /* ================================================
    Stock Beginner - Master Script Engine
-   (Live Search & Auto-complete Jump Engine + 100-Day Study + Live News + Memes + Fixed Quiz)
+   (Universal 100-Day Concept Grid + Instant Modal Popups + News + Slangs + Quiz Engine)
    ================================================ */
 
 // ----------------------------------------------------
@@ -53,21 +53,18 @@ for (let d = 11; d <= 100; d++) {
 // DATA 3: 🔥 커뮤니티 밈 & 슬랭 백과사전 (20개)
 // ----------------------------------------------------
 const SLANG_GUIDE_DATA = {
-  "slang-domhwangcha": { badge: "🔥 대표 커뮤니티 밈", emoji: "🏃‍♂️💨", name: "돔황챠 (도망쳐!)", eng: "Run Away!", category: "popular", quickSummary: "악재가 터지거나 차트가 고꾸라질 때 주식을 즉시 팔고 탈출하라는 유머 밈.", fullDesc: "디시인사이드 주식갤러리 등에서 '도망쳐!'를 재치 있게 비틀어 부른 대표적인 밈입니다.", formula: "💬 대화 예시: \"OO전자 어닝쇼크 떴다!! 돔황챠!! 🏃‍♂️💨\"", usage: "💡 레슨: 악재 발생 시 손절 원칙(Stop-Loss)을 지키는 결단력이 필요합니다.", keyTakeaway: "악재 발생 시 손절하는 결단력이 계좌를 지킵니다!" },
-  "slang-sangkit": { badge: "🚀 상승 기원", emoji: "🔺", name: "상킷 (상킷리스트)", eng: "Praying for Upper Limit", category: "trading", quickSummary: "내 종목이 오늘 +30% 상한가에 가기를 간절히 기도하는 응원 표현.", fullDesc: "상한가 +30%와 버킷리스트를 합성한 말로 아침 동시호가 시간에 자주 쓰입니다.", formula: "💬 대화 예시: \"오늘 호가창 실화냐? 가자 삼전 상킷!! 🚀🚀\"", usage: "상한가 부근 추격 매수는 다음 날 갭하락 손실 위험이 큽니다.", keyTakeaway: "상한가 추격 매수를 조심하고 안정적인 눌림목 타점을 잡으세요!" },
-  "slang-hakit": { badge: "🔻 하락 통곡", emoji: "📉", name: "하킷 (하한가 통곡)", eng: "Lamenting Lower Limit", category: "sad", quickSummary: "주가가 연속 폭락하여 -30% 하한가로 고꾸라지는 절망적인 표현.", fullDesc: "하한가 도달 시 매수 잔량이 0이 되어 팔고 싶어도 팔지 못하는 체결 잠김 위험이 있습니다.", formula: "💬 대화 예시: \"유상증자 찌라시 떴다고? 하킷 직전이다 ㅠㅠ\"", usage: "부실 동전주는 하한가 연쇄 위험이 있으니 피하세요.", keyTakeaway: "부실 동전주는 하한가 잠김 위험이 높으니 피하세요!" },
-  "slang-floor": { badge: "🏢 층수 비유", emoji: "🏢", name: "N층 (70층, 80층 주민)", eng: "Average Price Floor Level", category: "trading", quickSummary: "내가 주식을 사들인 평균 매수 단가(평단가)를 아파트 층수로 비유한 표현.", fullDesc: "70,000원에 매수했으면 70층 주민, 80,000원에 매수했으면 80층 주민입니다.", formula: "💬 대화 예시: \"80층 주민인데 바람이 차다... 구조대 언제 오냐?\"", usage: "-50% 손실 복구를 위해서는 +100% 상승이 필요하다는 수치를 기억하세요.", keyTakeaway: "-50% 손실은 +100%가 올라야 원금이 됩니다!" },
-  "slang-rescue": { badge: "🚑 본전 탈출", emoji: "🚑", name: "구조대 (구조대 도착)", eng: "Rescue Team Arriving", category: "popular", quickSummary: "고점에 물려 오랫동안 마이너스 손실 상태였는데, 주가가 반등하여 매수가에 도달함.", fullDesc: "오랜 침체기를 견뎌내고 내 평단가 단가까지 주가가 올라오는 기쁜 순간입니다.", formula: "💬 대화 예시: \"드디어 80층 구조대 진입했다!! 본전 탈출한다!! 🚑\"", usage: "과거 고점 평단가 자리엔 본전 매도 물량이 쏟아지므로 저항선이 됩니다.", keyTakeaway: "본전 매도 물량이 쏟아지는 자리가 강력한 저항선이 됩니다!" },
-  "slang-jonber": { badge: "🗿 장기 버티기", emoji: "🗿", name: "존버 (무지성 vs 가치 존버)", eng: "Holding Through Drawdowns", category: "trading", quickSummary: "주가가 하락해도 계좌를 닫아두고 끝까지 팔지 않으며 견뎌내는 행위.", fullDesc: "공부 없이 물려서 방치하는 '무지성 존버'와 기업 가치를 믿고 기다리는 '가치 존버'의 차이.", formula: "💬 대화 예시: \"손절은 없다. 10년 뒤 승리할 때까지 무한 존버간다!\"", usage: "적자 부실기업을 무지성 존버하는 것은 거대한 기회비용 손실입니다.", keyTakeaway: "이유 있는 가치 존버는 약이 되지만, 무지성 존버는 독이 됩니다!" },
-  "slang-water": { badge: "💸 추가 매수", emoji: "🌊", name: "물타기 vs 불타기", eng: "Averaging Down vs Up", category: "trading", quickSummary: "하락 시 평단가 낮추는 물타기와 상승 시 이익 늘리는 불타기.", fullDesc: "떨어지는 칼날 잡기식 물타기는 비중이 과도해져 위험하며, 지지선 확정 후 분할 물타기가 정석입니다.", formula: "💬 대화 예시: \"물타기 계속하다가 내 계좌 물바다 됐다...\"", usage: "수익권 진입 후 추세 확정 시 불타기로 이익을 극대화하세요.", keyTakeaway: "물타기는 계획된 지지선에서만 진행하고, 추세 상승 시엔 불타기를 노리세요!" },
-  "slang-impulse": { badge: "🧠 심리 관리", emoji: "🤯", name: "뇌동매매 (FOMO 극복)", eng: "Impulsive Trading & FOMO", category: "sad", quickSummary: "원칙 없이 남의 말이나 급등 차트를 보고 홧김에 따라 사는 위험한 행동.", fullDesc: "나만 부자 못 될 것 같은 소외 공포감(FOMO)으로 급등 꼭대기에서 사버리는 오류.", formula: "💬 대화 예시: \"뇌동매매했다가 최고점에 물렸음 ㅠㅠ\"", usage: "매수 전 3초 동안 기업 재무제표와 손절선을 스스로 점검하세요.", keyTakeaway: "급등 차트 추격 뇌동매매는 고점 물림의 지름길입니다!" }
+  "slang-domhwangcha": { badge: "🔥 대표 밈", emoji: "🏃‍♂️💨", name: "돔황챠 (도망쳐!)", eng: "Run Away!", category: "popular", quickSummary: "악재가 터지거나 차트가 고꾸라질 때 주식을 즉시 팔고 탈출하라는 유머 밈.", fullDesc: "디시인사이드 주식갤러리 등에서 '도망쳐!'를 비틀어 부른 대표 밈.", formula: "💬 예시: \"OO전자 어닝쇼크 떴다!! 돔황챠!!\"", usage: "악재 발생 시 손절 원칙을 준수하세요.", keyTakeaway: "악재 발생 시 손절 결단력이 계좌를 지킵니다!" },
+  "slang-sangkit": { badge: "🚀 상승 기원", emoji: "🔺", name: "상킷 (상킷리스트)", eng: "Praying for Upper Limit", category: "trading", quickSummary: "내 종목이 오늘 +30% 상한가에 가기를 간절히 기도하는 응원 표현.", fullDesc: "상한가 +30%와 버킷리스트를 합성한 말입니다.", formula: "💬 예시: \"가자 삼전 상킷!! 🚀\"", usage: "상한가 추격 매수를 주의하세요.", keyTakeaway: "안정적인 눌림목 타점을 잡으세요!" },
+  "slang-hakit": { badge: "🔻 하락 통곡", emoji: "📉", name: "하킷 (하한가 통곡)", eng: "Lamenting Lower Limit", category: "sad", quickSummary: "주가가 연속 폭락하여 -30% 하한가로 고꾸라지는 절망적인 표현.", fullDesc: "하한가 도달 시 매도 체결 잠김 위험이 있습니다.", formula: "💬 예시: \"유상증자 떴다 하킷 ㅠㅠ\"", usage: "부실 동전주를 피하세요.", keyTakeaway: "부실 동전주는 하한가 위험이 큽니다!" },
+  "slang-floor": { badge: "🏢 층수 비유", emoji: "🏢", name: "N층 (70층, 80층 주민)", eng: "Average Price Floor Level", category: "trading", quickSummary: "내가 주식을 사들인 평균 매수 단가를 아파트 층수로 비유.", fullDesc: "70,000원에 매수했으면 70층 주민입니다.", formula: "💬 예시: \"80층 주민 구조대 언제 오냐?\"", usage: "-50% 손실 복구에는 +100% 상승이 필요합니다.", keyTakeaway: "-50% 손실은 +100%가 올라야 원금이 됩니다!" },
+  "slang-rescue": { badge: "🚑 본전 탈출", emoji: "🚑", name: "구조대 (구조대 도착)", eng: "Rescue Team Arriving", category: "popular", quickSummary: "고점에 물려 오랫동안 마이너스였다가 주가가 반등하여 매수가 도달.", fullDesc: "오랜 침체기를 견뎌내고 내 평단가 단가까지 올라오는 순간입니다.", formula: "💬 예시: \"80층 구조대 진입했다!! 🚑\"", usage: "본전 매도 물량 자리는 저항선이 됩니다.", keyTakeaway: "본전 매도 물량 자리가 강력한 저항선이 됩니다!" }
 };
 
 const MASTER_GUIDE_DATA = {
-  "master-candle": { badge: "차트 기초 마스터", emoji: "🕯️", name: "봉차트(캔들스틱) 완전 정복 마스터 클래스", eng: "Japanese Candlestick Chart Analysis", quickSummary: "18세기 일본 쌀 상인 혼마 무네히사가 개발한 매수/매도 심리의 결집체입니다.", fullDesc: "캔들스틱(봉차트)은 지정된 시간 동안 형성된 [시가, 종가, 고가, 저가] 4가지 핵심 가격을 양초 모양으로 시각화한 차트입니다.", formula: "🔴 양봉 = 상승 마감 / 🔵 음봉 = 하락 마감 / 망치형 = 바닥 반등 신호", usage: "바닥권에서 긴 아랫꼬리 망치형 양봉 발생 시 분할 매수 타점!", keyTakeaway: "몸통 크기는 세력의 의지, 꼬리의 길이는 반발력을 나타냅니다!" },
-  "master-trend": { badge: "추세 분석 마스터", emoji: "📐", name: "추세선 & 지지/저항선 매매 법칙", eng: "Trendline & Support/Resistance Technical Strategy", quickSummary: "주가는 지지선과 저항선 사이에서 파동을 그리며 움직입니다.", fullDesc: "지지선은 바닥 방어선, 저항선은 천장 막힘선입니다. 저항선이 강하게 뚫리면 새로운 지지선으로 역할 반전 됩니다.", formula: "상승 추세선 = 저점 연결 / 하락 추세선 = 고점 연결", usage: "저항선을 거래량이 2~3배 터지며 뚫을 때가 진짜 돌파입니다.", keyTakeaway: "지지선 근처에서 사고 저항선 거래량 돌파 시 탑승하세요!" },
-  "master-ma": { badge: "이평선 마스터", emoji: "📈", name: "이동평균선(이평선) 공식 & 정배열 분석", eng: "Moving Average & Golden Cross Mechanics", quickSummary: "지난 N일 동안의 평균 주가를 연결한 곡선입니다.", fullDesc: "5일(생명선), 20일(세력선), 60일(수급선), 120일(경기선). 정배열은 대세 상승 전형 패턴입니다.", formula: "골든크로스 = 단기선이 장기선을 위로 돌파", usage: "정배열 종목이 20일선까지 조정받을 때가 눌림목 매수 타점!", keyTakeaway: "정배열 종목의 20일선 눌림목을 노리는 것이 최강의 승률 전략입니다!" },
-  "master-value": { badge: "가치투자 마스터", emoji: "💎", name: "워렌 버핏의 가치투자 & ROE/PER/PBR 저평가 발굴법", eng: "Value Investing Framework & ROE Screening", quickSummary: "기업 본질 가치보다 싸게 사서 안전마진을 확보합니다.", fullDesc: "ROE 15% 지속, PER 업종 대비 낮음, PEG < 1.0 저평가 성장주 스크리닝.", formula: "ROE = 순이익 ÷ 자기자본 / PEG = PER ÷ 이익성장률", usage: "실적이 적자 전환하는 밸류에이션 트랩을 유의하세요.", keyTakeaway: "싸다고 무조건 사지 말고 ROE 성장의 지속성을 검증하세요!" }
+  "master-candle": { badge: "차트 기초 마스터", emoji: "🕯️", name: "봉차트(캔들스틱) 완전 정복", eng: "Candlestick Analysis", quickSummary: "18세기 일본 혼마가 개발한 시가, 종가, 고가, 저가 캔들 분석.", fullDesc: "캔들스틱은 매수와 매도 세력의 힘의 겨루기를 나타냅니다.", formula: "🔴 양봉 = 상승 / 🔵 음봉 = 하락", usage: "망치형 양봉 발생 시 바닥 반등 타점!", keyTakeaway: "몸통은 세력의 의지, 꼬리는 반발력입니다!" },
+  "master-trend": { badge: "추세 분석 마스터", emoji: "📐", name: "추세선 & 지지/저항선 매매", eng: "Trendline Strategy", quickSummary: "주가는 지지선과 저항선 사이에서 움직입니다.", fullDesc: "저항선이 뚫리면 새로운 지지선으로 역할 반전 됩니다.", formula: "지지선 = 바닥 방어 / 저항선 = 천장 막힘", usage: "저항선을 대량 거래량으로 뚫을 때 탑승하세요.", keyTakeaway: "지지선 근처에서 매수하고 저항선 돌파 시 추격하세요!" },
+  "master-ma": { badge: "이평선 마스터", emoji: "📈", name: "이동평균선 공식 & 정배열", eng: "Moving Average Analysis", quickSummary: "지난 N일 동안의 평균 주가를 연결한 곡선입니다.", fullDesc: "5일, 20일, 60일, 120일 이평선 정배열은 대세 상승 패턴입니다.", formula: "골든크로스 = 단기선이 장기선을 위로 돌파", usage: "20일선 눌림목에서 분할 매수하세요.", keyTakeaway: "정배열 20일선 눌림목이 승률 최강입니다!" },
+  "master-value": { badge: "가치투자 마스터", emoji: "💎", name: "워렌 버핏 가치투자 & ROE/PER", eng: "Value Investing Framework", quickSummary: "기업 가치보다 싸게 사서 안전마진을 확보합니다.", fullDesc: "ROE 15% 이상 지속 기업과 PER 저평가주 발굴.", formula: "ROE = 순이익 ÷ 자기자본", usage: "실적 적자 전환 밸류에이션 트랩을 조심하세요.", keyTakeaway: "ROE 성장의 지속성을 항상 검증하세요!" }
 };
 
 // ----------------------------------------------------
@@ -92,7 +89,7 @@ for (let q = 6; q <= 30; q++) {
 }
 
 // ----------------------------------------------------
-// DOM Initialization & Universal Engines
+// DOM Initialization & Universal Event Engine
 // ----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -105,9 +102,146 @@ document.addEventListener('DOMContentLoaded', () => {
     else navbar.classList.remove('scrolled');
   });
 
-  if (hamburger) hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  if (hamburger) {
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('open');
+    });
+  }
 
-  // REAL-TIME SEARCH & AUTOCOMPLETE ENGINE FIX!
+  // Universal Modal Engine
+  const termModalOverlay = document.getElementById('termModalOverlay');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const modalCategoryTag = document.getElementById('modalCategoryTag');
+  const modalEmoji = document.getElementById('modalEmoji');
+  const modalTermName = document.getElementById('modalTermName');
+  const modalEngName = document.getElementById('modalEngName');
+  const modalQuickSummary = document.getElementById('modalQuickSummary');
+  const modalFullDesc = document.getElementById('modalFullDesc');
+  const modalFormula = document.getElementById('modalFormula');
+  const modalUsage = document.getElementById('modalUsage');
+  const modalKeyTakeaway = document.getElementById('modalKeyTakeaway');
+
+  function openUniversalModal(dataObj) {
+    if (!dataObj) return;
+
+    if (modalCategoryTag) modalCategoryTag.innerText = dataObj.category || dataObj.badge || "Stock Beginner";
+    if (modalEmoji) modalEmoji.innerText = dataObj.icon || dataObj.emoji || "💡";
+    if (modalTermName) modalTermName.innerText = dataObj.title || dataObj.name || `Day ${dataObj.day}`;
+    if (modalEngName) modalEngName.innerText = dataObj.eng || (dataObj.day ? `100일 코스 Day ${dataObj.day}` : "");
+    if (modalQuickSummary) modalQuickSummary.innerText = dataObj.summary || dataObj.quickSummary || "";
+    if (modalFullDesc) modalFullDesc.innerText = dataObj.fullDesc || dataObj.summary || "";
+    if (modalFormula) modalFormula.innerText = dataObj.keyPoint || dataObj.formula || "";
+    if (modalUsage) modalUsage.innerText = dataObj.example || dataObj.usage || "";
+    if (modalKeyTakeaway) modalKeyTakeaway.innerText = dataObj.keyTakeaway || dataObj.keyPoint || "";
+
+    if (termModalOverlay) termModalOverlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeUniversalModal() {
+    if (termModalOverlay) termModalOverlay.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeUniversalModal);
+  if (termModalOverlay) {
+    termModalOverlay.addEventListener('click', (e) => {
+      if (e.target === termModalOverlay) closeUniversalModal();
+    });
+  }
+
+  // ----------------------------------------------------
+  // 100-DAY INTERACTIVE CONCEPT GRID ENGINE
+  // ----------------------------------------------------
+  const conceptsGrid100 = document.getElementById('conceptsGrid100');
+  const dayFilterBtns = document.querySelectorAll('.day-filter-btn');
+  const learnedCountEl = document.getElementById('learnedCount');
+  const learnedPercentEl = document.getElementById('learnedPercent');
+  const learnedProgressBar = document.getElementById('learnedProgressBar');
+
+  let currentDayRange = 'all';
+  let learnedSet = new Set(JSON.parse(localStorage.getItem('stock_beginner_learned_100') || '[]'));
+
+  function updateProgressUI() {
+    const count = learnedSet.size;
+    if (learnedCountEl) learnedCountEl.innerText = count;
+    const pct = Math.round((count / DAILY_CONCEPTS_100.length) * 100);
+    if (learnedPercentEl) learnedPercentEl.innerText = pct;
+    if (learnedProgressBar) learnedProgressBar.style.width = `${pct}%`;
+  }
+
+  function render100DayGrid() {
+    if (!conceptsGrid100) return;
+    conceptsGrid100.innerHTML = '';
+
+    DAILY_CONCEPTS_100.forEach((item) => {
+      // Filter logic
+      let show = true;
+      if (currentDayRange === '1-20' && (item.day < 1 || item.day > 20)) show = false;
+      if (currentDayRange === '21-40' && (item.day < 21 || item.day > 40)) show = false;
+      if (currentDayRange === '41-60' && (item.day < 41 || item.day > 60)) show = false;
+      if (currentDayRange === '61-80' && (item.day < 61 || item.day > 80)) show = false;
+      if (currentDayRange === '81-100' && (item.day < 81 || item.day > 100)) show = false;
+
+      if (!show) return;
+
+      const isLearned = learnedSet.has(item.day);
+      const card = document.createElement('div');
+      card.className = `concept-grid-card glass-card ${isLearned ? 'is-learned' : ''}`;
+      
+      card.innerHTML = `
+        <div class="card-top-row">
+          <span class="day-num-badge">Day ${item.day}</span>
+          <span class="concept-cat-tag">${item.category}</span>
+        </div>
+        <div class="card-icon-title">
+          <span class="concept-icon">${item.icon}</span>
+          <h4 class="concept-title">${item.title}</h4>
+        </div>
+        <p class="concept-summary-text">${item.summary.substring(0, 55)}...</p>
+        <div class="card-bottom-actions">
+          <button class="btn-toggle-learn-card ${isLearned ? 'completed' : ''}">
+            ${isLearned ? '완료됨 ✓' : '학습 완료'}
+          </button>
+          <span class="read-more-link">상세설명 ➔</span>
+        </div>
+      `;
+
+      // Click event for full modal
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.btn-toggle-learn-card')) {
+          e.stopPropagation();
+          if (learnedSet.has(item.day)) learnedSet.delete(item.day);
+          else learnedSet.add(item.day);
+          localStorage.setItem('stock_beginner_learned_100', JSON.stringify(Array.from(learnedSet)));
+          updateProgressUI();
+          render100DayGrid();
+        } else {
+          openUniversalModal(item);
+        }
+      });
+
+      conceptsGrid100.appendChild(card);
+    });
+
+    updateProgressUI();
+  }
+
+  dayFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      dayFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentDayRange = btn.getAttribute('data-range');
+      render100DayGrid();
+    });
+  });
+
+  render100DayGrid();
+
+  // ----------------------------------------------------
+  // REAL-TIME SEARCH & AUTOCOMPLETE ENGINE
+  // ----------------------------------------------------
   const heroSearchInput = document.getElementById('heroSearchInput');
   const heroSearchBtn = document.getElementById('heroSearchBtn');
   const heroSearchDropdown = document.getElementById('heroSearchDropdown');
@@ -115,22 +249,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getAllSearchableItems() {
     const items = [];
-
-    // 1. Daily concepts
     DAILY_CONCEPTS_100.forEach(c => {
       items.push({ title: `Day ${c.day}. ${c.title}`, desc: c.summary, category: "100일 백과사전", data: c });
     });
-
-    // 2. Master Guides
     Object.values(MASTER_GUIDE_DATA).forEach(m => {
       items.push({ title: m.name, desc: m.quickSummary, category: "차트·매매 마스터", data: m });
     });
-
-    // 3. Slangs
     Object.values(SLANG_GUIDE_DATA).forEach(s => {
       items.push({ title: s.name, desc: s.quickSummary, category: "커뮤니티 밈", data: s });
     });
-
     return items;
   }
 
@@ -160,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
         div.innerHTML = `
           <div>
             <div class="search-res-title">${item.title}</div>
-            <div class="search-res-desc">${item.desc.substring(0, 45)}...</div>
+            <div class="search-res-desc">${item.desc.substring(0, 40)}...</div>
           </div>
           <span class="search-res-tag">${item.category}</span>
         `;
@@ -228,163 +355,38 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       newsGrid.appendChild(card);
     });
-    if (newsUpdatedTime) newsUpdatedTime.innerText = new Date().toLocaleTimeString() + " 기준 실시간 피드";
+    if (newsUpdatedTime) newsUpdatedTime.innerText = new Date().toLocaleTimeString() + " 기준";
   }
   renderLiveNews();
   if (btnRefreshNews) btnRefreshNews.addEventListener('click', renderLiveNews);
 
-  // 100-Day Study Module Engine with Auto Next-Day Advance Fix!
-  let currentConceptIndex = 0;
-  let learnedSet = new Set(JSON.parse(localStorage.getItem('stock_beginner_learned_100') || '[]'));
+  // Master Guide Tabs & Cards
+  const chartTabBtns = document.querySelectorAll('.chart-tab-btn');
+  const chartTabContents = document.querySelectorAll('.chart-tab-content');
+  const masterCards = document.querySelectorAll('.clickable-master-card');
 
-  const conceptDayTag = document.getElementById('conceptDayTag');
-  const conceptIcon = document.getElementById('conceptIcon');
-  const conceptTitle = document.getElementById('conceptTitle');
-  const conceptCategory = document.getElementById('conceptCategory');
-  const conceptSummary = document.getElementById('conceptSummary');
-  const conceptKeyPoint = document.getElementById('conceptKeyPoint');
-  const conceptExample = document.getElementById('conceptExample');
-  const btnToggleLearn = document.getElementById('btnToggleLearn');
-  const btnLearnText = document.getElementById('btnLearnText');
-  const learnedCountEl = document.getElementById('learnedCount');
-  const totalConceptsCountEl = document.getElementById('totalConceptsCount');
-  const learnedProgressBar = document.getElementById('learnedProgressBar');
-  const conceptChips = document.getElementById('conceptChips');
-  const prevConceptBtn = document.getElementById('prevConceptBtn');
-  const nextConceptBtn = document.getElementById('nextConceptBtn');
-  const btnRandomConcept = document.getElementById('btnRandomConcept');
-  const btnToggleChips = document.getElementById('btnToggleChips');
-  const dayFilterBtns = document.querySelectorAll('.day-filter-btn');
-
-  let currentDayFilter = 'all';
-
-  if (totalConceptsCountEl) totalConceptsCountEl.innerText = DAILY_CONCEPTS_100.length;
-
-  function renderDailyConcept(index) {
-    if (!DAILY_CONCEPTS_100[index]) return;
-    currentConceptIndex = index;
-    const item = DAILY_CONCEPTS_100[index];
-
-    if (conceptDayTag) conceptDayTag.innerText = `Day ${item.day}`;
-    if (conceptIcon) conceptIcon.innerText = item.icon;
-    if (conceptTitle) conceptTitle.innerText = item.title;
-    if (conceptCategory) conceptCategory.innerText = item.category;
-    if (conceptSummary) conceptSummary.innerText = item.summary;
-    if (conceptKeyPoint) conceptKeyPoint.innerText = item.keyPoint;
-    if (conceptExample) conceptExample.innerText = item.example;
-
-    const isLearned = learnedSet.has(item.day);
-    if (btnToggleLearn && btnLearnText) {
-      if (isLearned) {
-        btnToggleLearn.classList.add('learned');
-        btnLearnText.innerText = "오늘 공부 완료! (다음 코스로 이동) ✓";
-      } else {
-        btnToggleLearn.classList.remove('learned');
-        btnLearnText.innerText = "오늘 공부 완료하기!";
-      }
-    }
-
-    updateProgressUI();
-    renderConceptChips();
-  }
-
-  function updateProgressUI() {
-    if (learnedCountEl) learnedCountEl.innerText = learnedSet.size;
-    if (learnedProgressBar) {
-      const pct = Math.round((learnedSet.size / DAILY_CONCEPTS_100.length) * 100);
-      learnedProgressBar.style.width = `${pct}%`;
-    }
-  }
-
-  function renderConceptChips() {
-    if (!conceptChips) return;
-    conceptChips.innerHTML = '';
-    DAILY_CONCEPTS_100.forEach((item, idx) => {
-      let show = true;
-      if (currentDayFilter === '1-20' && (item.day < 1 || item.day > 20)) show = false;
-      if (currentDayFilter === '21-40' && (item.day < 21 || item.day > 40)) show = false;
-      if (currentDayFilter === '41-60' && (item.day < 41 || item.day > 60)) show = false;
-      if (currentDayFilter === '61-80' && (item.day < 61 || item.day > 80)) show = false;
-      if (currentDayFilter === '81-100' && (item.day < 81 || item.day > 100)) show = false;
-
-      if (!show) return;
-
-      const chip = document.createElement('button');
-      chip.className = `concept-chip ${idx === currentConceptIndex ? 'active' : ''} ${learnedSet.has(item.day) ? 'is-learned' : ''}`;
-      chip.innerText = `Day ${item.day}. ${item.title.replace(/^Day \d+\. /, '')}`;
-      chip.addEventListener('click', () => renderDailyConcept(idx));
-      conceptChips.appendChild(chip);
-    });
-  }
-
-  dayFilterBtns.forEach(btn => {
+  chartTabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      dayFilterBtns.forEach(b => b.classList.remove('active'));
+      const tabId = btn.getAttribute('data-tab');
+      chartTabBtns.forEach(b => b.classList.remove('active'));
+      chartTabContents.forEach(c => c.classList.remove('active'));
       btn.classList.add('active');
-      currentDayFilter = btn.getAttribute('data-range');
-      renderConceptChips();
+      const targetContent = document.getElementById(tabId);
+      if (targetContent) targetContent.classList.add('active');
     });
   });
 
-  if (btnToggleChips) {
-    btnToggleChips.addEventListener('click', () => {
-      if (conceptChips.style.maxHeight === 'none') {
-        conceptChips.style.maxHeight = '220px';
-        btnToggleChips.innerText = "📂 전체 100일 목록 보기";
-      } else {
-        conceptChips.style.maxHeight = 'none';
-        btnToggleChips.innerText = "📂 100일 목록 접기";
-      }
+  masterCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-master-id');
+      const dataObj = MASTER_GUIDE_DATA[id];
+      if (dataObj) openUniversalModal(dataObj);
     });
-  }
+  });
 
-  if (btnToggleLearn) {
-    btnToggleLearn.addEventListener('click', () => {
-      const currentDay = DAILY_CONCEPTS_100[currentConceptIndex].day;
-      learnedSet.add(currentDay);
-      localStorage.setItem('stock_beginner_learned_100', JSON.stringify(Array.from(learnedSet)));
-
-      renderDailyConcept(currentConceptIndex);
-
-      let nextIdx = currentConceptIndex + 1;
-      if (nextIdx >= DAILY_CONCEPTS_100.length) nextIdx = 0;
-
-      setTimeout(() => {
-        renderDailyConcept(nextIdx);
-      }, 300);
-    });
-  }
-
-  if (prevConceptBtn) {
-    prevConceptBtn.addEventListener('click', () => {
-      let prevIdx = currentConceptIndex - 1;
-      if (prevIdx < 0) prevIdx = DAILY_CONCEPTS_100.length - 1;
-      renderDailyConcept(prevIdx);
-    });
-  }
-
-  if (nextConceptBtn) {
-    nextConceptBtn.addEventListener('click', () => {
-      let nextIdx = currentConceptIndex + 1;
-      if (nextIdx >= DAILY_CONCEPTS_100.length) nextIdx = 0;
-      renderDailyConcept(nextIdx);
-    });
-  }
-
-  if (btnRandomConcept) {
-    btnRandomConcept.addEventListener('click', () => {
-      const randIdx = Math.floor(Math.random() * DAILY_CONCEPTS_100.length);
-      renderDailyConcept(randIdx);
-    });
-  }
-
-  renderDailyConcept(0);
-
-  // Slang Filter & Expander Engine
+  // Slang Filter & Engine
   const slangGrid = document.getElementById('slangGrid');
   const slangFilterBtns = document.querySelectorAll('.slang-filter-btn');
-  const btnExpandSlang = document.getElementById('btnExpandSlang');
-  let slangExpanded = false;
   let currentSlangFilter = 'all';
 
   function renderSlangGrid() {
@@ -396,29 +398,20 @@ document.addEventListener('DOMContentLoaded', () => {
       return data.category === currentSlangFilter;
     });
 
-    const displayCount = slangExpanded ? filtered.length : Math.min(8, filtered.length);
-
-    for (let i = 0; i < displayCount; i++) {
-      const [slangId, item] = filtered[i];
+    filtered.forEach(([slangId, item]) => {
       const card = document.createElement('div');
-      card.className = 'slang-card glass-card clickable-slang-card';
-      card.setAttribute('data-slang-id', slangId);
+      card.className = 'slang-card glass-card';
       card.innerHTML = `
         <div class="slang-badge">${item.badge}</div>
         <div class="slang-emoji">${item.emoji}</div>
         <h3 class="slang-title">${item.name}</h3>
         <div class="slang-origin">${item.eng}</div>
         <p class="slang-desc">${item.quickSummary}</p>
-        <div class="card-click-prompt">👉 클릭하여 유래와 투자 팁 팝업 보기</div>
+        <div class="card-click-prompt">👉 클릭하여 유래와 팁 팝업 보기</div>
       `;
       card.addEventListener('click', () => openUniversalModal(item));
       slangGrid.appendChild(card);
-    }
-
-    if (btnExpandSlang) {
-      if (slangExpanded) btnExpandSlang.innerText = "➖ 밈 목록 접기";
-      else btnExpandSlang.innerText = `➕ 밈 전체 더보기 (${filtered.length}개 전체 펼치기)`;
-    }
+    });
   }
 
   slangFilterBtns.forEach(btn => {
@@ -430,60 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  if (btnExpandSlang) {
-    btnExpandSlang.addEventListener('click', () => {
-      slangExpanded = !slangExpanded;
-      renderSlangGrid();
-    });
-  }
   renderSlangGrid();
-
-  // Universal Modal Engine
-  const termModalOverlay = document.getElementById('termModalOverlay');
-  const modalCloseBtn = document.getElementById('modalCloseBtn');
-  const modalCategoryTag = document.getElementById('modalCategoryTag');
-  const modalEmoji = document.getElementById('modalEmoji');
-  const modalTermName = document.getElementById('modalTermName');
-  const modalEngName = document.getElementById('modalEngName');
-  const modalQuickSummary = document.getElementById('modalQuickSummary');
-  const modalFullDesc = document.getElementById('modalFullDesc');
-  const modalFormula = document.getElementById('modalFormula');
-  const modalUsage = document.getElementById('modalUsage');
-  const modalKeyTakeaway = document.getElementById('modalKeyTakeaway');
-
-  function openUniversalModal(dataObj) {
-    if (!dataObj) return;
-    if (modalCategoryTag) modalCategoryTag.innerText = dataObj.badge || "Stock Beginner";
-    if (modalEmoji) modalEmoji.innerText = dataObj.emoji || dataObj.icon || "💡";
-    if (modalTermName) modalTermName.innerText = dataObj.name || dataObj.title;
-    if (modalEngName) modalEngName.innerText = dataObj.eng || "";
-    if (modalQuickSummary) modalQuickSummary.innerText = dataObj.quickSummary || dataObj.summary || "";
-    if (modalFullDesc) modalFullDesc.innerText = dataObj.fullDesc || dataObj.summary || "";
-    if (modalFormula) modalFormula.innerText = dataObj.formula || dataObj.keyPoint || "";
-    if (modalUsage) modalUsage.innerText = dataObj.usage || dataObj.example || "";
-    if (modalKeyTakeaway) modalKeyTakeaway.innerText = dataObj.keyTakeaway || dataObj.keyPoint || "";
-
-    if (termModalOverlay) termModalOverlay.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeUniversalModal() {
-    if (termModalOverlay) termModalOverlay.classList.add('hidden');
-    document.body.style.overflow = '';
-  }
-
-  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeUniversalModal);
-  if (termModalOverlay) termModalOverlay.addEventListener('click', (e) => { if (e.target === termModalOverlay) closeUniversalModal(); });
-
-  // Master Cards Listeners
-  const masterCards = document.querySelectorAll('.clickable-master-card');
-  masterCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const id = card.getAttribute('data-master-id');
-      const dataObj = MASTER_GUIDE_DATA[id];
-      if (dataObj) openUniversalModal(dataObj);
-    });
-  });
 
   // Quiz Engine
   const quizIntroState = document.getElementById('quizIntroState');
