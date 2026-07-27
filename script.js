@@ -1,6 +1,6 @@
 /* ================================================
    Stock Beginner - Master Script Engine
-   (30-Day Course + 22 Community Memes + 24 Deep Terms + Live News + Clean Quiz Engine)
+   (30-Day Course + 22 Community Memes + 24 Deep Terms + Complete Chart Master + Live News + Clean Quiz Engine)
    ================================================ */
 
 // ----------------------------------------------------
@@ -115,9 +115,18 @@ const DETAILED_TERMS = [
   { id: 24, category: "trading", title: "서킷브레이커 (Circuit Breaker)", eng: "Market-Wide Trading Halt", summary: "지수가 8%, 15%, 20% 폭락할 때 시장 전체 거래를 20분간 강제 중단하는 제도.", fullDesc: "증시 대폭락 시 광란의 투매를 멈추고 투자자들에게 쿨링타임을 제공하는 최종 장치입니다.", formula: "지수 8% 폭락 ➔ 1단계 발동 ➔ 20분간 매매 전면 중단", usage: "서킷브레이커 발동 시 공포 투매 대신 시장 안정을 기다리세요.", keyTakeaway: "서킷브레이커 발동 시 감정적 투매를 자제하고 냉정해져야 합니다!" }
 ];
 
+// ----------------------------------------------------
+// DATA 5: 차트 보는 법 & 실전 매매 마스터 데이터 (모든 카드 100% 팝업 클릭 가능!)
+// ----------------------------------------------------
 const MASTER_GUIDE_DATA = {
   "master-candle": { category: "차트 마스터", emoji: "🕯️", title: "봉차트(캔들스틱) 완전 정복", eng: "Candlestick Masterclass", summary: "시가, 종가, 고가, 저가로 양봉과 음봉을 해석하는 법.", fullDesc: "빨간색 양봉은 매수 세력 승리, 파란색 음봉은 매도 세력 승리입니다.", keyPoint: "🔴 양봉 = 종가 > 시가 / 🔵 음봉 = 시가 > 종가", example: "바닥권 긴 아랫꼬리 망치형 양봉 발생 시 강한 반등 신호!", keyTakeaway: "캔들 몸통은 세력의 의지, 꼬리는 반발력입니다!" },
-  "master-trend": { category: "차트 마스터", emoji: "📐", title: "추세선과 지지/저항선 매매법", eng: "Trendline & Support/Resistance", summary: "바닥 지지선과 천장 저항선의 역할 반전 원리.", fullDesc: "주가는 지지선과 저항선 사이에서 움직입니다.", keyPoint: "🟢 지지선 = 바닥 방어 / 🔴 저항선 = 천장 막힘", example: "저항선을 3배 거래량으로 돌파할 때가 진성 돌파 타점!", keyTakeaway: "지지선 근처 매수, 저항선 거래량 돌파 시 동승하세요!" }
+  "master-trend": { category: "차트 마스터", emoji: "📐", title: "추세선과 지지/저항선 매매법", eng: "Trendline & Support/Resistance", summary: "바닥 지지선과 천장 저항선의 역할 반전 원리.", fullDesc: "주가는 지지선과 저항선 사이에서 움직입니다.", keyPoint: "🟢 지지선 = 바닥 방어 / 🔴 저항선 = 천장 막힘", example: "저항선을 3배 거래량으로 돌파할 때가 진성 돌파 타점!", keyTakeaway: "지지선 근처 매수, 저항선 거래량 돌파 시 동승하세요!" },
+  "master-ma": { category: "이평선 공략", emoji: "📈", title: "이동평균선 공식 & 정배열", eng: "Moving Average System", summary: "5일(생명선), 20일(세력선), 60일(수급선), 120일(경기선) 정배열 공략법.", fullDesc: "단기 이평선이 장기 이평선 위에 순서대로 나란히 정렬되는 정배열은 강력한 우상향 대세 상승 신호입니다.", keyPoint: "5일선 > 20일선 > 60일선 > 120일선 (정배열 대세 상승)", example: "정배열 종목이 20일 이동평균선에 닿는 눌림목 구간에서 분할 매수하세요.", keyTakeaway: "정배열 20일선 눌림목은 승률 높은 매수 타점입니다!" },
+  "master-pattern": { category: "패턴 공략", emoji: "🔺", title: "W자 이중 바닥 vs M자 헤드앤숄더", eng: "Chart Pattern Trading", summary: "바닥을 2번 확인하는 W자 이중 바닥과 고점 형성 후 하락하는 M자 패턴.", fullDesc: "W자 이중 바닥은 2번째 바닥에서 거래량이 터지며 넥라인을 돌파할 때가 강력한 상승 타점입니다.", keyPoint: "W자 넥라인 돌파 = 매수 타점 / M자 넥라인 이탈 = 손절 대응", example: "W자 패턴 완성 후 거래량이 실릴 때 분할 매수로 진입하세요.", keyTakeaway: "W자 넥라인 돌파 시 거래량을 반드시 확인하세요!" },
+  "master-order": { category: "주문 실전", emoji: "🛒", title: "지정가 vs 시장가 주문 노하우", eng: "Order Types & Slippage", summary: "원하는 가격을 직접 입력하는 지정가와 즉시 체결되는 시장가 주문.", fullDesc: "변동성이 큰 급등주를 시장가로 사면 슬리피지 현상으로 손해를 봅니다. 지정가 미체결 방지 노하우를 익히세요.", keyPoint: "안정적 매수 = 지정가 주문 / 급박한 탈출 = 시장가 주문", example: "분할 매수 시에는 현재 호가에 지정가 주문을 넣어 슬리피지를 막으세요.", keyTakeaway: "원칙 있는 매매는 항상 지정가 주문으로 슬리피지를 방지합니다!" },
+  "master-execution": { category: "체결 원칙", emoji: "⚙️", title: "증시 체결 3대 원칙 (가격·시간·수량)", eng: "Execution Priority Rules", summary: "주식시장에서 주문이 체결되는 3가지 절대적인 우선순위 법칙.", fullDesc: "가격 우선 ➔ 시간 우선 ➔ 수량 우선 순으로 체결됩니다. 동시호가 장 시작 전 높은 매수가가 1순위입니다.", keyPoint: "1. 가격 우선의 원칙 ➔ 2. 시간 우선의 원칙 ➔ 3. 수량 우선의 원칙", example: "아침 9시 장 시작 직전 상한가 주문 시 시간 우선 순위가 결정적입니다.", keyTakeaway: "동시호가 및 급등주 체결 시 시간 우선 순위를 꼭 기억하세요!" },
+  "master-buffett": { category: "가치 발굴", emoji: "💎", title: "워렌 버핏 가치투자 & ROE/PER", eng: "Buffett Value Investing", summary: "ROE 15% 이상 지속 기업과 PER 저평가주 발굴 공식.", fullDesc: "버핏은 자기자본이익률(ROE)이 15% 이상 지속되면서 업종 평균 PER보다 낮은 우량 독점 기업에 집중 투자했습니다.", keyPoint: "ROE > 15% (수익성) & PER < 업종 평균 (저평가)", example: "ROE 15% 이상을 3년 이상 유지하는 저평가 우량 기업을 고르세요.", keyTakeaway: "높은 ROE와 낮은 PER이 결합된 기업은 무적이 가치주입니다!" },
+  "master-value": { category: "저평가 발굴", emoji: "🏢", title: "PBR 1.0 미만 우량 자산주 스크리닝", eng: "PBR Asset Valuation", summary: "당장 청산해도 남는 자산보다 주가가 낮은 PBR 저평가주 발굴법.", fullDesc: "PBR 1.0 미만 기업은 기업 청산가치보다 주가가 싼 상태로, 배당 확대나 자사주 소각 등 밸류업 호재 시 급등합니다.", keyPoint: "PBR < 1.0 = 장부상 청산가치 미만 강력한 자산 하방 지지", example: "PBR 0.5배 이하이면서 영업이익 흑자인 우량 자산주를 선점하세요.", keyTakeaway: "PBR 1.0 미만 흑자 기업은 하방 안전장치를 갖춘 보석입니다!" }
 };
 
 const QUIZ_QUESTIONS_30 = [
@@ -308,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderDailyConcept(0);
 
-  // SECTION 3: 22 COMMUNITY MEMES ENGINE (22개 풀세트!)
+  // SECTION 3: 22 COMMUNITY MEMES ENGINE
   const slangGrid = document.getElementById('slangGrid');
   const slangFilterBtns = document.querySelectorAll('.slang-filter-btn');
   let currentSlangFilter = 'all';
@@ -532,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderLiveNews();
   if (btnRefreshNews) btnRefreshNews.addEventListener('click', renderLiveNews);
 
-  // Master Guide Tabs & Cards
+  // SECTION 2: Master Guide Tabs & Cards (모든 카드가 팝업 가능하도록 바인딩!)
   const chartTabBtns = document.querySelectorAll('.chart-tab-btn');
   const chartTabContents = document.querySelectorAll('.chart-tab-content');
   const clickableCards = document.querySelectorAll('.clickable-card');
