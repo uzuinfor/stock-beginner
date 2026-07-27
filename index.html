@@ -23,8 +23,8 @@
         <li><a href="#daily" class="nav-link highlight-link">🗓️ 100일 백과사전</a></li>
         <li><a href="#news" class="nav-link highlight-link3">📰 실시간 뉴스</a></li>
         <li><a href="#chart-guide" class="nav-link highlight-purple">📊 차트·매매 마스터</a></li>
+        <li><a href="#slang" class="nav-link highlight-slang">🔥 커뮤니티 밈</a></li>
         <li><a href="#terms" class="nav-link">🔍 용어 심화사전</a></li>
-        <li><a href="#slang" class="nav-link highlight-slang">🔥 커뮤니티 용어</a></li>
         <li><a href="#quiz" class="nav-link highlight-link2">🧩 실력 퀴즈</a></li>
       </ul>
       <button class="nav-hamburger" id="hamburger" aria-label="메뉴 열기">
@@ -58,11 +58,6 @@
           <span class="hero-search-icon">🔍</span>
           <input type="text" id="heroSearchInput" placeholder="100일 개념, 차트, 매매법, 밈 검색 (예: Day 50, 돔황챠, 양봉, PER, RSI, 양도세)..." autocomplete="off" />
           <button class="hero-search-btn" id="heroSearchBtn">검색</button>
-        </div>
-        
-        <!-- Live Search Dropdown Suggestions -->
-        <div class="hero-search-dropdown hidden" id="heroSearchDropdown">
-          <!-- Dynamic Suggestions JS -->
         </div>
 
         <div class="hero-keywords-recommend">
@@ -111,6 +106,16 @@
         <div class="section-tag">Stock Beginner</div>
         <h2 class="section-title">📚 Stock Beginner 100일 백과사전</h2>
         <p class="section-sub">기초부터 실전 차트, 해외주식, 세금, 심리까지 100일 코스</p>
+      </div>
+
+      <!-- 100-Day Category Filters -->
+      <div class="day-filter-menu" id="dayFilterMenu">
+        <button class="day-filter-btn active" data-range="all">전체 (Day 1~100)</button>
+        <button class="day-filter-btn" data-range="1-20">1단계: 기초/시장 (1~20)</button>
+        <button class="day-filter-btn" data-range="21-40">2단계: 재무/지표 (21~40)</button>
+        <button class="day-filter-btn" data-range="41-60">3단계: 차트/보조 (41~60)</button>
+        <button class="day-filter-btn" data-range="61-80">4단계: 실전매매 (61~80)</button>
+        <button class="day-filter-btn" data-range="81-100">5단계: 해외/세금 (81~100)</button>
       </div>
 
       <div class="daily-box glass-card">
@@ -166,8 +171,8 @@
         <!-- Concept Selector List & Category Filters -->
         <div class="concept-list-drawer">
           <div class="drawer-header">
-            <h4>Stock Beginner 100일 백과사전 탐색기 (<span id="conceptListCount">100</span>일 과정)</h4>
-            <span class="drawer-hint">원하는 일차를 선택해서 학습해보세요!</span>
+            <h4>Stock Beginner 100일 백과사전 목록 (<span id="conceptListCount">100</span>일 코스)</h4>
+            <button class="btn-toggle-chips" id="btnToggleChips">📂 전체 100일 목록 보기/접기</button>
           </div>
 
           <div class="concept-chips" id="conceptChips">
@@ -184,13 +189,13 @@
       <div class="section-header">
         <div class="section-tag">Live Market News</div>
         <h2 class="section-title">📰 실시간 주요 증시 & 경제 뉴스</h2>
-        <p class="section-sub">주식 시장의 최신 이슈를 한눈에 파악하세요</p>
+        <p class="section-sub">국내외 실시간 증시 이슈 및 주요 경제 뉴스를 한눈에 파악하세요!</p>
       </div>
 
       <div class="news-header-bar">
         <div class="news-live-indicator">
           <span class="live-dot"></span>
-          <span>실시간 뉴스 피드</span>
+          <span>실시간 24H 증시 뉴스 피드</span>
           <span class="news-updated-time" id="newsUpdatedTime">방금 업데이트</span>
         </div>
         <button class="btn-refresh-news" id="btnRefreshNews">
@@ -434,114 +439,70 @@
     </div>
   </section>
 
-  <!-- NEW SECTION: 🔥 주식 커뮤니티 밈 & 슬랭 사전 -->
+  <!-- NEW SECTION: 🔥 주식 커뮤니티 밈 & 슬랭 사전 (테마 필터 & 더보기 지원) -->
   <section id="slang" class="section">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag">Stock Beginner Community Slang</div>
-        <h2 class="section-title">🔥 주식 커뮤니티 밈 & 슬랭 심화 사전</h2>
+        <div class="section-tag">Community Meme Dictionary</div>
+        <h2 class="section-title">🔥 주식 커뮤니티 밈 & 슬랭 백과사전</h2>
         <p class="section-sub">카드를 클릭하시면 밈의 유래, 대화 예시, 투자 심리 및 주의점을 팝업으로 볼 수 있어요!</p>
       </div>
 
-      <div class="slang-grid">
-        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-domhwangcha">
-          <div class="slang-badge hot">🔥 초인기 밈</div>
-          <div class="slang-emoji">🏃‍♂️💨</div>
-          <h3 class="slang-title">돔황챠</h3>
-          <div class="slang-origin">원래 뜻: "도망쳐!"</div>
-          <p class="slang-desc">
-            주가가 대폭락하거나 악재가 터졌을 때 "모두 빨리 주식을 팔고 도망치라"는 유머러스한 밈입니다.
-          </p>
-          <div class="card-click-prompt">👉 클릭하여 유래와 손절 원칙 팝업 보기</div>
-        </div>
+      <!-- Slang Category Filter Tabs -->
+      <div class="slang-filter-menu" id="slangFilterMenu">
+        <button class="slang-filter-btn active" data-filter="all">전체 밈</button>
+        <button class="slang-filter-btn" data-filter="popular">🔥 인기 대표 밈</button>
+        <button class="slang-filter-btn" data-filter="trading">💸 매매/수급 밈</button>
+        <button class="slang-filter-btn" data-filter="sad">😭 통곡/리스크 밈</button>
+        <button class="slang-filter-btn" data-filter="subject">👥 주체/개미 밈</button>
+      </div>
 
-        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-sangkit">
-          <div class="slang-badge up">🚀 상승 기원</div>
-          <div class="slang-emoji">🔺</div>
-          <h3 class="slang-title">상킷 (상킷리스트)</h3>
-          <div class="slang-origin">원래 뜻: 상한가(+30%) 기원</div>
-          <p class="slang-desc">
-            내가 보유한 종목이 오늘 +30% 상한가에 가기를 간절히 기도하고 바라는 게시글 표현입니다.
-          </p>
-          <div class="card-click-prompt">👉 클릭하여 상한가 가격제한폭 원리 팝업 보기</div>
-        </div>
+      <div class="slang-grid" id="slangGrid">
+        <!-- Dynamic Slang Cards Loaded via JS -->
+      </div>
 
-        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-hakit">
-          <div class="slang-badge down">🔻 하락 통곡</div>
-          <div class="slang-emoji">📉</div>
-          <h3 class="slang-title">하킷</h3>
-          <div class="slang-origin">원래 뜻: 하한가(-30%) 통곡</div>
-          <p class="slang-desc">
-            주가가 연속 폭락하여 -30% 하한가로 고꾸라지거나 악재가 지속될 때 탄식하며 부르는 소리입니다.
-          </p>
-          <div class="card-click-prompt">👉 클릭하여 하한가 거래 잠김 위험 팝업 보기</div>
-        </div>
+      <div class="slang-expand-box">
+        <button class="btn-expand-slang" id="btnExpandSlang">
+          ➕ 밈 전체 더보기 (<span id="slangCountBadge">20</span>개 전체 펼치기)
+        </button>
+      </div>
+    </div>
+  </section>
 
-        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-floor">
-          <div class="slang-badge">🏢 층수</div>
-          <div class="slang-emoji">🏢</div>
-          <h3 class="slang-title">N층 (70층, 80층)</h3>
-          <div class="slang-origin">원래 뜻: 내 평단가 (매수 가격)</div>
-          <p class="slang-desc">
-            주식을 산 가격을 아파트 층수로 비유한 표현입니다. 삼성전자를 70,000원에 샀다면 "70층 주민"입니다.
-          </p>
-          <div class="card-click-prompt">👉 클릭하여 원금 복구 수치 계산 복습 팝업 보기</div>
-        </div>
+  <!-- Section 4: 대화형 용어 심화 사전 -->
+  <section id="terms" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Deep Dictionary</div>
+        <h2 class="section-title">🔍 필수 주식 용어 심화 사전</h2>
+        <p class="section-sub">카드를 클릭하시면 상세한 실전 설명과 활용법을 볼 수 있어요!</p>
+      </div>
 
-        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-rescue">
-          <div class="slang-badge">🚑 구조대</div>
-          <div class="slang-emoji">🚑</div>
-          <h3 class="slang-title">구조대</h3>
-          <div class="slang-origin">원래 뜻: 주가가 내 매수가에 도달함</div>
-          <p class="slang-desc">
-            고점에 물려 오랫동안 마이너스 손실 상태였는데, 주가가 반등하여 내가 산 매수가(층수)까지 올 때 부릅니다.
-          </p>
-          <div class="card-click-prompt">👉 클릭하여 본전 심리 탈출 전략 팝업 보기</div>
+      <!-- Search Bar -->
+      <div class="search-bar-wrap">
+        <div class="search-input-box glass-card">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="termSearchInput" placeholder="용어명, 약어(PER, PBR, ETF), 내용으로 실시간 검색..." />
+          <button class="clear-search-btn" id="clearSearchBtn" title="지우기">✕</button>
         </div>
+        <div class="search-count-info" id="searchCountInfo">총 <strong>24</strong>개의 심화 용어가 등록되어 있습니다.</div>
+      </div>
 
-        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-jonber">
-          <div class="slang-badge">🧊 존버</div>
-          <div class="slang-emoji">🗿</div>
-          <h3 class="slang-title">존버</h3>
-          <div class="slang-origin">원래 뜻: 끝까지 버티기</div>
-          <p class="slang-desc">
-            주가가 아무리 하락해도 손절하지 않고 계좌를 열어보지 않으며 무조건 장기 보유로 견뎌내는 행위입니다.
-          </p>
-          <div class="card-click-prompt">👉 클릭하여 무지성 존버 vs 가치 존버 차이 팝업 보기</div>
-        </div>
+      <div class="terms-filter">
+        <button class="filter-btn active" data-filter="all">전체</button>
+        <button class="filter-btn" data-filter="basic">기초</button>
+        <button class="filter-btn" data-filter="indicator">지표</button>
+        <button class="filter-btn" data-filter="trading">매매</button>
+        <button class="filter-btn" data-filter="economy">경제/시황</button>
+      </div>
 
-        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-water">
-          <div class="slang-badge">💸 물타기 / 불타기</div>
-          <div class="slang-emoji">🌊</div>
-          <h3 class="slang-title">물타기 / 불타기</h3>
-          <div class="slang-origin">원래 뜻: 추가 매수 전략</div>
-          <p class="slang-desc">
-            주가 하락 시 평단가 낮추는 물타기와 상승 시 이익을 극대화하는 불타기 매매 기법입니다.
-          </p>
-          <div class="card-click-prompt">👉 클릭하여 피라미딩 매매법 팝업 보기</div>
-        </div>
+      <div class="terms-grid" id="termsGrid">
+        <!-- Dynamic Cards rendered via JS -->
+      </div>
 
-        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-impulse">
-          <div class="slang-badge">🧠 뇌동매매</div>
-          <div class="slang-emoji">🤯</div>
-          <h3 class="slang-title">뇌동매매</h3>
-          <div class="slang-origin">원래 뜻: 홧김에 하는 충동 매매</div>
-          <p class="slang-desc">
-            남들의 말이나 급등하는 차트를 보고 이성적 분석 없이 홧김에 덜컥 따라 사는 위험한 행동입니다.
-          </p>
-          <div class="card-click-prompt">👉 클릭하여 FOMO 극복 심리 가이드 팝업 보기</div>
-        </div>
-
-        <div class="slang-card glass-card clickable-slang-card" data-slang-id="slang-ttok">
-          <div class="slang-badge">🐂 떡상 / 떡락</div>
-          <div class="slang-emoji">💥</div>
-          <h3 class="slang-title">떡상 / 떡락</h3>
-          <div class="slang-origin">원래 뜻: 대폭등 / 대폭락</div>
-          <p class="slang-desc">
-            주가가 미친 듯이 급등하는 '떡상'과 수직 하락하는 '떡락' 현상입니다.
-          </p>
-          <div class="card-click-prompt">👉 클릭하여 주가 급변동 대응 원칙 팝업 보기</div>
-        </div>
+      <div class="no-search-results hidden" id="noSearchResults">
+        <div class="no-res-icon">🔍</div>
+        <p>검색 결과가 없습니다.<br />다른 단어로 검색해 보세요!</p>
       </div>
     </div>
   </section>
@@ -597,7 +558,7 @@
     </div>
   </div>
 
-  <!-- Section 5: 주린이 실력 점검 퀴즈 (30문항) -->
+  <!-- Section 5: 주린이 실력 점검 퀴즈 (30문항 풀 작동 엔진) -->
   <section id="quiz" class="section">
     <div class="container">
       <div class="section-header">
@@ -641,7 +602,7 @@
           <div class="quiz-feedback-box hidden" id="quizFeedbackBox">
             <div class="feedback-status" id="feedbackStatus">⭕ 정답입니다!</div>
             <p class="feedback-explain" id="feedbackExplain">주식을 매수한 사람은 그 회사의 지분을 소유한 '주주(株主)'가 됩니다.</p>
-            <button class="btn-next-quiz" id="btnNextQuiz">다음 문제 ➔</button>
+            <button class="btn-next-quiz" id="btnNextQuiz">다음 문제로 넘어가기 ➔</button>
           </div>
         </div>
 
@@ -654,7 +615,7 @@
           <p class="result-desc" id="resultDesc">기초 지식이 완벽해요! 이제 실제 투자 가이드를 따라 천천히 시작해보세요.</p>
           <div class="result-action-btns">
             <button class="btn-retry-quiz" id="btnRetryQuiz">🔄 퀴즈 다시 풀기</button>
-            <a href="#howto" class="btn-goto-howto">🚀 투자 시작하기 가이드</a>
+            <a href="#hero" class="btn-goto-howto">🚀 백과사전으로 돌아가기</a>
           </div>
         </div>
       </div>
