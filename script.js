@@ -206,6 +206,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Privacy Policy Modal Handler
+  const btnPrivacyPolicy = document.getElementById('btnPrivacyPolicy');
+  const privacyModalOverlay = document.getElementById('privacyModalOverlay');
+  const privacyModalCloseBtn = document.getElementById('privacyModalCloseBtn');
+
+  if (btnPrivacyPolicy && privacyModalOverlay) {
+    btnPrivacyPolicy.addEventListener('click', (e) => {
+      e.preventDefault();
+      privacyModalOverlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  if (privacyModalCloseBtn && privacyModalOverlay) {
+    privacyModalCloseBtn.addEventListener('click', () => {
+      privacyModalOverlay.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+  }
+  if (privacyModalOverlay) {
+    privacyModalOverlay.addEventListener('click', (e) => {
+      if (e.target === privacyModalOverlay) {
+        privacyModalOverlay.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
   // 30-DAY SINGLE CARD ENGINE
   let currentConceptIndex = 0;
   let learnedSet = new Set(JSON.parse(localStorage.getItem('stock_beginner_learned_30') || '[]'));
