@@ -289,6 +289,117 @@ body {
   .concept-card-title { font-size: 1.4rem; }
   .concept-card-detail { grid-template-columns: 1fr; }
 
-  .slang-grid, .terms-grid, .news-grid, .guide-grid-2 { grid-template-columns: 1fr; }
-  .modal-section-box.grid-2-col { grid-template-columns: 1fr; }
+}
+
+/* Beginner Starter Roadmap & Mistake Prevention Styles */
+.starter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+.starter-card {
+  position: relative;
+  padding: 30px 24px 24px;
+  border-radius: 20px;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.starter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+.starter-step-number {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.starter-icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+.starter-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 10px;
+}
+.starter-card p {
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+.starter-tip {
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 3px solid #3b82f6;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #93c5fd;
+  line-height: 1.5;
+}
+
+.mistakes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+  margin-top: 30px;
+}
+.mistake-card {
+  padding: 26px;
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.mistake-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 12px 30px rgba(239, 68, 68, 0.15);
+}
+.mistake-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.mistake-badge {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+.mistake-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+.mistake-desc {
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.mistake-solution {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.88rem;
+  color: #6ee7b7;
+  line-height: 1.5;
 }
