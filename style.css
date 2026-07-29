@@ -74,8 +74,8 @@ body {
 
 .nav-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #fff; font-size: 1.3rem; font-weight: 800; }
-.nav-links { display: flex; list-style: none; gap: 16px; align-items: center; }
-.nav-link { text-decoration: none; color: #cbd5e1; font-weight: 600; font-size: 0.92rem; padding: 6px 14px; border-radius: 12px; }
+.nav-links { display: flex; list-style: none; gap: 12px; align-items: center; }
+.nav-link { text-decoration: none; color: #cbd5e1; font-weight: 600; font-size: 0.95rem; padding: 6px 14px; border-radius: 12px; white-space: nowrap; }
 .nav-link:hover { color: #60a5fa; background: rgba(255, 255, 255, 0.06); }
 .nav-hamburger { display: none; background: transparent; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 5px; z-index: 1001; }
 .nav-hamburger span { display: block; width: 24px; height: 2px; background-color: #fff; border-radius: 2px; }
