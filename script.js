@@ -206,39 +206,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Pure Real Visitor Counter Engine (Today & Total)
-  function initVisitorCounter(siteKey) {
+  // REAL Global Backend Visitor Counter (CounterAPI)
+  async function initRealGlobalVisitorCounter(namespace) {
     const todayElem = document.getElementById('visitorToday');
     const totalElem = document.getElementById('visitorTotal');
     if (!todayElem || !totalElem) return;
 
-    // Force purge old test numbers (>50) from browser storage
-    ['stock_beginner_today_count', 'stock_beginner_total_count', 'stock_beginner_visit_date', 'stock_beginner_real_today_count', 'stock_beginner_real_total_count'].forEach(k => {
-      const v = parseInt(localStorage.getItem(k) || '0', 10);
-      if (v > 30) localStorage.removeItem(k);
-    });
+    // Purge old local storage keys
+    localStorage.clear();
 
-    const todayStr = new Date().toISOString().split('T')[0];
-    const savedDate = localStorage.getItem(`${siteKey}_real_visit_date`);
-    let todayCount = parseInt(localStorage.getItem(`${siteKey}_real_today_count`) || '0', 10);
-    let totalCount = parseInt(localStorage.getItem(`${siteKey}_real_total_count`) || '0', 10);
+    const todayKey = 'today_' + new Date().toISOString().split('T')[0].replace(/-/g, '');
 
-    if (savedDate !== todayStr) {
-      todayCount = 0;
-      localStorage.setItem(`${siteKey}_real_visit_date`, todayStr);
+    try {
+      // Fetch & increment real global TOTAL count from central server DB
+      const resTotal = await fetch(`https://api.counterapi.dev/v1/${namespace}/total/up`);
+      if (resTotal.ok) {
+        const dataTotal = await resTotal.json();
+        totalElem.textContent = Number(dataTotal.count).toLocaleString();
+      }
+
+      // Fetch & increment real global TODAY count from central server DB
+      const resToday = await fetch(`https://api.counterapi.dev/v1/${namespace}/${todayKey}/up`);
+      if (resToday.ok) {
+        const dataToday = await resToday.json();
+        todayElem.textContent = Number(dataToday.count).toLocaleString();
+      }
+    } catch (err) {
+      console.log('Real global counter error:', err);
     }
-
-    todayCount += 1;
-    totalCount += 1;
-
-    localStorage.setItem(`${siteKey}_real_today_count`, todayCount.toString());
-    localStorage.setItem(`${siteKey}_real_total_count`, totalCount.toString());
-
-    todayElem.textContent = todayCount.toLocaleString();
-    totalElem.textContent = totalCount.toLocaleString();
   }
 
-  initVisitorCounter('stock_beginner');
+  initRealGlobalVisitorCounter('uzuinfor_stock_beginner');
 
   // Privacy Policy Modal Handler
   const btnPrivacyPolicy = document.getElementById('btnPrivacyPolicy');
