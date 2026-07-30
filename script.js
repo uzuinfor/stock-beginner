@@ -212,9 +212,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalElem = document.getElementById('visitorTotal');
     if (!todayElem || !totalElem) return;
 
-    // Clear old mock storage if present
-    localStorage.removeItem(`${siteKey}_today_count`);
-    localStorage.removeItem(`${siteKey}_total_count`);
+    // Force purge old test numbers (>50) from browser storage
+    ['stock_beginner_today_count', 'stock_beginner_total_count', 'stock_beginner_visit_date', 'stock_beginner_real_today_count', 'stock_beginner_real_total_count'].forEach(k => {
+      const v = parseInt(localStorage.getItem(k) || '0', 10);
+      if (v > 30) localStorage.removeItem(k);
+    });
 
     const todayStr = new Date().toISOString().split('T')[0];
     const savedDate = localStorage.getItem(`${siteKey}_real_visit_date`);
