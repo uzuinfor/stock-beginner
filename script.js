@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     totalElem.textContent = totalCount.toLocaleString();
   }
 
-  initVisitorCounter('stock_beginner', 142, 2840);
+  initVisitorCounter('stock_beginner', 5, 12);
 
   // Privacy Policy Modal Handler
   const btnPrivacyPolicy = document.getElementById('btnPrivacyPolicy');
