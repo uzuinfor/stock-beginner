@@ -273,22 +273,112 @@ body {
 
 .footer { border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 35px 0; text-align: center; color: #64748b; font-size: 0.9rem; }
 
-/* Mobile Responsive Engine */
+/* Mobile Responsive Master Engine */
 @media (max-width: 992px) {
   .nav-hamburger { display: flex; }
-  .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: rgba(11, 15, 25, 0.98); backdrop-filter: blur(25px); flex-direction: column; padding: 20px 0; gap: 10px; display: none; }
-  .nav-links.open { display: flex; }
-  .nav-link { width: 90%; text-align: center; padding: 12px 0; }
+  .nav-links {
+    position: absolute; top: 100%; left: 0; width: 100%;
+    background: rgba(11, 15, 25, 0.98);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    flex-direction: column; padding: 16px 20px; gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    display: none;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .nav-links.open {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .nav-link {
+    width: 100%; text-align: center; padding: 12px 16px;
+    font-size: 1rem; border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .nav-link:active {
+    background: rgba(99, 102, 241, 0.25);
+  }
 
-  .hero-title { font-size: 2rem; }
-  .hero-search-box { flex-direction: column; gap: 8px; padding: 10px; }
-  .hero-search-btn { width: 100%; }
+  .container { padding: 0 16px; }
+  .section { padding: 50px 0; }
+  .section-title { font-size: 1.75rem; }
+  .section-sub { font-size: 0.95rem; }
 
-  .daily-card-wrap { flex-direction: column; }
-  .daily-concept-card { padding: 22px 18px; }
-  .concept-card-title { font-size: 1.4rem; }
-  .concept-card-detail { grid-template-columns: 1fr; }
+  .hero { padding: 100px 16px 40px; min-height: auto; }
+  .hero-badge { font-size: 0.8rem; padding: 5px 14px; margin-bottom: 14px; }
+  .hero-title { font-size: 1.85rem; line-height: 1.3; margin-bottom: 14px; }
+  .hero-desc { font-size: 0.95rem; margin-bottom: 24px; }
+  .hero-search-wrap { margin-bottom: 24px; }
+  .hero-search-box {
+    flex-direction: column; gap: 8px; padding: 8px;
+    border-radius: 18px;
+  }
+  .hero-search-box input {
+    font-size: 1rem; padding: 10px; text-align: center;
+  }
+  .hero-search-btn {
+    width: 100%; padding: 12px !important; font-size: 0.95rem !important;
+  }
+  .hero-stats { gap: 16px; margin-bottom: 24px; }
+  .stat-num { font-size: 1.6rem; }
+  .stat-label { font-size: 0.8rem; }
 
+  .daily-box { padding: 20px 14px; border-radius: 20px; }
+  .daily-top { margin-bottom: 18px; }
+  .daily-date-badge { font-size: 0.95rem; }
+  .progress-bar-bg { width: 140px; }
+  .daily-card-wrap { flex-direction: column; gap: 14px; }
+  .daily-nav-btn { width: 44px !important; height: 44px !important; font-size: 1rem !important; }
+  .daily-concept-card { padding: 22px 16px; border-radius: 20px; }
+  .concept-day-tag { top: 16px; right: 16px; font-size: 0.8rem; padding: 4px 12px; }
+  .concept-card-icon { font-size: 2.4rem; margin-bottom: 10px; }
+  .concept-card-title { font-size: 1.45rem; margin-bottom: 4px; }
+  .concept-card-category { font-size: 0.88rem; margin-bottom: 14px; }
+  .concept-card-summary { font-size: 0.98rem; margin-bottom: 18px; line-height: 1.6; }
+  .concept-card-detail { grid-template-columns: 1fr; gap: 10px; margin-bottom: 18px; }
+  .detail-box { padding: 14px; font-size: 0.88rem; }
+  .daily-action-btns { flex-direction: column; gap: 10px; }
+  .btn-check-learn, .btn-random-concept { width: 100% !important; text-align: center !important; padding: 12px 18px !important; font-size: 0.95rem !important; }
+
+  .starter-grid, .mistakes-grid, .slang-grid, .terms-grid, .news-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .starter-card, .mistake-card, .slang-card, .term-card, .news-card, .guide-card {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+  .starter-step-number { font-size: 0.7rem; padding: 3px 10px; }
+  .starter-card h3, .mistake-header h3, .slang-title, .term-title { font-size: 1.1rem; }
+  .starter-card p, .mistake-desc, .slang-desc, .term-summary { font-size: 0.88rem; line-height: 1.55; }
+  .starter-tip, .mistake-solution { font-size: 0.82rem; padding: 10px; }
+
+  .quiz-container { padding: 22px 14px; border-radius: 20px; }
+  .quiz-intro-icon { font-size: 2.8rem; margin-bottom: 10px; }
+  .quiz-opt-btn { padding: 14px 16px !important; font-size: 0.92rem !important; min-height: 48px; }
+  .quiz-feedback-box { padding: 16px; font-size: 0.9rem; }
+
+  .term-modal-card { padding: 20px 16px; border-radius: 20px; max-height: 85vh; }
+  .modal-close-btn { top: 12px; right: 12px; font-size: 1.8rem; padding: 6px; }
+  .modal-section-box { padding: 14px; margin-bottom: 12px; }
+  .modal-section-box.grid-2-col { grid-template-columns: 1fr; gap: 8px; }
+  .modal-section-box h5 { font-size: 0.9rem; }
+  .modal-section-box p { font-size: 0.88rem; }
+
+  .visitor-widget-box { padding: 8px 16px; gap: 12px; border-radius: 25px; margin: 10px 0; }
+  .visitor-stat { font-size: 0.82rem; gap: 6px; }
+  .v-num { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 1.6rem; }
+  .hero-search-box input { font-size: 0.95rem; }
+  .hero-keywords-recommend { font-size: 0.78rem; gap: 6px; }
+  .tag-btn { font-size: 0.78rem !important; padding: 4px 10px !important; }
 }
 
 /* Beginner Starter Roadmap & Mistake Prevention Styles */

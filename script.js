@@ -165,6 +165,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Auto-close mobile nav menu on link click or outside tap
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (navLinks) navLinks.classList.remove('open');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (navLinks && navLinks.classList.contains('open') && navbar && !navbar.contains(e.target)) {
+      navLinks.classList.remove('open');
+    }
+  });
+
   // Universal Modal Engine
   const termModalOverlay = document.getElementById('termModalOverlay');
   const modalCloseBtn = document.getElementById('modalCloseBtn');
